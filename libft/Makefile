@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+         #
+#    By: yliu <yliu@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/08 14:56:08 by yliu              #+#    #+#              #
-#    Updated: 2023/11/08 17:32:25 by yliu             ###   ########.fr        #
+#    Updated: 2023/11/08 22:43:46 by yliu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,8 +31,7 @@ HEADERS 	   	= $(wildcard $(INCLUDE)/*.h)
 # make obj dir recursively
 MAKE_OBJDIR		= $(shell mkdir -p $(subst $(SRCS_DIR), $(OBJS_DIR), $(dir $(SRCS))))
 
-# DROW_GRAY:
-# 				@$(ECHO) -n "\e$(GRAY)\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500"
+DROW_GRAY		= $(shell $(ECHO) -n "$(GRAY)\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500")
 
 # color
 DEF_COLOR		=	\033[0;39m
@@ -46,31 +45,39 @@ MAGENTA			=	\033[0;95m
 CYAN			=	\033[0;96m
 WHITE			=	\033[0;97m
 
-all:			$(NAME)
+all:
+				@$(ECHO) "$(DEF_COLOR)$(BLUE)[LIBFT]\tlibft.a \t$(GREEN)...$(DEF_COLOR)"
+				@$(ECHO) -n "\e$(GRAY)\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\r$(DEF_COLOR)"
+				@make $(NAME)
 
 $(NAME):		$(OBJS)
 				@$(AR) crs $@ $?
-				@$(ECHO) -n "\r\e$(GREEN)\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500"
-				@$(ECHO) "$(GREEN) => 100%$(DEF_COLOR)"
-
+				@$(ECHO) -n "\r\e$(GREEN)\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500$(DEF_COLOR)"
+				@$(ECHO) "$(GREEN) \u2500> successfully installed$(DEF_COLOR)"
+				@$(ECHO) "$(DEF_COLOR)$(BLUE)[LIBFT]\tlibft.a \t$(GREEN)...successfully installed$(DEF_COLOR)"
 
 counter			:= 0
-flag			:= 0
-$(OBJS_DIR)%.o:	$(MAKE_OBJDIR) $(SRCS_DIR)%.c
+# # ifeq ($(shell test $(counter) -gt 0 && echo "true"), true)
+
+
+$(OBJS_DIR)%.o:	$(MAKE_OBJDIR) $(DROW_GRA) $(SRCS_DIR)%.c
+
 				@$(CC) $(CFLAGS) -I $(INCLUDE) -c $< -o $@
-				@$(ECHO) -n "$(RED)\u2500"
+				@$(ECHO) -n "$(RED)\u2500$(DEF_COLOR)"
 				$(eval counter := $(shell echo $$(($(counter) + 1))))
 # @echo -n "Counter: $(counter)"
 
 # other cmds
 clean:
-				$(RM) $(OBJS_DIR)
+				@$(RM) $(OBJS_DIR)
+				@$(ECHO) "$(DEF_COLOR)$(BLUE)[LIBFT]\tobject files \t$(GREEN)...successfully deleted$(DEF_COLOR)"
 
 fclean:			clean
-				$(RM) $(NAME)
+				@$(RM) $(NAME)
+				@$(ECHO) "$(DEF_COLOR)$(BLUE)[LIBFT]\tlibft.a \t$(GREEN)...successfully deleted$(DEF_COLOR)"
 
 re:				fclean
-				make
+				@make
 
 norm:
 				@norminette $(SRCS) $(HEADERS); norminette -v
