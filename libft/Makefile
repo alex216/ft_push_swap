@@ -6,7 +6,7 @@
 #    By: yliu <yliu@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/08 14:56:08 by yliu              #+#    #+#              #
-#    Updated: 2023/11/09 16:28:46 by yliu             ###   ########.fr        #
+#    Updated: 2023/11/09 17:22:06 by yliu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,16 +44,20 @@ CYAN			=	\033[0;96m
 WHITE			=	\033[0;97m
 LINE			=  \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 
-all:
-				@$(ECHO) "$(DEF_COLOR)$(BLUE)[LIBFT]\tlibft.a \t$(GREEN)checking...$(DEF_COLOR)"
-				@$(ECHO) -n "\e$(GRAY)$(LINE)\r$(DEF_COLOR)"
-				@make $(NAME)
+all:			$(NAME)
 
-$(NAME):		$(OBJS)
-				@$(AR) crs $@ $?
+$(NAME):		status_check
+
+status_check:
+				@$(ECHO) "$(DEF_COLOR)$(BLUE)[LIBFT]\t\tlibft.a \t$(GREEN)checking...$(DEF_COLOR)"
+				@$(ECHO) -n "\e$(GRAY)$(LINE)\r$(DEF_COLOR)"
+				@make compile
+
+compile:		$(OBJS)
+				@$(AR) crs $(NAME) $?
 				@$(ECHO) -n "\r\e$(GREEN)$(LINE)$(DEF_COLOR)"
 				@$(ECHO) "$(GREEN) \u2023 100% $(DEF_COLOR)"
-				@$(ECHO) "$(DEF_COLOR)$(BLUE)[LIBFT]\tlibft.a \t$(GREEN)compiled \u2714$(DEF_COLOR)"
+				@$(ECHO) "$(DEF_COLOR)$(BLUE)[LIBFT]\t\tlibft.a \t$(GREEN)compiled \u2714$(DEF_COLOR)"
 
 $(OBJS_DIR)%.o:	$(MAKE_OBJDIR) $(DROW_GRA) $(SRCS_DIR)%.c
 
@@ -63,11 +67,11 @@ $(OBJS_DIR)%.o:	$(MAKE_OBJDIR) $(DROW_GRA) $(SRCS_DIR)%.c
 # other cmds
 clean:
 				@$(RM) $(OBJS_DIR)
-				@$(ECHO) "$(DEF_COLOR)$(BLUE)[LIBFT]\tobject files \t$(GREEN)deleted \u2714$(DEF_COLOR)"
+				@$(ECHO) "$(DEF_COLOR)$(BLUE)[LIBFT]\t\tobject files \t$(GREEN)deleted \u2714$(DEF_COLOR)"
 
 fclean:			clean
 				@$(RM) $(NAME)
-				@$(ECHO) "$(DEF_COLOR)$(BLUE)[LIBFT]\tlibft.a \t$(GREEN)deleted \u2714$(DEF_COLOR)"
+				@$(ECHO) "$(DEF_COLOR)$(BLUE)[LIBFT]\t\tlibft.a \t$(GREEN)deleted \u2714$(DEF_COLOR)"
 
 re:				fclean
 				@make
