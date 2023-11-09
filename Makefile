@@ -6,7 +6,7 @@
 #    By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 12:04:47 by yliu              #+#    #+#              #
-#    Updated: 2023/11/09 16:30:36 by yliu             ###   ########.fr        #
+#    Updated: 2023/11/09 16:32:51 by yliu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,14 +46,13 @@ WHITE			=	\033[0;97m
 LINE			=  \u2500\u2500
 
 all:
-				cp ./libft/libft.a .
 				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(NAME)]\texec file \t$(GREEN)checking...$(DEF_COLOR)"
 				@$(ECHO) -n "\e$(GRAY)$(LINE)\r$(DEF_COLOR)"
 				@make $(NAME)
 #@./$(NAME)
 
 $(NAME):		$(OBJS) $(HEADERS) $(LIBFT_HEADERS)
-				@$(CC) $(CFLAGS) -I $(INC_DIR) $(OBJS) ./libft.a -o $@
+				@$(CC) $(CFLAGS) -I $(INC_DIR) $(OBJS) ./libft/libft.a -o $@
 				@$(ECHO) -n "\r\e$(GREEN)$(LINE)$(DEF_COLOR)"
 				@$(ECHO) "$(GREEN) \u2023 100% $(DEF_COLOR)"
 				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(NAME)]\t$(NAME) \t$(GREEN)compiled \u2714$(DEF_COLOR)"
