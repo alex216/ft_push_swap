@@ -6,15 +6,16 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 11:56:03 by yliu              #+#    #+#             */
-/*   Updated: 2023/11/05 11:56:39 by yliu             ###   ########.fr       */
+/*   Updated: 2023/11/09 14:05:30 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include "push_swap.h"
 
 int	main(void)
 {
 	printf("hello world!\n");
-	ft_printf("hello world!\n");
+//	ft_printf("hello world! yliu\n");
 	return (0);
 }

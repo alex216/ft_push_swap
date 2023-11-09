@@ -1,2 +1,16 @@
+# exec
+a.out
+push_swap
+
+# tmp
+*.gch
+
+# tester
 checker
 test.sh
+
+# libft.a
+libft.a
+
+# obj
+obj
