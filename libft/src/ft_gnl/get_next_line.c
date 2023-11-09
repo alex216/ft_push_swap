@@ -106,7 +106,7 @@ char	*get_next_line(int fd)
 // 	else
 // 		return (calloc(1, st));
 // }
-// for i in {1..10}; 
+// for i in {1..10};
 // do echo ${i}; clw *.c -D FAIL_NUM={i} && ./a.out;
 // done
 //
