@@ -6,7 +6,7 @@
 #    By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 12:04:47 by yliu              #+#    #+#              #
-#    Updated: 2023/11/09 17:39:32 by yliu             ###   ########.fr        #
+#    Updated: 2023/11/09 18:12:19 by yliu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ $(NAME):		status_check
 
 status_check:
 				@cd $(LIB_DIR) && make
-				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(NAME)]\texec file \t$(GREEN)checking...$(DEF_COLOR)"
+				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(NAME)]\t./$(NAME) \t$(WHITE)checking...$(DEF_COLOR)"
 				@$(ECHO) -n "\e$(GRAY)$(LINE)\r$(DEF_COLOR)"
 				@make compile
 				
@@ -63,7 +63,7 @@ compile:			$(OBJS) $(HEADERS) $(LIBFT_HEADERS)
 				@$(CC) $(CFLAGS) -I $(INC_DIR) $(OBJS) ./libft/libft.a -o $(NAME)
 				@$(ECHO) -n "\r\e$(GREEN)$(LINE)$(DEF_COLOR)"
 				@$(ECHO) "$(GREEN) \u2023 100% $(DEF_COLOR)"
-				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(NAME)]\texec file \t$(GREEN)compiled \u2714$(DEF_COLOR)"
+				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(NAME)]\t./$(NAME) \t$(GREEN)compiled \u2714$(DEF_COLOR)"
 
 $(OBJS_DIR)/%.o:	$(MAKE_OBJDIR) $(SRCS_DIR)/%.c
 				@$(CC) $(CFLAGS) -I $(INC_DIR) -c $< -o $@
@@ -71,15 +71,16 @@ $(OBJS_DIR)/%.o:	$(MAKE_OBJDIR) $(SRCS_DIR)/%.c
 
 # other cmds
 clean:
-				@$(RM) $(OBJS_DIR)
 				@cd $(LIB_DIR) && make clean
+				@$(RM) $(OBJS_DIR)
 				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(NAME)]\tobject files \t$(GREEN)deleted \u2714$(DEF_COLOR)"
 
-fclean:			clean
-				@cd $(LIB_DIR) && $(RM) $(LIBRARY)
-				@$(ECHO) "$(DEF_COLOR)$(BLUE)[LIBFT]\t\tlibft.a \t$(GREEN)deleted \u2714$(DEF_COLOR)"
+fclean:			
+				@cd $(LIB_DIR) && make fclean
+				@$(RM) $(OBJS_DIR)
+				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(NAME)]\tobject files \t$(GREEN)deleted \u2714$(DEF_COLOR)"
 				@$(RM) $(NAME)
-				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(NAME)]\texec file \t$(GREEN)deleted \u2714$(DEF_COLOR)"
+				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(NAME)]\t./$(NAME) \t$(GREEN)deleted \u2714$(DEF_COLOR)"
 
 re:				fclean
 				@make

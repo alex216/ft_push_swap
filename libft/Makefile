@@ -6,7 +6,7 @@
 #    By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 18:02:13 by yliu              #+#    #+#              #
-#    Updated: 2023/11/09 18:02:15 by yliu             ###   ########.fr        #
+#    Updated: 2023/11/09 18:10:37 by yliu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ all:			$(NAME)
 $(NAME):		status_check
 
 status_check:
-				@$(ECHO) "$(DEF_COLOR)$(BLUE)[LIBFT]\t\tlibft.a \t$(GREEN)checking...$(DEF_COLOR)"
+				@$(ECHO) "$(DEF_COLOR)$(BLUE)[LIBFT]\t\tlibft.a \t$(WHITE)checking...$(DEF_COLOR)"
 				@$(ECHO) -n "\e$(GRAY)$(LINE)\r$(DEF_COLOR)"
 				@make compile
 
