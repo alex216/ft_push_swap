@@ -6,11 +6,11 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 00:39:26 by yliu              #+#    #+#             */
-/*   Updated: 2023/11/09 17:57:35 by yliu             ###   ########.fr       */
+/*   Updated: 2023/11/09 18:30:44 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../inc/libft.h"
 
 void	ft_putnbr_fd(int n, int fd)
 {

@@ -6,11 +6,11 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 09:58:34 by yliu              #+#    #+#             */
-/*   Updated: 2023/11/09 17:57:35 by yliu             ###   ########.fr       */
+/*   Updated: 2023/11/09 18:25:38 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../../inc/get_next_line.h"
 
 #if BUFFER_SIZE <= 0
 # error "BUFFER_SIZE must be positive"

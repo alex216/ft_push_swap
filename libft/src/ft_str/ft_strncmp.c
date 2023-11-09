@@ -6,11 +6,11 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 12:38:01 by yliu              #+#    #+#             */
-/*   Updated: 2023/11/09 17:57:36 by yliu             ###   ########.fr       */
+/*   Updated: 2023/11/09 18:30:57 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../inc/libft.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {

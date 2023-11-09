@@ -6,7 +6,7 @@
 #    By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 12:04:47 by yliu              #+#    #+#              #
-#    Updated: 2023/11/09 18:12:19 by yliu             ###   ########.fr        #
+#    Updated: 2023/11/09 18:15:53 by yliu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,13 +59,13 @@ status_check:
 				@$(ECHO) -n "\e$(GRAY)$(LINE)\r$(DEF_COLOR)"
 				@make compile
 				
-compile:			$(OBJS) $(HEADERS) $(LIBFT_HEADERS)
+compile:		$(OBJS) $(HEADERS) $(LIBFT_HEADERS)
 				@$(CC) $(CFLAGS) -I $(INC_DIR) $(OBJS) ./libft/libft.a -o $(NAME)
 				@$(ECHO) -n "\r\e$(GREEN)$(LINE)$(DEF_COLOR)"
 				@$(ECHO) "$(GREEN) \u2023 100% $(DEF_COLOR)"
 				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(NAME)]\t./$(NAME) \t$(GREEN)compiled \u2714$(DEF_COLOR)"
 
-$(OBJS_DIR)/%.o:	$(MAKE_OBJDIR) $(SRCS_DIR)/%.c
+$(OBJS_DIR)/%.o:$(MAKE_OBJDIR) $(SRCS_DIR)/%.c
 				@$(CC) $(CFLAGS) -I $(INC_DIR) -c $< -o $@
 				@$(ECHO) -n "$(RED)\u2500$(DEF_COLOR)"
 

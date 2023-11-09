@@ -6,11 +6,11 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 15:14:14 by yliu              #+#    #+#             */
-/*   Updated: 2023/11/02 15:14:29 by yliu             ###   ########.fr       */
+/*   Updated: 2023/11/09 18:30:25 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../../inc/ft_printf.h"
 
 void	pf_calculate_str_len(char *str, struct s_main *t_info)
 {

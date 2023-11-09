@@ -6,11 +6,11 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 12:46:48 by yliu              #+#    #+#             */
-/*   Updated: 2023/11/09 17:57:36 by yliu             ###   ########.fr       */
+/*   Updated: 2023/11/09 18:30:54 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../inc/libft.h"
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {

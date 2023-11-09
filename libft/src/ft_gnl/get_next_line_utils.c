@@ -6,11 +6,11 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 00:07:26 by yliu              #+#    #+#             */
-/*   Updated: 2023/11/08 12:08:39 by yliu             ###   ########.fr       */
+/*   Updated: 2023/11/09 18:25:38 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../../inc/get_next_line.h"
 
 // if str is NULL return 0.
 size_t	gnl_strlen(const char *str)
