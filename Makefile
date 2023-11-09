@@ -6,7 +6,7 @@
 #    By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 12:04:47 by yliu              #+#    #+#              #
-#    Updated: 2023/11/09 17:29:41 by yliu             ###   ########.fr        #
+#    Updated: 2023/11/09 17:39:32 by yliu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,9 +72,12 @@ $(OBJS_DIR)/%.o:	$(MAKE_OBJDIR) $(SRCS_DIR)/%.c
 # other cmds
 clean:
 				@$(RM) $(OBJS_DIR)
+				@cd $(LIB_DIR) && make clean
 				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(NAME)]\tobject files \t$(GREEN)deleted \u2714$(DEF_COLOR)"
 
 fclean:			clean
+				@cd $(LIB_DIR) && $(RM) $(LIBRARY)
+				@$(ECHO) "$(DEF_COLOR)$(BLUE)[LIBFT]\t\tlibft.a \t$(GREEN)deleted \u2714$(DEF_COLOR)"
 				@$(RM) $(NAME)
 				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(NAME)]\texec file \t$(GREEN)deleted \u2714$(DEF_COLOR)"
 
