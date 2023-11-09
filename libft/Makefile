@@ -6,7 +6,7 @@
 #    By: yliu <yliu@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/08 14:56:08 by yliu              #+#    #+#              #
-#    Updated: 2023/11/08 22:43:46 by yliu             ###   ########.fr        #
+#    Updated: 2023/11/09 11:57:37 by yliu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,9 @@ HEADERS 	   	= $(wildcard $(INCLUDE)/*.h)
 # make obj dir recursively
 MAKE_OBJDIR		= $(shell mkdir -p $(subst $(SRCS_DIR), $(OBJS_DIR), $(dir $(SRCS))))
 
-DROW_GRAY		= $(shell $(ECHO) -n "$(GRAY)\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500")
+DROW_GRAY		= $(shell $(ECHO) -n "$(GRAY)$(LINE)")
+
+LINE			=  \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 
 # color
 DEF_COLOR		=	\033[0;39m
@@ -45,36 +47,36 @@ MAGENTA			=	\033[0;95m
 CYAN			=	\033[0;96m
 WHITE			=	\033[0;97m
 
+
 all:
-				@$(ECHO) "$(DEF_COLOR)$(BLUE)[LIBFT]\tlibft.a \t$(GREEN)...$(DEF_COLOR)"
-				@$(ECHO) -n "\e$(GRAY)\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\r$(DEF_COLOR)"
+				@$(ECHO) "$(DEF_COLOR)$(BLUE)[LIBFT]\tlibft.a \t$(GREEN)checking...$(DEF_COLOR)"
+				@$(ECHO) -n "\e$(GRAY)$(LINE)\r$(DEF_COLOR)"
 				@make $(NAME)
 
-$(NAME):		$(OBJS)
+$(NAME):		$(OBJS) $(HEADERS)
 				@$(AR) crs $@ $?
-				@$(ECHO) -n "\r\e$(GREEN)\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500$(DEF_COLOR)"
-				@$(ECHO) "$(GREEN) \u2500> successfully installed$(DEF_COLOR)"
-				@$(ECHO) "$(DEF_COLOR)$(BLUE)[LIBFT]\tlibft.a \t$(GREEN)...successfully installed$(DEF_COLOR)"
+				@$(ECHO) -n "\r\e$(GREEN)$(LINE)$(DEF_COLOR)"
+				@$(ECHO) "$(GREEN) \u2023 100% $(DEF_COLOR)"
+				@$(ECHO) "$(DEF_COLOR)$(BLUE)[LIBFT]\tlibft.a \t$(GREEN)compiled \u2714$(DEF_COLOR)"
 
 counter			:= 0
 # # ifeq ($(shell test $(counter) -gt 0 && echo "true"), true)
-
 
 $(OBJS_DIR)%.o:	$(MAKE_OBJDIR) $(DROW_GRA) $(SRCS_DIR)%.c
 
 				@$(CC) $(CFLAGS) -I $(INCLUDE) -c $< -o $@
 				@$(ECHO) -n "$(RED)\u2500$(DEF_COLOR)"
 				$(eval counter := $(shell echo $$(($(counter) + 1))))
-# @echo -n "Counter: $(counter)"
+#@echo -n "$(counter)"
 
 # other cmds
 clean:
 				@$(RM) $(OBJS_DIR)
-				@$(ECHO) "$(DEF_COLOR)$(BLUE)[LIBFT]\tobject files \t$(GREEN)...successfully deleted$(DEF_COLOR)"
+				@$(ECHO) "$(DEF_COLOR)$(BLUE)[LIBFT]\tobject files \t$(GREEN)deleted \u2714$(DEF_COLOR)"
 
 fclean:			clean
 				@$(RM) $(NAME)
-				@$(ECHO) "$(DEF_COLOR)$(BLUE)[LIBFT]\tlibft.a \t$(GREEN)...successfully deleted$(DEF_COLOR)"
+				@$(ECHO) "$(DEF_COLOR)$(BLUE)[LIBFT]\tlibft.a \t$(GREEN)deleted \u2714$(DEF_COLOR)"
 
 re:				fclean
 				@make
