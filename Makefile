@@ -6,7 +6,7 @@
 #    By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 12:04:47 by yliu              #+#    #+#              #
-#    Updated: 2023/11/09 12:04:49 by yliu             ###   ########.fr        #
+#    Updated: 2023/11/09 15:17:19 by yliu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ all:
 				make $(NAME)
 
 $(NAME):		$(OBJS) $(HEADERS) $(LIBFT_HEADERS)
-				$(CC) $(CFLAGS) -I $(INC_DIR) $(OBJS) $(LIBFT_HEADERS) $(HEADERS) ./libft/libft.a
+				$(CC) $(CFLAGS) -I $(INC_DIR) $(OBJS) ./libft/libft.a -o $@
 #@$(ECHO) -n "\r\e$(GREEN)$(LINE)$(DEF_COLOR)"
 #@$(ECHO) "$(GREEN) \u2023 100% $(DEF_COLOR)"
 #@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(NAME)]\t$(NAME) \t$(GREEN)compiled \u2714$(DEF_COLOR)"
