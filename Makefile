@@ -6,7 +6,7 @@
 #    By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 12:04:47 by yliu              #+#    #+#              #
-#    Updated: 2023/11/09 15:29:24 by yliu             ###   ########.fr        #
+#    Updated: 2023/11/09 16:30:36 by yliu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,22 +43,24 @@ BLUE			=	\033[0;94m
 MAGENTA			=	\033[0;95m
 CYAN			=	\033[0;96m
 WHITE			=	\033[0;97m
-LINE			=  \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+LINE			=  \u2500\u2500
 
 all:
 				cp ./libft/libft.a .
-#@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(NAME)]\texec file \t$(GREEN)checking...$(DEF_COLOR)"
+				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(NAME)]\texec file \t$(GREEN)checking...$(DEF_COLOR)"
 				@$(ECHO) -n "\e$(GRAY)$(LINE)\r$(DEF_COLOR)"
-				make $(NAME)
+				@make $(NAME)
+#@./$(NAME)
 
 $(NAME):		$(OBJS) $(HEADERS) $(LIBFT_HEADERS)
-				$(CC) $(CFLAGS) -I $(INC_DIR) $(OBJS) ./libft.a -o $@
-#@$(ECHO) -n "\r\e$(GREEN)$(LINE)$(DEF_COLOR)"
-#@$(ECHO) "$(GREEN) \u2023 100% $(DEF_COLOR)"
-#@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(NAME)]\t$(NAME) \t$(GREEN)compiled \u2714$(DEF_COLOR)"
+				@$(CC) $(CFLAGS) -I $(INC_DIR) $(OBJS) ./libft.a -o $@
+				@$(ECHO) -n "\r\e$(GREEN)$(LINE)$(DEF_COLOR)"
+				@$(ECHO) "$(GREEN) \u2023 100% $(DEF_COLOR)"
+				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(NAME)]\t$(NAME) \t$(GREEN)compiled \u2714$(DEF_COLOR)"
 
 $(OBJS_DIR)/%.o:	$(MAKE_OBJDIR) $(SRCS_DIR)/%.c
-				$(CC) $(CFLAGS) -I $(INC_DIR) -c $< -o $@
+				@$(CC) $(CFLAGS) -I $(INC_DIR) -c $< -o $@
+				@$(ECHO) -n "$(RED)\u2500$(DEF_COLOR)"
 
 # other cmds
 clean:
@@ -91,4 +93,3 @@ print_LIBFT_HEADERS:
 
 
 .PHONY:			all clean fclean re bonus norm format_norm debug
-

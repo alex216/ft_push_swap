@@ -6,7 +6,7 @@
 #    By: yliu <yliu@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/08 14:56:08 by yliu              #+#    #+#              #
-#    Updated: 2023/11/09 14:14:54 by yliu             ###   ########.fr        #
+#    Updated: 2023/11/09 16:28:46 by yliu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,5 +82,3 @@ debug:			$(CFLAGS) += -g -fsanitize=address -fsanitize=leaks\
 				fsanitize=integer
 
 .PHONY:			all clean fclean re bonus norm format_norm debug
-
-print:

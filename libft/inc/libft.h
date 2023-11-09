@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 22:04:03 by yliu              #+#    #+#             */
-/*   Updated: 2023/11/09 15:27:38 by yliu             ###   ########.fr       */
+/*   Updated: 2023/11/09 16:22:41 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ typedef struct s_list
 
 # define TRUE 1
 # define FALSE 0
+
+# define SUCCESS 0
+# define FAILURE 1
 
 int					ft_atoi(const char *str);
 void				ft_bzero(void *s, size_t n);
