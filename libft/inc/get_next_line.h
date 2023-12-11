@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 17:03:31 by yliu              #+#    #+#             */
-/*   Updated: 2023/11/09 18:02:01 by yliu             ###   ########.fr       */
+/*   Updated: 2023/12/10 21:34:45 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdbool.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1000
@@ -28,17 +29,6 @@
 
 # define READ_ERROR -1
 # define READ_END 0
-
-# ifndef SUCCESS
-#  ifndef FAILURE
-
-enum	e_return_value
-{
-	SUCCESS = 0,
-	FAILURE = 1
-};
-#  endif
-# endif
 
 char	*get_next_line(int fd);
 

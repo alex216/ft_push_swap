@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 23:45:33 by yliu              #+#    #+#             */
-/*   Updated: 2023/11/29 18:27:54 by yliu             ###   ########.fr       */
+/*   Updated: 2023/11/30 17:23:44 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ int	ft_atoi(const char *str)
 	while (*str >= '0' && *str <= '9')
 	{
 		if (flag * n > (LONG_MAX - (*str - '0')) / 10)
-			return ((int)LONG_MAX);
+			return (errno = ERANGE, (int)LONG_MAX);
 		if (flag * n < (LONG_MIN + (*str - '0')) / 10)
-			return ((int)LONG_MIN);
+			return (errno = ERANGE, (int)LONG_MIN);
 		n = n * 10 + (*str - '0');
 		str++;
 	}
