@@ -6,24 +6,11 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:04:09 by yliu              #+#    #+#             */
-/*   Updated: 2023/12/11 13:02:06 by yliu             ###   ########.fr       */
+/*   Updated: 2023/12/11 14:28:32 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/libft.h"
-
-static t_dl_lst	*ft_dl_lstcreate(int content, bool is_sentinel)
-{
-	t_dl_lst	*lst_p;
-
-	lst_p = ft_calloc(1, sizeof(t_dl_lst));
-	if (lst_p == NULL)
-		return (NULL);
-	lst_p->int_data = content;
-	lst_p->is_sentinel = is_sentinel;
-
-	return (lst_p);
-}
 
 t_dl_lst	*ft_dl_lstnew(int content)
 {

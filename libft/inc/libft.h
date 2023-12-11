@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 22:04:03 by yliu              #+#    #+#             */
-/*   Updated: 2023/12/11 12:54:22 by yliu             ###   ########.fr       */
+/*   Updated: 2023/12/11 15:17:08 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,9 @@ t_list				*ft_lstmap(t_list *lst_ptr, void *(*f)(void *),
 // doubly_linked_list(dl_list)
 // define the generalized structure of doubly linked list,
 // hense set with none-domain specific name.
-typedef struct int_node	t_dl_lst;
+typedef struct s_node	t_dl_lst;
 
-typedef struct int_node {
+typedef struct s_node {
 	int			int_data;
 	bool		is_sentinel;
 	t_dl_lst	*next_p;
@@ -99,6 +99,15 @@ typedef struct int_node {
 }				t_dl_lst;
 
 // ft_dl_lst
+t_dl_lst			*ft_dl_lstcreate(int content, bool is_sentinel);
 t_dl_lst			*ft_dl_lstnew(int content);
-// void				ft_dl_lstadd_front(t_dl_lst **lst, t_list *new_node);
+void				ft_dl_lstadd_front(t_dl_lst **lst, t_dl_lst *new_node);
+// void				ft_dl_lstsize(t_dl_lst *lst);
+
+void				ft_dl_lstdelone(t_dl_lst *lst, void (*del)(void *));
+void				ft_dl_lstclear(t_dl_lst **lst_ptr, void (*del)(void *));
+
+// debug func
+void				ft_dl_pf_lst(t_dl_lst *lst);
+
 #endif
