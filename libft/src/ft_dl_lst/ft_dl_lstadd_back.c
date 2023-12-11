@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:55:06 by yliu              #+#    #+#             */
-/*   Updated: 2023/12/11 17:45:36 by yliu             ###   ########.fr       */
+/*   Updated: 2023/12/11 18:00:05 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_dl_lstadd_back(t_dl_lst **lst_pp, t_dl_lst *new_p)
 {
 	t_dl_lst	*sentinel_p;
 
-	if (lst_pp == NULL || new_p == NULL)
+	if (lst_pp == NULL || *lst_pp == NULL || new_p == NULL)
 		return ;
 	sentinel_p = (*lst_pp)->prev_p;
 	new_p->prev_p = sentinel_p->prev_p;

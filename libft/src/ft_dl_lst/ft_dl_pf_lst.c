@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 14:31:52 by yliu              #+#    #+#             */
-/*   Updated: 2023/12/11 17:44:58 by yliu             ###   ########.fr       */
+/*   Updated: 2023/12/11 17:58:03 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 void	ft_dl_pf_lst(t_dl_lst *lst_p)
 {
+	if (lst_p == NULL)
+		return ;
 	ft_printf("#####start#####[size:%d]\n[->]", ft_dl_lstsize(lst_p));
 	while (lst_p->is_sentinel == 0)
 	{

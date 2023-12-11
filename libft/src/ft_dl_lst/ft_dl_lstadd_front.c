@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 13:15:19 by yliu              #+#    #+#             */
-/*   Updated: 2023/12/11 16:31:29 by yliu             ###   ########.fr       */
+/*   Updated: 2023/12/11 17:59:42 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	ft_dl_lstadd_front(t_dl_lst **lst_pp, t_dl_lst *new_p)
 {
-	if (lst_pp == NULL || new_p == NULL)
+	if (lst_pp == NULL || *lst_pp == NULL || new_p == NULL)
 		return ;
 	new_p->prev_p = (*lst_pp)->prev_p;
 	new_p->next_p = *lst_pp;

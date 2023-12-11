@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 22:04:03 by yliu              #+#    #+#             */
-/*   Updated: 2023/12/11 17:37:08 by yliu             ###   ########.fr       */
+/*   Updated: 2023/12/11 18:01:46 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,7 @@ void				ft_lstiter(t_list *tlist_ptr, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst_ptr, void *(*f)(void *),
 						void (*del)(void *));
 
-// newly added after libft
-// TODO: null check
-// TODO: lstaddback with is_sentinel++
-
-// doubly_linked_list(dl_list)
+// update doubly_linked_list after libft
 // define the generalized structure of doubly linked list,
 // hense set with none-domain specific name.
 typedef struct s_node	t_dl_lst;
@@ -108,11 +104,11 @@ void				ft_dl_lstadd_front(t_dl_lst **lst, t_dl_lst *new_node);
 size_t				ft_dl_lstsize(t_dl_lst *lst);
 t_dl_lst			*ft_dl_lstlast(t_dl_lst *lst);
 void				ft_dl_lstadd_back(t_dl_lst **lst, t_dl_lst *new_node);
-
 void				ft_dl_lstdelone(t_dl_lst *lst, void (*del)(void *));
-void				ft_dl_lstclear(t_dl_lst **lst_ptr, void (*del)(void *));
-// iter
-// lstmap
+void				ft_dl_lstclear(t_dl_lst **lst_pp, void (*del)(void *));
+// void				ft_dl_lstiter(t_dl_lst *tlist_ptr, void (*f)(void *));
+// t_dl_lst				*ft_dl_lstmap(t_dl_lst *lst_ptr, void *(*f)(void *),
+// 						void (*del)(void *));
 
 // debug func
 void				ft_dl_pf_lst(t_dl_lst *lst);
