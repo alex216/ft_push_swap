@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 13:15:19 by yliu              #+#    #+#             */
-/*   Updated: 2023/12/11 15:58:29 by yliu             ###   ########.fr       */
+/*   Updated: 2023/12/11 16:31:29 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	ft_dl_lstadd_front(t_dl_lst **lst_pp, t_dl_lst *new_p)
 		return ;
 	new_p->prev_p = (*lst_pp)->prev_p;
 	new_p->next_p = *lst_pp;
+	(*lst_pp)->prev_p->is_sentinel++;
 	(*lst_pp)->prev_p->next_p = new_p;
 	(*lst_pp)->prev_p = new_p;
 	*lst_pp = new_p;

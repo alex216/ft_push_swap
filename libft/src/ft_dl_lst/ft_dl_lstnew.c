@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:04:09 by yliu              #+#    #+#             */
-/*   Updated: 2023/12/11 15:56:48 by yliu             ###   ########.fr       */
+/*   Updated: 2023/12/11 16:41:29 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ t_dl_lst	*ft_dl_lstnew(int content)
 	t_dl_lst	*lst_p;
 	t_dl_lst	*sentinel_p;
 
-	lst_p = ft_dl_lstcreate(content, false);
-	sentinel_p = ft_dl_lstcreate(0, true);
+	lst_p = ft_dl_lstcreate(content, 0);
+	sentinel_p = ft_dl_lstcreate(0, 1);
 	if (lst_p == NULL || sentinel_p == NULL)
 	{
 		free(lst_p);

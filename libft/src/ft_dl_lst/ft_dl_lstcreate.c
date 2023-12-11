@@ -6,13 +6,13 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 14:27:43 by yliu              #+#    #+#             */
-/*   Updated: 2023/12/11 14:28:09 by yliu             ###   ########.fr       */
+/*   Updated: 2023/12/11 16:43:00 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/libft.h"
 
-t_dl_lst	*ft_dl_lstcreate(int content, bool is_sentinel)
+t_dl_lst	*ft_dl_lstcreate(int content, size_t is_sentinel)
 {
 	t_dl_lst	*lst_p;
 

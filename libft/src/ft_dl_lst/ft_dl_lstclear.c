@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:40:34 by yliu              #+#    #+#             */
-/*   Updated: 2023/12/11 16:05:25 by yliu             ###   ########.fr       */
+/*   Updated: 2023/12/11 16:37:42 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void				ft_dl_lstclear(t_dl_lst **lst_pp, void (*del)(void *))
 	if (*lst_pp == NULL)
 		return ;
 	iter_p = *lst_pp;
-	while (iter_p->is_sentinel != true)
+	while (iter_p->is_sentinel == 0)
 	{
 		tmp_p = iter_p->next_p;
 		ft_dl_lstdelone(iter_p, del);
@@ -54,7 +54,6 @@ void				ft_dl_lstclear(t_dl_lst **lst_pp, void (*del)(void *))
 // 	ft_dl_lstadd_front(&origin_p, tmp1_p);
 // 	ft_dl_pf_lst(origin_p);
 //
-// 	// TODO: must be freed by some func
 // 	ft_dl_lstclear(&origin_p, (void *)del);
 //
 // 	return (0);
