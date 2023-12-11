@@ -6,7 +6,7 @@
 #    By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 12:04:47 by yliu              #+#    #+#              #
-#    Updated: 2023/11/30 00:21:49 by yliu             ###   ########.fr        #
+#    Updated: 2023/12/06 18:32:41 by yliu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,11 @@ LIB				= $(LIB_DIR)/$(LIBRARY)
 # make obj dir recursively
 MAKE_OBJDIR		= $(shell mkdir -p $(subst $(SRCS_DIR), $(OBJS_DIR), $(dir $(SRCS))))
 
+# debug info
+ifdef DEBUG
+CFLAGS += -g -fsanitize=address -fsanitize=integer
+endif
+
 # color and line
 DEF_COLOR		=	\033[0;39m
 ORANGE			=	\033[0;33m
@@ -48,8 +53,10 @@ CYAN			=	\033[0;96m
 WHITE			=	\033[0;97m
 LINE			=  \u2500\u2500
 
-
 all:			$(NAME)
+
+debug:
+				make DEBUG=1 all
 
 $(NAME):		status_check
 
@@ -91,8 +98,6 @@ norm:
 format_norm:
 				@c_formatter_42 $(SRCS) $(HEADERS)
 
-debug:			$(CFLAGS) += -g -fsanitize=address -fsanitize=leaks\
-				fsanitize=integer
 print_SRCS:
 				@echo $(SRCS)
 

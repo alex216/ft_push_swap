@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_dl_lstcreate.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 17:31:29 by yliu              #+#    #+#             */
-/*   Updated: 2023/12/10 22:02:01 by yliu             ###   ########.fr       */
+/*   Created: 2023/12/11 14:27:43 by yliu              #+#    #+#             */
+/*   Updated: 2023/12/11 16:43:00 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "../../inc/libft.h"
 
-# include <stdlib.h>
-# include <stdbool.h>
+t_dl_lst	*ft_dl_lstcreate(int content, size_t is_sentinel)
+{
+	t_dl_lst	*lst_p;
 
-# include "../libft/inc/ft_printf.h"
-# include "../libft/inc/get_next_line.h"
-# include "../libft/inc/libft.h"
-
-int	main(int argc, char **argv);
-
-#endif
+	lst_p = ft_calloc(1, sizeof(t_dl_lst));
+	if (lst_p == NULL)
+		return (NULL);
+	lst_p->int_data = content;
+	lst_p->is_sentinel = is_sentinel;
+	lst_p->next_p = NULL;
+	lst_p->prev_p = NULL;
+	return (lst_p);
+}

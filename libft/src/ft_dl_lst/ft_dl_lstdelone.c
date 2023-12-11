@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_dl_lstdelone.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/05 11:56:03 by yliu              #+#    #+#             */
-/*   Updated: 2023/11/09 17:48:21 by yliu             ###   ########.fr       */
+/*   Created: 2023/12/11 15:26:37 by yliu              #+#    #+#             */
+/*   Updated: 2023/12/11 15:38:28 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../inc/libft.h"
 
-#include <stdio.h>
-
-int	main(void)
+void				ft_dl_lstdelone(t_dl_lst *lst_p, void (*del)(void *))
 {
-	printf("hello world!\n");
-	ft_printf("hello world! yliu\n");
-	return (0);
+	if (lst_p == NULL || del == NULL)
+		return ;
+	(void)del;
+	free(lst_p);
 }

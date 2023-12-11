@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 09:58:34 by yliu              #+#    #+#             */
-/*   Updated: 2023/11/09 18:25:38 by yliu             ###   ########.fr       */
+/*   Updated: 2023/12/10 21:33:40 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static size_t	get_whole_str_from_read(int fd, char **whole_str)
 
 	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (buf == NULL)
-		return (free_then_put_null(whole_str), FAILURE);
+		return (free_then_put_null(whole_str), EXIT_FAILURE);
 	while (1)
 	{
 		bytes_read = read(fd, buf, BUFFER_SIZE);
@@ -43,15 +43,15 @@ static size_t	get_whole_str_from_read(int fd, char **whole_str)
 		if (whole_str == NULL)
 		{
 			free(buf);
-			return (FAILURE);
+			return (EXIT_FAILURE);
 		}
 		if (gnl_strchr(buf, '\n') != NULL)
 			break ;
 	}
 	free(buf);
 	if (bytes_read == READ_ERROR)
-		return (free_then_put_null(whole_str), FAILURE);
-	return (SUCCESS);
+		return (free_then_put_null(whole_str), EXIT_FAILURE);
+	return (EXIT_SUCCESS);
 }
 
 static char	*get_one_line(char **whole_str, char *nl_pos)
@@ -80,7 +80,7 @@ char	*get_next_line(int fd)
 	nl_p = gnl_strchr(whole_str[fd], '\n');
 	if (nl_p == NULL)
 	{
-		if (get_whole_str_from_read(fd, &whole_str[fd]) == FAILURE)
+		if (get_whole_str_from_read(fd, &whole_str[fd]) == EXIT_FAILURE)
 			return (NULL);
 		nl_p = gnl_strchr(whole_str[fd], '\n');
 	}

@@ -1,25 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 17:31:29 by yliu              #+#    #+#             */
-/*   Updated: 2023/12/10 22:02:01 by yliu             ###   ########.fr       */
+/*   Created: 2023/12/03 17:50:00 by yliu              #+#    #+#             */
+/*   Updated: 2023/12/06 17:41:01 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-
-# include <stdlib.h>
-# include <stdbool.h>
-
-# include "../libft/inc/ft_printf.h"
-# include "../libft/inc/get_next_line.h"
-# include "../libft/inc/libft.h"
-
-int	main(int argc, char **argv);
-
-#endif
+#include "../../inc/push_swap.h"

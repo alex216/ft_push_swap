@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 11:41:13 by yliu              #+#    #+#             */
-/*   Updated: 2023/11/09 18:30:47 by yliu             ###   ########.fr       */
+/*   Updated: 2023/12/10 21:30:46 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	free_all(char **dst, size_t i)
 	while (i > 0)
 		free(dst[--i]);
 	free(dst);
-	return (FALSE);
+	return (false);
 }
 
 static int	ft_splitexec(char **dst, char const *str, char sep)
@@ -59,7 +59,7 @@ static int	ft_splitexec(char **dst, char const *str, char sep)
 			str++;
 	}
 	dst[i] = NULL;
-	return (SUCCESS);
+	return (EXIT_SUCCESS);
 }
 
 char	**ft_split(char const *str, char sep)
