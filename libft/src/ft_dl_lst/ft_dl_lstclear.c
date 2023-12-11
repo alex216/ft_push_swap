@@ -1,30 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dl_lstadd_front.c                               :+:      :+:    :+:   */
+/*   ft_dl_lstclear.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/11 13:15:19 by yliu              #+#    #+#             */
-/*   Updated: 2023/12/11 15:58:29 by yliu             ###   ########.fr       */
+/*   Created: 2023/12/11 15:40:34 by yliu              #+#    #+#             */
+/*   Updated: 2023/12/11 16:05:25 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/ft_printf.h"
 #include "../../inc/libft.h"
 
-void	ft_dl_lstadd_front(t_dl_lst **lst_pp, t_dl_lst *new_p)
+void				ft_dl_lstclear(t_dl_lst **lst_pp, void (*del)(void *))
 {
-	if (lst_pp == NULL || new_p == NULL)
+	t_dl_lst	*iter_p;
+	t_dl_lst	*tmp_p;
+
+	if (lst_pp == NULL || del == NULL)
 		return ;
-	new_p->prev_p = (*lst_pp)->prev_p;
-	new_p->next_p = *lst_pp;
-	(*lst_pp)->prev_p->next_p = new_p;
-	(*lst_pp)->prev_p = new_p;
-	*lst_pp = new_p;
+	if (*lst_pp == NULL)
+		return ;
+	iter_p = *lst_pp;
+	while (iter_p->is_sentinel != true)
+	{
+		tmp_p = iter_p->next_p;
+		ft_dl_lstdelone(iter_p, del);
+		iter_p = tmp_p;
+	}
+	ft_dl_lstdelone(iter_p,del);
+	*lst_pp = NULL;
 }
 
 // //////////////////////////////////////////
+// static void	*del(void *tmp)
+// {
+// 	free(tmp);
+// 	return (NULL);
+// }
+//
 // int	main(void)
 // {
 // 	t_dl_lst	*origin_p;
@@ -39,6 +53,9 @@ void	ft_dl_lstadd_front(t_dl_lst **lst_pp, t_dl_lst *new_p)
 // 	ft_dl_pf_lst(origin_p);
 // 	ft_dl_lstadd_front(&origin_p, tmp1_p);
 // 	ft_dl_pf_lst(origin_p);
-// 	// must be freed by some func
+//
+// 	// TODO: must be freed by some func
+// 	ft_dl_lstclear(&origin_p, (void *)del);
+//
 // 	return (0);
 // }

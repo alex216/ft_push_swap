@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 22:04:03 by yliu              #+#    #+#             */
-/*   Updated: 2023/12/11 15:17:08 by yliu             ###   ########.fr       */
+/*   Updated: 2023/12/11 16:04:22 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,9 @@ typedef struct s_node {
 t_dl_lst			*ft_dl_lstcreate(int content, bool is_sentinel);
 t_dl_lst			*ft_dl_lstnew(int content);
 void				ft_dl_lstadd_front(t_dl_lst **lst, t_dl_lst *new_node);
-// void				ft_dl_lstsize(t_dl_lst *lst);
-
+void				ft_dl_lstsize(t_dl_lst *lst);
+// t_list				*ft_lstlast(t_list *lst);
+// void				ft_lstadd_back(t_list **lst, t_list *new_node);
 void				ft_dl_lstdelone(t_dl_lst *lst, void (*del)(void *));
 void				ft_dl_lstclear(t_dl_lst **lst_ptr, void (*del)(void *));
 
