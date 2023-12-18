@@ -6,16 +6,16 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:40:34 by yliu              #+#    #+#             */
-/*   Updated: 2023/12/11 16:37:42 by yliu             ###   ########.fr       */
+/*   Updated: 2023/12/18 18:55:10 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/libft.h"
 
-void				ft_dl_lstclear(t_dl_lst **lst_pp, void (*del)(void *))
+void				ft_dl_lstclear(t_lst **lst_pp, void (*del)(void *))
 {
-	t_dl_lst	*iter_p;
-	t_dl_lst	*tmp_p;
+	t_lst	*iter_p;
+	t_lst	*tmp_p;
 
 	if (lst_pp == NULL || del == NULL)
 		return ;
@@ -41,9 +41,9 @@ void				ft_dl_lstclear(t_dl_lst **lst_pp, void (*del)(void *))
 //
 // int	main(void)
 // {
-// 	t_dl_lst	*origin_p;
-// 	t_dl_lst	*tmp_p;
-// 	t_dl_lst	*tmp1_p;
+// 	t_lst	*origin_p;
+// 	t_lst	*tmp_p;
+// 	t_lst	*tmp1_p;
 //
 // 	origin_p = ft_dl_lstnew(42);
 // 	tmp_p = ft_dl_lstcreate(2, false);

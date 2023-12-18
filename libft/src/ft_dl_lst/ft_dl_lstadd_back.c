@@ -6,16 +6,15 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:55:06 by yliu              #+#    #+#             */
-/*   Updated: 2023/12/11 18:00:05 by yliu             ###   ########.fr       */
+/*   Updated: 2023/12/18 18:54:23 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/libft.h"
-#include "../../inc/ft_printf.h"
 
-void	ft_dl_lstadd_back(t_dl_lst **lst_pp, t_dl_lst *new_p)
+void	ft_dl_lstadd_back(t_lst **lst_pp, t_lst *new_p)
 {
-	t_dl_lst	*sentinel_p;
+	t_lst	*sentinel_p;
 
 	if (lst_pp == NULL || *lst_pp == NULL || new_p == NULL)
 		return ;
@@ -28,6 +27,7 @@ void	ft_dl_lstadd_back(t_dl_lst **lst_pp, t_dl_lst *new_p)
 }
 
 // //////////////////////////////////////////
+// #include "../../inc/ft_printf.h"
 // static void	*del(void *tmp)
 // {
 // 	free(tmp);
@@ -36,10 +36,10 @@ void	ft_dl_lstadd_back(t_dl_lst **lst_pp, t_dl_lst *new_p)
 //
 // int	main(void)
 // {
-// 	t_dl_lst	*origin_p;
-// 	t_dl_lst	*tmp_p;
-// 	t_dl_lst	*tmp1_p;
-// 	t_dl_lst	*tmp2_p;
+// 	t_lst	*origin_p;
+// 	t_lst	*tmp_p;
+// 	t_lst	*tmp1_p;
+// 	t_lst	*tmp2_p;
 //
 // 	origin_p = ft_dl_lstnew(16);
 // 	tmp_p = ft_dl_lstcreate(32, 0);

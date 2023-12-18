@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 22:04:03 by yliu              #+#    #+#             */
-/*   Updated: 2023/12/11 18:01:46 by yliu             ###   ########.fr       */
+/*   Updated: 2023/12/18 18:34:13 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <errno.h>
 # include <limits.h>
-#include <stddef.h>
+# include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdbool.h>
@@ -88,29 +88,36 @@ t_list				*ft_lstmap(t_list *lst_ptr, void *(*f)(void *),
 // update doubly_linked_list after libft
 // define the generalized structure of doubly linked list,
 // hense set with none-domain specific name.
-typedef struct s_node	t_dl_lst;
+typedef struct s_record	t_record;
+typedef struct s_lst	t_lst;
 
-typedef struct s_node {
-	int			int_data;
+typedef struct s_record {
+	int		int_data;
+	char	*char_content;
+	void	*omni_p;
+}			t_record;
+
+typedef struct s_lst {
+	t_record	*payload_p;
 	size_t		is_sentinel;
-	t_dl_lst	*next_p;
-	t_dl_lst	*prev_p;
-}				t_dl_lst;
+	t_lst		*next_p;
+	t_lst		*prev_p;
+}				t_lst;
 
 // ft_dl_lst
-t_dl_lst			*ft_dl_lstcreate(int content, size_t is_sentinel);
-t_dl_lst			*ft_dl_lstnew(int content);
-void				ft_dl_lstadd_front(t_dl_lst **lst, t_dl_lst *new_node);
-size_t				ft_dl_lstsize(t_dl_lst *lst);
-t_dl_lst			*ft_dl_lstlast(t_dl_lst *lst);
-void				ft_dl_lstadd_back(t_dl_lst **lst, t_dl_lst *new_node);
-void				ft_dl_lstdelone(t_dl_lst *lst, void (*del)(void *));
-void				ft_dl_lstclear(t_dl_lst **lst_pp, void (*del)(void *));
+t_lst	*ft_dl_lstcreate(t_record *record_p, size_t is_sentinel);
+t_lst	*ft_dl_lstnew(void *record_p);
+void	ft_dl_lstadd_front(t_lst **lst, t_lst *new_node);
+size_t	ft_dl_lstsize(t_lst *lst);
+t_lst	*ft_dl_lstlast(t_lst *lst);
+void	ft_dl_lstadd_back(t_lst **lst, t_lst *new_node);
+void	ft_dl_lstdelone(t_lst *lst, void (*del)(void *));
+void	ft_dl_lstclear(t_lst **lst_pp, void (*del)(void *));
 // void				ft_dl_lstiter(t_dl_lst *tlist_ptr, void (*f)(void *));
 // t_dl_lst				*ft_dl_lstmap(t_dl_lst *lst_ptr, void *(*f)(void *),
 // 						void (*del)(void *));
 
 // debug func
-void				ft_dl_pf_lst(t_dl_lst *lst);
+void				ft_dl_pf_lst(t_lst *lst);
 
 #endif

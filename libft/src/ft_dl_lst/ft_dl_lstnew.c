@@ -6,19 +6,21 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:04:09 by yliu              #+#    #+#             */
-/*   Updated: 2023/12/11 16:41:29 by yliu             ###   ########.fr       */
+/*   Updated: 2023/12/18 18:48:17 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/libft.h"
 
-t_dl_lst	*ft_dl_lstnew(int content)
+t_lst	*ft_dl_lstnew(void *record_p)
 {
-	t_dl_lst	*lst_p;
-	t_dl_lst	*sentinel_p;
+	t_lst	*lst_p;
+	t_lst	*sentinel_p;
 
-	lst_p = ft_dl_lstcreate(content, 0);
-	sentinel_p = ft_dl_lstcreate(0, 1);
+	if (record_p == NULL)
+		return (NULL);
+	lst_p = ft_dl_lstcreate(record_p, 0);
+	sentinel_p = ft_dl_lstcreate(NULL, 1);
 	if (lst_p == NULL || sentinel_p == NULL)
 	{
 		free(lst_p);
@@ -36,7 +38,7 @@ t_dl_lst	*ft_dl_lstnew(int content)
 // #include <stdio.h>
 // int	main(void)
 // {
-// 	t_dl_lst	*tmp;
+// 	t_lst	*tmp;
 // 	tmp = ft_dl_lstnew(-1);
 // 	printf("%d\n", tmp->int_data);
 // 	printf("%d\n", tmp->is_sentinel);
