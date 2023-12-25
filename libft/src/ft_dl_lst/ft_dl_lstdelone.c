@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:26:37 by yliu              #+#    #+#             */
-/*   Updated: 2023/12/18 18:54:39 by yliu             ###   ########.fr       */
+/*   Updated: 2023/12/19 13:31:19 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@ void				ft_dl_lstdelone(t_lst *lst_p, void (*del)(void *))
 {
 	if (lst_p == NULL || del == NULL)
 		return ;
-	(void)del;
+	del(lst_p);
 	free(lst_p);
 }

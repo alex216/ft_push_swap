@@ -6,13 +6,14 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:04:09 by yliu              #+#    #+#             */
-/*   Updated: 2023/12/18 18:48:17 by yliu             ###   ########.fr       */
+/*   Updated: 2023/12/25 14:09:11 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/libft.h"
 
-t_lst	*ft_dl_lstnew(void *record_p)
+// create dl_lst from record
+t_lst	*ft_dl_lstnew(t_record *record_p)
 {
 	t_lst	*lst_p;
 	t_lst	*sentinel_p;
