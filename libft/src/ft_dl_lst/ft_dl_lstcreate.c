@@ -6,18 +6,18 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 14:27:43 by yliu              #+#    #+#             */
-/*   Updated: 2023/12/18 18:48:41 by yliu             ###   ########.fr       */
+/*   Updated: 2023/12/25 15:01:56 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/libft.h"
 
+// create one node from record
+// NULL guard is not ignored, because this func needs to create sentinel node
 t_lst	*ft_dl_lstcreate(t_record *record_p, size_t is_sentinel)
 {
 	t_lst	*lst_p;
 
-	if (record_p == NULL)
-		return (NULL);
 	lst_p = ft_calloc(1, sizeof(t_lst));
 	if (lst_p == NULL)
 		return (NULL);

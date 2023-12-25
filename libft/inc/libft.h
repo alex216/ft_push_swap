@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 22:04:03 by yliu              #+#    #+#             */
-/*   Updated: 2023/12/18 18:34:13 by yliu             ###   ########.fr       */
+/*   Updated: 2023/12/25 14:52:33 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,8 @@ void				ft_lstiter(t_list *tlist_ptr, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst_ptr, void *(*f)(void *),
 						void (*del)(void *));
 
-// update doubly_linked_list after libft
-// define the generalized structure of doubly linked list,
+// updated doubly_linked_list after libft
+// defining the generalized structure of doubly linked list,
 // hense set with none-domain specific name.
 typedef struct s_record	t_record;
 typedef struct s_lst	t_lst;
@@ -104,12 +104,14 @@ typedef struct s_lst {
 	t_lst		*prev_p;
 }				t_lst;
 
-// ft_dl_lst
+// helper func
 t_lst	*ft_dl_lstcreate(t_record *record_p, size_t is_sentinel);
-t_lst	*ft_dl_lstnew(void *record_p);
+
+// dl version of libft
+t_lst	*ft_dl_lstnew(t_record *record_p);
 void	ft_dl_lstadd_front(t_lst **lst, t_lst *new_node);
 size_t	ft_dl_lstsize(t_lst *lst);
-t_lst	*ft_dl_lstlast(t_lst *lst);
+t_lst	*ft_dl_lstlast(const t_lst *lst);
 void	ft_dl_lstadd_back(t_lst **lst, t_lst *new_node);
 void	ft_dl_lstdelone(t_lst *lst, void (*del)(void *));
 void	ft_dl_lstclear(t_lst **lst_pp, void (*del)(void *));
