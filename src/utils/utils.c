@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 17:50:00 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/11 15:56:02 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/11 18:36:05 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	del(void *t_lst_p)
 void	free_then_exit(void **double_pointer)
 {
 	ft_dl_lstclear((t_lst **)double_pointer, *del);
-	exit(1);
+	exit(EXIT_FAILURE);
 }
 
 void	*create(char *str)
@@ -34,6 +34,7 @@ void	*create(char *str)
 	if (payload_p == NULL)
 		return (NULL);
 	payload_p->char_content = ft_strdup(str);
+	payload_p->int_data = ft_atoi(str);
 	return (payload_p);
 }
 

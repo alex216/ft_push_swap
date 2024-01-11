@@ -6,35 +6,28 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:32:48 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/11 15:50:39 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/11 18:35:44 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/push_swap.h"
-#include <stdlib.h>
+#include "push_swap.h"
 
-//	memo:
-//	check_duplicate [✔]
-// 		t_lst *				->		ssize_t(0 ,1)
-//
-//	convert_argv_to_str [✔]
-//		char *				->		char **
-//
-//	check_digital_input [✔]
-//		const char *		->		ssize_t(-1, 0, 1)
-
-static ssize_t	check_duplicate(t_lst *iter_p)
+static ssize_t	has_duplicate(t_lst *i)
 {
-	const t_lst	*last_p;
+	t_lst	*k;
 
-	last_p = ft_dl_lstlast(iter_p);
-	while (iter_p->next_p->is_sentinel != 0)
+	while (!i->is_sentinel)
 	{
-		if (iter_p->payload_p->int_data == last_p->payload_p->int_data)
-			return (EXIT_FAILURE);
-		iter_p = iter_p->next_p;
+		k = i->prev_p;
+		while (!k->is_sentinel)
+		{
+			if (k->payload_p->int_data == i->payload_p->int_data)
+				return (false);
+			k = k->prev_p;
+		}
+		i = i->next_p;
 	}
-	return (EXIT_SUCCESS);
+	return (true);
 }
 
 static char	**convert_argv_to_str(const char *src_str)
@@ -42,78 +35,73 @@ static char	**convert_argv_to_str(const char *src_str)
 	char	**malloced_str;
 
 	malloced_str = ft_split(src_str, ' ');
-	if (malloced_str == NULL)
+	if (!malloced_str)
 		return (NULL);
-
-	// // debug print
-	// int i = 0;
-	// while (malloced_str[i] != NULL)
-	// {
-	// 	ft_printf("%s\n", malloced_str[i]);
-	// 	i++;
-	// }
-	// // debug end
-
 	return (malloced_str);
 }
 
-static ssize_t	check_digital_input(const char *src_str)
+static ssize_t	check_digital_input(const char *string)
 {
 	char	*tmp_str;
 	int		strncmp_res;
 
-	tmp_str = ft_itoa(ft_atoi(src_str));
-	if (tmp_str == NULL)
-		return(EXIT_ERROR);
-	strncmp_res = ft_strncmp(src_str, tmp_str, ft_strlen(src_str));
+	tmp_str = ft_itoa(ft_atoi(string));
+	if (!tmp_str)
+		return(false);
+	strncmp_res = ft_strncmp(string, tmp_str, ft_strlen(string));
 	free(tmp_str);
-	if (strncmp_res != 0)
-		return(EXIT_FAILURE);
+	if (strncmp_res == 0)
+		return(true);
 	else
-		return(EXIT_SUCCESS);
+		return(false);
+}
+
+static ssize_t	process_input(t_lst **stack_a_pp, char *word)
+{
+	t_record	*record_p;
+	t_lst		*t_lst_p;
+
+	if (!check_digital_input(word))
+		return (false);
+	record_p = create(word);
+	if (stack_a_pp == NULL || *stack_a_pp == NULL)
+	{
+		*stack_a_pp = ft_dl_lstnew(record_p);
+		if (!stack_a_pp)
+			return (false);
+	}
+	else
+	{
+		t_lst_p = ft_dl_lstcreate(record_p, false);
+		if (!t_lst_p)
+			return (false);
+		ft_dl_lstadd_back(stack_a_pp, t_lst_p);
+	}
+	return (true);
 }
 
 void	argv_to_lst(int argc, char **argv, t_lst **stack_a_pp)
 {
 	char		**malloced_arg;
 	size_t		i;
-	t_lst		*t_lst_p;
-	t_record	*record_p;
 
 	if (argc <= 1)
 		exit(0);
 	argv++;
-	while(*argv != NULL)
+	while(*argv)
 	{
 		malloced_arg = convert_argv_to_str(*argv);
-		if (malloced_arg == NULL)
-			free_then_exit((void **)stack_a_pp);
+		if (!malloced_arg)
+			exit(EXIT_FAILURE);
 		i = 0;
-		while (malloced_arg[i] != NULL)
-		{
-			// check digit
-			check_digital_input(malloced_arg[i]);
-
-			// create t_record
-			record_p = create(malloced_arg[i]);
-
-			if (stack_a_pp == NULL || *stack_a_pp == NULL)
-				*stack_a_pp = ft_dl_lstnew(record_p);
-			else
-			{
-				t_lst_p = ft_dl_lstcreate(record_p, false);
-				ft_dl_lstadd_back(stack_a_pp, t_lst_p);
-			}
-	
-			// debug print
-			ft_dl_pf_lst(*stack_a_pp);
-			i++;
-		}
+		while (malloced_arg[i])
+			if (!process_input(stack_a_pp, malloced_arg[i++]))
+				exit(EXIT_FAILURE);
 		argv++;
 		while (i > 0)
 			free(malloced_arg[--i]);
 		free(malloced_arg);
 	}
-	if (check_duplicate(*stack_a_pp) == EXIT_FAILURE)
-		free_then_exit((void **)stack_a_pp);
+	if (has_duplicate(*stack_a_pp) == false)
+		exit(EXIT_FAILURE);
 }

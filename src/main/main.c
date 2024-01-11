@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 12:20:49 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/11 15:31:24 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/11 16:25:36 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ int	main(int argc, char **argv)
 	argv_to_lst(argc, argv, &lst_a);
 	// calculate_task(&lst_a, &lst_b, &lst_procedure);
 	// print_list(&lst_procedure);
+
+	// debug print
+	ft_dl_pf_lst(lst_a);
 
 	// free
 	ft_dl_lstclear(&lst_a, del);
