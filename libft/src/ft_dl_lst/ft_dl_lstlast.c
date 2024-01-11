@@ -6,11 +6,11 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:46:10 by yliu              #+#    #+#             */
-/*   Updated: 2023/12/24 15:19:04 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/11 11:54:31 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/libft.h"
+#include "libft.h"
 
 t_lst			*ft_dl_lstlast(const t_lst *lst_p)
 {

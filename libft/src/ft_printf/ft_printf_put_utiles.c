@@ -6,11 +6,11 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 16:42:55 by yliu              #+#    #+#             */
-/*   Updated: 2023/11/09 18:30:29 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/11 12:01:27 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/ft_printf.h"
+#include "ft_printf.h"
 
 void	ft_putchar_fd(char c, int fd)
 {

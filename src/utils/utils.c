@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 17:50:00 by yliu              #+#    #+#             */
-/*   Updated: 2023/12/25 11:37:27 by yliu             ###   ########.fr       */
+/*   Updated: 2023/12/25 15:29:34 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	del(void *t_lst_p)
 {
 	((t_lst *)t_lst_p)->payload_p->int_data = 0;
 	free(((t_lst *)t_lst_p)->payload_p->char_content);
+	free(((t_lst *)t_lst_p)->payload_p);
 }
 
 void	free_then_exit(void **double_pointer)

@@ -6,11 +6,11 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:04:09 by yliu              #+#    #+#             */
-/*   Updated: 2023/12/25 14:09:11 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/11 11:54:31 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/libft.h"
+#include "libft.h"
 
 // create dl_lst from record
 t_lst	*ft_dl_lstnew(t_record *record_p)

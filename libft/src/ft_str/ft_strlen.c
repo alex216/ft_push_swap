@@ -6,11 +6,11 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 22:25:18 by yliu              #+#    #+#             */
-/*   Updated: 2023/12/18 16:33:44 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/11 11:54:47 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/libft.h"
+#include "libft.h"
 
 size_t	ft_strlen(const char *str)
 {

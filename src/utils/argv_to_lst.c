@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:32:48 by yliu              #+#    #+#             */
-/*   Updated: 2023/12/25 14:46:28 by yliu             ###   ########.fr       */
+/*   Updated: 2023/12/25 15:35:53 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,10 @@ static ssize_t	check_digital_input(const char *src_str)
 
 void	argv_to_lst(int argc, char **argv, t_lst **lst_pp)
 {
-	char	**malloced_str;
-	size_t	i;
-	t_lst	*t_lst_p;
+	char		**malloced_str;
+	size_t		i;
+	t_lst		*t_lst_p;
+	t_record	*record_p;
 
 	if (argc <= 1)
 		exit(0);
@@ -93,26 +94,19 @@ void	argv_to_lst(int argc, char **argv, t_lst **lst_pp)
 			// check digit
 			check_digital_input(malloced_str[i]);
 
-			// create t_record
-			t_record *record_p = create(malloced_str[i]);
-			// create t_lst_p
-			t_lst_p = ft_dl_lstcreate(record_p, 0);
+			// create t_record ,create t_lst_p
+			record_p = create(malloced_str[i]);
 
 			if (lst_pp == NULL || *lst_pp == NULL)
 				*lst_pp = ft_dl_lstnew(record_p);
 			else
+			{
+				t_lst_p = ft_dl_lstcreate(record_p, 0);
 				ft_dl_lstadd_back(lst_pp, t_lst_p);
-
+			}
+	
 			// debug print
 			ft_dl_pf_lst(*lst_pp);
-
-			// free to reset
-			// free(malloced_str[i]);
-			// free(record_p);
-			// free(t_lst_p);
-			// free(t_lst_p->payload_p->char_content);
-			// free(t_lst_p->payload_p);
-			// free(t_lst_p);
 			i++;
 		}
 		free(malloced_str);

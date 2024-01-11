@@ -6,11 +6,11 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 23:45:33 by yliu              #+#    #+#             */
-/*   Updated: 2023/11/30 17:23:44 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/11 11:54:48 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/libft.h"
+#include "libft.h"
 
 static int	is_space(char c)
 {

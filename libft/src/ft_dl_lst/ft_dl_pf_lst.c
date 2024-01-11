@@ -6,12 +6,12 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 14:31:52 by yliu              #+#    #+#             */
-/*   Updated: 2023/12/25 13:20:50 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/11 11:54:31 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/ft_printf.h"
-#include "../../inc/libft.h"
+#include "libft.h"
 
 static char	*print(t_lst *lst_p)
 {
