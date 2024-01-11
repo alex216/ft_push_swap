@@ -6,15 +6,14 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 17:50:00 by yliu              #+#    #+#             */
-/*   Updated: 2023/12/25 15:29:34 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/11 15:56:02 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/push_swap.h"
+#include "push_swap.h"
 
 void	del(void *t_lst_p)
 {
-	((t_lst *)t_lst_p)->payload_p->int_data = 0;
 	free(((t_lst *)t_lst_p)->payload_p->char_content);
 	free(((t_lst *)t_lst_p)->payload_p);
 }
@@ -34,7 +33,7 @@ void	*create(char *str)
 	payload_p = ft_calloc(1, sizeof(t_record));
 	if (payload_p == NULL)
 		return (NULL);
-	payload_p->char_content = str;
+	payload_p->char_content = ft_strdup(str);
 	return (payload_p);
 }
 

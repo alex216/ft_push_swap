@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:32:48 by yliu              #+#    #+#             */
-/*   Updated: 2023/12/25 15:35:53 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/11 15:50:39 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ static ssize_t	check_digital_input(const char *src_str)
 		return(EXIT_SUCCESS);
 }
 
-void	argv_to_lst(int argc, char **argv, t_lst **lst_pp)
+void	argv_to_lst(int argc, char **argv, t_lst **stack_a_pp)
 {
-	char		**malloced_str;
+	char		**malloced_arg;
 	size_t		i;
 	t_lst		*t_lst_p;
 	t_record	*record_p;
@@ -85,33 +85,35 @@ void	argv_to_lst(int argc, char **argv, t_lst **lst_pp)
 	argv++;
 	while(*argv != NULL)
 	{
-		malloced_str = convert_argv_to_str(*argv);
-		if (malloced_str == NULL)
-			free_then_exit((void **)lst_pp);
+		malloced_arg = convert_argv_to_str(*argv);
+		if (malloced_arg == NULL)
+			free_then_exit((void **)stack_a_pp);
 		i = 0;
-		while (malloced_str[i] != NULL)
+		while (malloced_arg[i] != NULL)
 		{
 			// check digit
-			check_digital_input(malloced_str[i]);
+			check_digital_input(malloced_arg[i]);
 
-			// create t_record ,create t_lst_p
-			record_p = create(malloced_str[i]);
+			// create t_record
+			record_p = create(malloced_arg[i]);
 
-			if (lst_pp == NULL || *lst_pp == NULL)
-				*lst_pp = ft_dl_lstnew(record_p);
+			if (stack_a_pp == NULL || *stack_a_pp == NULL)
+				*stack_a_pp = ft_dl_lstnew(record_p);
 			else
 			{
-				t_lst_p = ft_dl_lstcreate(record_p, 0);
-				ft_dl_lstadd_back(lst_pp, t_lst_p);
+				t_lst_p = ft_dl_lstcreate(record_p, false);
+				ft_dl_lstadd_back(stack_a_pp, t_lst_p);
 			}
 	
 			// debug print
-			ft_dl_pf_lst(*lst_pp);
+			ft_dl_pf_lst(*stack_a_pp);
 			i++;
 		}
-		free(malloced_str);
 		argv++;
+		while (i > 0)
+			free(malloced_arg[--i]);
+		free(malloced_arg);
 	}
-	if (check_duplicate(*lst_pp) == EXIT_FAILURE)
-		free_then_exit((void **)lst_pp);
+	if (check_duplicate(*stack_a_pp) == EXIT_FAILURE)
+		free_then_exit((void **)stack_a_pp);
 }
