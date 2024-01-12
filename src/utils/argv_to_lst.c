@@ -6,26 +6,28 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:32:48 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/11 18:35:44 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/12 17:11:12 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
 #include "push_swap.h"
+#include <stdlib.h>
 
-static ssize_t	has_duplicate(t_lst *i)
+static ssize_t	has_duplicate_value(t_lst *iter_p)
 {
-	t_lst	*k;
+	t_lst	*temp_p;
 
-	while (!i->is_sentinel)
+	while (!iter_p->is_sentinel)
 	{
-		k = i->prev_p;
-		while (!k->is_sentinel)
+		temp_p = iter_p->prev_p;
+		while (!temp_p->is_sentinel)
 		{
-			if (k->payload_p->int_data == i->payload_p->int_data)
+			if (get_int_value_of(temp_p) == get_int_value_of(iter_p))
 				return (false);
-			k = k->prev_p;
+			temp_p = temp_p->prev_p;
 		}
-		i = i->next_p;
+		iter_p = iter_p->next_p;
 	}
 	return (true);
 }
@@ -50,37 +52,19 @@ static ssize_t	check_digital_input(const char *string)
 		return(false);
 	strncmp_res = ft_strncmp(string, tmp_str, ft_strlen(string));
 	free(tmp_str);
-	if (strncmp_res == 0)
-		return(true);
-	else
+	if (strncmp_res)
 		return(false);
+	else
+		return(true);
 }
 
-static ssize_t	process_input(t_lst **stack_a_pp, char *word)
+static int	handle_abnormal_input()
 {
-	t_record	*record_p;
-	t_lst		*t_lst_p;
-
-	if (!check_digital_input(word))
-		return (false);
-	record_p = create(word);
-	if (stack_a_pp == NULL || *stack_a_pp == NULL)
-	{
-		*stack_a_pp = ft_dl_lstnew(record_p);
-		if (!stack_a_pp)
-			return (false);
-	}
-	else
-	{
-		t_lst_p = ft_dl_lstcreate(record_p, false);
-		if (!t_lst_p)
-			return (false);
-		ft_dl_lstadd_back(stack_a_pp, t_lst_p);
-	}
+	ft_printf("Error\n");
 	return (true);
 }
 
-void	argv_to_lst(int argc, char **argv, t_lst **stack_a_pp)
+void	argv_to_lst(int argc, char **argv, t_lst **lst_a)
 {
 	char		**malloced_arg;
 	size_t		i;
@@ -95,13 +79,17 @@ void	argv_to_lst(int argc, char **argv, t_lst **stack_a_pp)
 			exit(EXIT_FAILURE);
 		i = 0;
 		while (malloced_arg[i])
-			if (!process_input(stack_a_pp, malloced_arg[i++]))
+		{
+			if (!check_digital_input(malloced_arg[i]))
+				exit(handle_abnormal_input());
+			if (!create_new_dl_lst(lst_a, create_record(malloced_arg[i++])))
 				exit(EXIT_FAILURE);
+		}
 		argv++;
 		while (i > 0)
 			free(malloced_arg[--i]);
 		free(malloced_arg);
 	}
-	if (has_duplicate(*stack_a_pp) == false)
-		exit(EXIT_FAILURE);
+	if (!has_duplicate_value(*lst_a))
+		exit(handle_abnormal_input());
 }

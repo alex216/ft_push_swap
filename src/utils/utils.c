@@ -6,11 +6,26 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 17:50:00 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/11 18:36:05 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/12 15:37:43 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	get_int_value_of(t_lst *pointer)
+{
+	return (pointer->payload_p->int_data);
+}
+
+char	*get_int_char_of(t_lst *pointer)
+{
+	return (pointer->payload_p->char_content);
+}
+
+void	pf_debug(void)
+{
+	ft_printf("!");
+}
 
 void	del(void *t_lst_p)
 {
@@ -24,7 +39,7 @@ void	free_then_exit(void **double_pointer)
 	exit(EXIT_FAILURE);
 }
 
-void	*create(char *str)
+void	*create_record(char *str)
 {
 	t_record	*payload_p;
 
@@ -38,7 +53,24 @@ void	*create(char *str)
 	return (payload_p);
 }
 
-void	pf_debug(void)
+ssize_t	create_new_dl_lst(t_lst **lst_a, t_record *record_p)
 {
-	ft_printf("!");
+	t_lst		*t_lst_p;
+
+	if (!record_p)
+		return (false);
+	if (!lst_a || !*lst_a)
+	{
+		*lst_a = ft_dl_lstnew(record_p);
+		if (!lst_a)
+			return (false);
+	}
+	else
+	{
+		t_lst_p = ft_dl_lstcreate(record_p, false);
+		if (!t_lst_p)
+			return (false);
+		ft_dl_lstadd_back(lst_a, t_lst_p);
+	}
+	return (true);
 }
