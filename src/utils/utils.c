@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 17:50:00 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/12 15:37:43 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/13 14:19:23 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	get_int_value_of(t_lst *pointer)
 	return (pointer->payload_p->int_data);
 }
 
-char	*get_int_char_of(t_lst *pointer)
+char	*get_char_value_of(t_lst *pointer)
 {
 	return (pointer->payload_p->char_content);
 }
@@ -74,3 +74,12 @@ ssize_t	create_new_dl_lst(t_lst **lst_a, t_record *record_p)
 	}
 	return (true);
 }
+
+int	put_to_procedure(t_lst **lst_procedure, char *string)
+{
+	t_record	*record_p;
+
+	record_p = create_record(string);
+	return (create_new_dl_lst(lst_procedure, record_p));
+}
+

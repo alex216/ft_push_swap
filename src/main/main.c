@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 12:20:49 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/12 17:16:54 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/13 14:44:39 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	print_list(t_lst *i_p)
 {
 	while(!i_p->is_sentinel)
 	{
-		ft_printf("%s\n", get_int_char_of(i_p));
+		ft_printf("%s\n", get_char_value_of(i_p));
 		i_p = i_p->next_p;
 	}
 }
@@ -58,7 +58,9 @@ int	main(int argc, char **argv)
 	// ft_dl_pf_lst(lst_a);
 	// ft_printf("\n\n");
 	calculate_task(&lst_a, &lst_b, &lst_procedure);
-	// optimize_procedure(&lst_procedure);
+	// // optimize_procedure(&lst_procedure);
+	// ft_dl_pf_lst(lst_a);
+	// ft_printf("\n");
 	print_list(lst_procedure);
 	free_all(&lst_a, &lst_b, &lst_procedure);
 	return (0);

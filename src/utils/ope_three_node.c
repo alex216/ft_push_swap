@@ -6,29 +6,58 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 18:39:43 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/12 15:36:25 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/13 13:43:43 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-static int	put_to_procedure(t_lst **lst_procedure, char *string)
-{
-	t_record	*record_p;
-
-	record_p = create_record(string);
-	return (create_new_dl_lst(lst_procedure, record_p));
-}
-
 ssize_t	ope_three_node(t_lst **lst_a, t_lst **lst_b, t_lst **lst_procedure)
 {
 	(void)lst_procedure;
 	(void)lst_b;
 
-	if (get_int_value_of(*lst_a) > get_int_value_of((*lst_a)->next_p))
-		if (get_int_value_of((*lst_a)) < get_int_value_of((*lst_a)->next_p->next_p))
-			if (get_int_value_of((*lst_a)->next_p) < get_int_value_of((*lst_a)->next_p->next_p))
-				put_to_procedure(lst_procedure, "sa");
+	int	first;
+	int	second;
+	int	third;
+
+	first = get_int_value_of(*lst_a);
+	second = get_int_value_of((*lst_a)->next_p);
+	third = get_int_value_of((*lst_a)->next_p->next_p);
+	if (first > second)
+		if (first < third)
+			if (second < third)
+				operate_sa(lst_a, lst_procedure);
+	if (first > second)
+		if (first > third)
+			if (second < third)
+				operate_ra(lst_a, lst_procedure);
+	if (first < second)
+		if (first > third)
+			if (second > third)
+				operate_rra(lst_a, lst_procedure);
+	if (first > second)	// 3 2 1
+	{
+		if (first > third)
+		{
+			if(second > third)
+			{
+				operate_sa(lst_a, lst_procedure);
+				operate_rra(lst_a, lst_procedure);
+			}
+		}
+	}
+	if (first < second) // 1 3 2
+	{
+		if (first < third)
+		{
+			if(second > third)
+			{
+				operate_sa(lst_a, lst_procedure);
+				operate_ra(lst_a, lst_procedure);
+			}
+		}
+	}
 	return (1);
 }

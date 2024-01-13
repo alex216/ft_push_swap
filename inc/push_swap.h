@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:31:29 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/12 15:37:28 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/13 14:43:17 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,10 @@ int	main(int argc, char **argv);
 void	del(void *pointer);
 void	*create_record(char *str);
 void	free_then_exit(void **double_pointer);
-int	get_int_value_of(t_lst *pointer);
-char	*get_int_char_of(t_lst *pointer);
+int		get_int_value_of(t_lst *pointer);
+char	*get_char_value_of(t_lst *pointer);
 ssize_t	create_new_dl_lst(t_lst **lst_a, t_record *record_p);
+int	put_to_procedure(t_lst **lst_procedure, char *string);
 
 // utils/argv_to_lst.c
 void	argv_to_lst(int argc, char **argv, t_lst **lst_pp);
@@ -38,5 +39,15 @@ void	pf_debug(void);
 
 // ope_three_node.c
 ssize_t	ope_three_node(t_lst **lst_a, t_lst **lst_b, t_lst **lst_procedure);
+
+// basic_stack_operation.c
+void operate_swap(t_lst **lst);
+void operate_rotate(t_lst **lst);
+void operate_rev_rotate(t_lst **lst);
+
+// stack_operation.c
+void	operate_sa(t_lst **lst_a, t_lst **lst_procedure);
+void	operate_ra(t_lst **lst_a, t_lst **lst_procedure);
+void	operate_rra(t_lst **lst_a, t_lst **lst_procedure);
 
 #endif

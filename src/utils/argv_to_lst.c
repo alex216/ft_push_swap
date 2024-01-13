@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:32:48 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/12 17:11:12 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/13 14:42:25 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,21 @@
 #include "push_swap.h"
 #include <stdlib.h>
 
+static ssize_t	is_ascending_order(t_lst *iter_p)
+{
+	int	cur;
+	int	next;
+
+	while (!iter_p->next_p->is_sentinel)
+	{
+		cur = get_int_value_of(iter_p);
+		next = get_int_value_of(iter_p->next_p);
+		if (cur > next)
+			return (false);
+		iter_p = iter_p->next_p;
+	}
+	return (true);
+}
 static ssize_t	has_duplicate_value(t_lst *iter_p)
 {
 	t_lst	*temp_p;
@@ -92,4 +107,6 @@ void	argv_to_lst(int argc, char **argv, t_lst **lst_a)
 	}
 	if (!has_duplicate_value(*lst_a))
 		exit(handle_abnormal_input());
+	if (is_ascending_order(*lst_a))
+		exit(EXIT_SUCCESS);
 }
