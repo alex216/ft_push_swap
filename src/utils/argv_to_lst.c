@@ -6,13 +6,11 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:32:48 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/13 14:42:25 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/13 18:48:04 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
 #include "push_swap.h"
-#include <stdlib.h>
 
 static ssize_t	is_ascending_order(t_lst *iter_p)
 {
@@ -29,6 +27,7 @@ static ssize_t	is_ascending_order(t_lst *iter_p)
 	}
 	return (true);
 }
+
 static ssize_t	has_duplicate_value(t_lst *iter_p)
 {
 	t_lst	*temp_p;
@@ -79,7 +78,7 @@ static int	handle_abnormal_input()
 	return (true);
 }
 
-void	argv_to_lst(int argc, char **argv, t_lst **lst_a)
+void	argv_to_lst(int argc, char **argv, t_lst **stack_a)
 {
 	char		**malloced_arg;
 	size_t		i;
@@ -97,7 +96,7 @@ void	argv_to_lst(int argc, char **argv, t_lst **lst_a)
 		{
 			if (!check_digital_input(malloced_arg[i]))
 				exit(handle_abnormal_input());
-			if (!create_new_dl_lst(lst_a, create_record(malloced_arg[i++])))
+			if (!create_new_dl_lst(stack_a, create_record(malloced_arg[i++])))
 				exit(EXIT_FAILURE);
 		}
 		argv++;
@@ -105,8 +104,8 @@ void	argv_to_lst(int argc, char **argv, t_lst **lst_a)
 			free(malloced_arg[--i]);
 		free(malloced_arg);
 	}
-	if (!has_duplicate_value(*lst_a))
+	if (!has_duplicate_value(*stack_a))
 		exit(handle_abnormal_input());
-	if (is_ascending_order(*lst_a))
+	if (is_ascending_order(*stack_a))
 		exit(EXIT_SUCCESS);
 }

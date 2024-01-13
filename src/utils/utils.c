@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 17:50:00 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/13 14:19:23 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/13 16:58:09 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ ssize_t	create_new_dl_lst(t_lst **lst_a, t_record *record_p)
 	return (true);
 }
 
-int	put_to_procedure(t_lst **lst_procedure, char *string)
+int	append_to_procedure(t_lst **lst_procedure, char *string)
 {
 	t_record	*record_p;
 
