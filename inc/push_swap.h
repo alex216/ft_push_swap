@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:31:29 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/14 15:32:36 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/14 18:38:08 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	pf_debug(void);
 void	ope_two_node(t_lst **stack_a, t_lst **lst_procedure);
 
 // ope_three_node.c
-void	ope_three_node(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
+void	ope_three_node(t_lst **stack_a, t_lst **lst_procedure);
 
 // ope_five_node.c
 void	ope_five_node(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);

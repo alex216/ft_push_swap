@@ -6,17 +6,35 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 18:39:43 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/13 21:46:08 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/14 20:38:27 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "push_swap.h"
 
-void	ope_three_node(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
+static bool	is_two_one_three(int first, int second, int third)
+{
+	return (first > second && first < third && second < third);
+}
+
+static bool	is_three_one_two(int first, int second, int third)
+{
+	return (first > second && first > third && second < third);
+}
+
+static bool	is_two_three_one(int first, int second, int third)
+{
+	return (first < second && first > third && second > third);
+}
+
+static bool	is_descending_order(int first, int second, int third)
+{
+	return (first > second && second > third);
+}
+
+void	ope_three_node(t_lst **stack_a, t_lst **lst_procedure)
 {
 	(void)lst_procedure;
-	(void)stack_b;
 
 	int	first;
 	int	second;
@@ -25,39 +43,15 @@ void	ope_three_node(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
 	first = get_int_value_of(*stack_a);
 	second = get_int_value_of((*stack_a)->next_p);
 	third = get_int_value_of((*stack_a)->next_p->next_p);
-	if (first > second)
-		if (first < third)
-			if (second < third)
-				operate_sa(stack_a, lst_procedure);
-	if (first > second)
-		if (first > third)
-			if (second < third)
-				operate_ra(stack_a, lst_procedure);
-	if (first < second)
-		if (first > third)
-			if (second > third)
-				operate_rra(stack_a, lst_procedure);
-	if (first > second)	// 3 2 1
-	{
-		if (first > third)
-		{
-			if(second > third)
-			{
-				operate_sa(stack_a, lst_procedure);
-				operate_rra(stack_a, lst_procedure);
-			}
-		}
-	}
-	if (first < second) // 1 3 2
-	{
-		if (first < third)
-		{
-			if(second > third)
-			{
-				operate_sa(stack_a, lst_procedure);
-				operate_ra(stack_a, lst_procedure);
-			}
-		}
-	}
-	return ;
+	if (is_two_one_three(first, second, third))
+		return (operate_sa(stack_a, lst_procedure));
+	else if (is_three_one_two(first, second, third))
+		return (operate_ra(stack_a, lst_procedure));
+	else if (is_two_three_one(first, second, third))
+		return (operate_rra(stack_a, lst_procedure));
+	operate_sa(stack_a, lst_procedure);
+	if (is_descending_order(first, second, third))
+		return (operate_rra(stack_a, lst_procedure));
+	else
+		return (operate_ra(stack_a, lst_procedure));
 }

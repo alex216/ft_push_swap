@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 12:20:49 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/14 16:52:14 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/14 18:44:30 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	calculate_task(t_lst **lst_a, t_lst **lst_b, t_lst **lst_procedure)
 	if (ft_dl_lstsize(*lst_a) == 2)
 		ope_two_node(lst_a, lst_procedure);
 	if (ft_dl_lstsize(*lst_a) == 3)
-		ope_three_node(lst_a, lst_b, lst_procedure);
+		ope_three_node(lst_a, lst_procedure);
 	if (ft_dl_lstsize(*lst_a) == 5)
 		ope_five_node(lst_a, lst_b, lst_procedure);
 	// ope_long_node();
