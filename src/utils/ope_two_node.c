@@ -6,14 +6,14 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:21:40 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/13 21:32:55 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/13 21:45:36 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-ssize_t	ope_two_node(t_lst **stack_a, t_lst **lst_procedure)
+void	ope_two_node(t_lst **stack_a, t_lst **lst_procedure)
 {
 	operate_sa(stack_a, lst_procedure);
-	return 1;
+	return ;
 }

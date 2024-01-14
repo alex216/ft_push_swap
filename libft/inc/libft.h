@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 22:04:03 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/13 00:37:27 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/14 00:05:28 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,14 +88,12 @@ t_list				*ft_lstmap(t_list *lst_ptr, void *(*f)(void *),
 // updated doubly_linked_list after libft
 // defining the generalized structure of doubly linked list,
 // hense set with none-domain specific name.
-typedef struct s_record	t_record;
+
 typedef struct s_lst	t_lst;
 
-typedef struct s_record {
-	int		int_data;
-	char	*char_content;
-	void	*omni_p;
-}			t_record;
+# ifndef t_record
+typedef struct s_record	t_record;
+# endif
 
 typedef struct s_lst {
 	t_record	*payload_p;
@@ -120,6 +118,7 @@ void	ft_dl_lstclear(t_lst **lst_pp, void (*del)(void *));
 // 						void (*del)(void *));
 
 // debug func
-void				ft_dl_pf_lst(t_lst *lst);
+// void	ft_dl_pf_lst(t_lst *lst);
+void	ft_dl_pf_lst(t_lst *lst_p, void *(*return_printable)(t_lst *));
 
 #endif

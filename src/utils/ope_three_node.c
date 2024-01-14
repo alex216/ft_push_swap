@@ -6,14 +6,14 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 18:39:43 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/13 16:32:07 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/13 21:46:08 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-ssize_t	ope_three_node(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
+void	ope_three_node(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
 {
 	(void)lst_procedure;
 	(void)stack_b;
@@ -59,5 +59,5 @@ ssize_t	ope_three_node(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
 			}
 		}
 	}
-	return (1);
+	return ;
 }

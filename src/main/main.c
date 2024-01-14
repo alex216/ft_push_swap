@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 12:20:49 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/13 19:31:32 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/14 00:10:50 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@
 // todo: duplicates, incorrectly formatted.
 // todo: algorithm.
 
-static ssize_t	calculate_task(t_lst **lst_a, t_lst **lst_b, t_lst **lst_procedure)
+static void	calculate_task(t_lst **lst_a, t_lst **lst_b, t_lst **lst_procedure)
 {
 	if (ft_dl_lstsize(*lst_a) == 2)
-		return (ope_two_node(lst_a, lst_procedure));
+		ope_two_node(lst_a, lst_procedure);
 	if (ft_dl_lstsize(*lst_a) == 3)
-		return (ope_three_node(lst_a, lst_b, lst_procedure));
-	// if (ft_dl_lstsize(*lst_a) == 5)
-	// 	return (ope_five_node(lst_a, lst_b, lst_procedure);
+		ope_three_node(lst_a, lst_b, lst_procedure);
+	if (ft_dl_lstsize(*lst_a) == 5)
+		ope_five_node(lst_a, lst_b, lst_procedure);
 	// return (ope_long_node);
-	return (1);
+	return ;
 }
 
 static void	free_all(t_lst **lst_a, t_lst **lst_b, t_lst **lst_procedure)
@@ -57,12 +57,12 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	lst_procedure = NULL;
 	argv_to_lst(argc, argv, &stack_a);
-	// ft_dl_pf_lst(lst_a);
-	// ft_printf("\n\n");
+	ft_dl_pf_lst(stack_a, get_pointer_to_print);
+	ft_printf("\n");
 	calculate_task(&stack_a, &stack_b, &lst_procedure);
 	// // optimize_procedure(&lst_procedure);
-	// ft_dl_pf_lst(lst_a);
-	// ft_printf("\n");
+	ft_dl_pf_lst(stack_a, get_pointer_to_print);
+	ft_printf("\n");
 	print_list(lst_procedure);
 	free_all(&stack_a, &stack_b, &lst_procedure);
 	return (0);

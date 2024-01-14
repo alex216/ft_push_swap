@@ -6,10 +6,11 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 17:50:00 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/13 16:58:09 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/14 00:06:34 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "push_swap.h"
 
 int	get_int_value_of(t_lst *pointer)
@@ -43,10 +44,10 @@ void	*create_record(char *str)
 {
 	t_record	*payload_p;
 
-	if (str == NULL)
+	if (!str)
 		return (NULL);
 	payload_p = ft_calloc(1, sizeof(t_record));
-	if (payload_p == NULL)
+	if (!payload_p)
 		return (NULL);
 	payload_p->char_content = ft_strdup(str);
 	payload_p->int_data = ft_atoi(str);
@@ -83,3 +84,7 @@ int	append_to_procedure(t_lst **lst_procedure, char *string)
 	return (create_new_dl_lst(lst_procedure, record_p));
 }
 
+void	*get_pointer_to_print(t_lst *lst_p)
+{
+	return (lst_p->payload_p->char_content);
+}
