@@ -16,3 +16,9 @@ libft.a
 
 # obj
 obj
+
+# vscode
+.vscode/*
+
+# other
+tags

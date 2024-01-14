@@ -6,7 +6,7 @@
 #    By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 12:04:47 by yliu              #+#    #+#              #
-#    Updated: 2023/12/06 18:32:41 by yliu             ###   ########.fr        #
+#    Updated: 2024/01/14 16:48:50 by yliu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ ECHO			= echo -e
 # directory
 SRCS_DIR		= ./src
 OBJS_DIR		= ./obj
-INC_DIR			= ./inc
+INC_DIR			= ./inc ./libft/inc
 LIB_DIR			= ./libft
 
 # files
@@ -37,7 +37,7 @@ MAKE_OBJDIR		= $(shell mkdir -p $(subst $(SRCS_DIR), $(OBJS_DIR), $(dir $(SRCS))
 
 # debug info
 ifdef DEBUG
-CFLAGS += -g -fsanitize=address -fsanitize=integer
+CFLAGS += -g -fsanitize=address -fsanitize=integer -DDEBUG
 endif
 
 # color and line
@@ -51,7 +51,7 @@ BLUE			=	\033[0;94m
 MAGENTA			=	\033[0;95m
 CYAN			=	\033[0;96m
 WHITE			=	\033[0;97m
-LINE			=  \u2500\u2500
+LINE			= 	\u2500\u2500
 
 all:			$(NAME)
 
@@ -67,13 +67,13 @@ status_check:
 				@make compile
 				
 compile:		$(OBJS) $(HEADERS) $(LIBFT_HEADERS)
-				@$(CC) $(CFLAGS) -I $(INC_DIR) $(OBJS) ./libft/libft.a -o $(NAME)
+				@$(CC) $(CFLAGS) $(foreach dir_list,$(INC_DIR),-I$(dir_list)) $(OBJS) ./libft/libft.a -o $(NAME)
 				@$(ECHO) -n "\r\e$(GREEN)$(LINE)$(DEF_COLOR)"
 				@$(ECHO) "$(GREEN) \u2023 100% $(DEF_COLOR)"
 				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(NAME)]\t./$(NAME) \t$(GREEN)compiled \u2714$(DEF_COLOR)"
 
 $(OBJS_DIR)/%.o:$(MAKE_OBJDIR) $(SRCS_DIR)/%.c $(HEADERS)
-				@$(CC) $(CFLAGS) -I $(INC_DIR) -c $< -o $@
+				@$(CC) $(CFLAGS) $(foreach dir_list,$(INC_DIR), -I$(dir_list)) -c $< -o $@
 				@$(ECHO) -n "$(RED)\u2500$(DEF_COLOR)"
 
 # other cmds

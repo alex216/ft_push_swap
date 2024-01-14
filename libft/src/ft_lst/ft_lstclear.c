@@ -6,11 +6,11 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 23:05:42 by yliu              #+#    #+#             */
-/*   Updated: 2023/11/09 18:29:46 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/11 11:54:32 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/libft.h"
+#include "libft.h"
 
 void	ft_lstclear(t_list **lst_pp, void (*del)(void *))
 {

@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ope_two_node.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/10 19:42:32 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/11 11:54:48 by yliu             ###   ########.fr       */
+/*   Created: 2024/01/13 17:21:40 by yliu              #+#    #+#             */
+/*   Updated: 2024/01/14 10:34:19 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-int	ft_toupper(int i)
+void	ope_two_node(t_lst **stack_a, t_lst **lst_procedure)
 {
-	if (i >= 'a' && i <= 'z')
-		i -= 32;
-	return (i);
+	operate_sa(stack_a, lst_procedure);
+	return ;
 }

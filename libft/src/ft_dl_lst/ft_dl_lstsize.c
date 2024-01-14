@@ -6,14 +6,13 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:05:17 by yliu              #+#    #+#             */
-/*   Updated: 2023/12/11 16:44:30 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/11 16:41:54 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/libft.h"
-#include "../../inc/ft_printf.h"
+#include "libft.h"
 
-size_t	ft_dl_lstsize(t_dl_lst *lst_p)
+size_t	ft_dl_lstsize(const t_lst *lst_p)
 {
 	if (lst_p == NULL)
 		return (0);
@@ -21,6 +20,7 @@ size_t	ft_dl_lstsize(t_dl_lst *lst_p)
 }
 
 // //////////////////////////////////////////
+// #include "../../inc/ft_printf.h"
 // static void	*del(void *tmp)
 // {
 // 	free(tmp);
@@ -29,9 +29,9 @@ size_t	ft_dl_lstsize(t_dl_lst *lst_p)
 //
 // int	main(void)
 // {
-// 	t_dl_lst	*origin_p;
-// 	t_dl_lst	*tmp_p;
-// 	t_dl_lst	*tmp1_p;
+// 	t_lst	*origin_p;
+// 	t_lst	*tmp_p;
+// 	t_lst	*tmp1_p;
 //
 // 	origin_p = ft_dl_lstnew(42);
 // 	tmp_p = ft_dl_lstcreate(2, 0);
