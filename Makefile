@@ -6,7 +6,7 @@
 #    By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 12:04:47 by yliu              #+#    #+#              #
-#    Updated: 2024/01/11 13:08:07 by yliu             ###   ########.fr        #
+#    Updated: 2024/01/14 16:48:50 by yliu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ MAKE_OBJDIR		= $(shell mkdir -p $(subst $(SRCS_DIR), $(OBJS_DIR), $(dir $(SRCS))
 
 # debug info
 ifdef DEBUG
-CFLAGS += -g -fsanitize=address -fsanitize=integer
+CFLAGS += -g -fsanitize=address -fsanitize=integer -DDEBUG
 endif
 
 # color and line
