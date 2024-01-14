@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:40:34 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/11 15:54:50 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/14 16:20:18 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void				ft_dl_lstclear(t_lst **lst_pp, void (*del)(void *))
 	t_lst	*iter_p;
 	t_lst	*tmp_p;
 
-	if (lst_pp == NULL || del == NULL)
+	if (!lst_pp || !del)
 		return ;
-	if (*lst_pp == NULL)
+	if (!*lst_pp)
 		return ;
 	iter_p = *lst_pp;
 	while (iter_p->is_sentinel == false)

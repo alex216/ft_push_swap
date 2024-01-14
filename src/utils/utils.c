@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 17:50:00 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/14 00:06:34 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/14 15:51:15 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,34 +54,13 @@ void	*create_record(char *str)
 	return (payload_p);
 }
 
-ssize_t	create_new_dl_lst(t_lst **lst_a, t_record *record_p)
-{
-	t_lst		*t_lst_p;
-
-	if (!record_p)
-		return (false);
-	if (!lst_a || !*lst_a)
-	{
-		*lst_a = ft_dl_lstnew(record_p);
-		if (!lst_a)
-			return (false);
-	}
-	else
-	{
-		t_lst_p = ft_dl_lstcreate(record_p, false);
-		if (!t_lst_p)
-			return (false);
-		ft_dl_lstadd_back(lst_a, t_lst_p);
-	}
-	return (true);
-}
 
 int	append_to_procedure(t_lst **lst_procedure, char *string)
 {
 	t_record	*record_p;
 
 	record_p = create_record(string);
-	return (create_new_dl_lst(lst_procedure, record_p));
+	return (ft_dl_lstnew(lst_procedure, record_p));
 }
 
 void	*get_pointer_to_print(t_lst *lst_p)

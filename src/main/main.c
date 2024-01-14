@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 12:20:49 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/14 00:10:50 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/14 16:24:14 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,12 @@ static void	calculate_task(t_lst **lst_a, t_lst **lst_b, t_lst **lst_procedure)
 		ope_three_node(lst_a, lst_b, lst_procedure);
 	if (ft_dl_lstsize(*lst_a) == 5)
 		ope_five_node(lst_a, lst_b, lst_procedure);
-	// return (ope_long_node);
+	// ope_long_node();
 	return ;
 }
 
 static void	free_all(t_lst **lst_a, t_lst **lst_b, t_lst **lst_procedure)
 {
-	(void)lst_procedure;
 	ft_dl_lstclear(lst_a, del);
 	ft_dl_lstclear(lst_b, del);
 	ft_dl_lstclear(lst_procedure, del);
@@ -57,12 +56,26 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	lst_procedure = NULL;
 	argv_to_lst(argc, argv, &stack_a);
+
+	// print before
+	ft_printf("a \n");
 	ft_dl_pf_lst(stack_a, get_pointer_to_print);
+	ft_printf("b \n");
+	ft_dl_pf_lst(stack_b, get_pointer_to_print);
 	ft_printf("\n");
+
+	// calculate
 	calculate_task(&stack_a, &stack_b, &lst_procedure);
-	// // optimize_procedure(&lst_procedure);
+	// optimize_procedure(&lst_procedure);
+
+	// print after
+	ft_printf("a \n");
 	ft_dl_pf_lst(stack_a, get_pointer_to_print);
+	ft_printf("b \n");
+	ft_dl_pf_lst(stack_b, get_pointer_to_print);
 	ft_printf("\n");
+
+	// print answer
 	print_list(lst_procedure);
 	free_all(&stack_a, &stack_b, &lst_procedure);
 	return (0);

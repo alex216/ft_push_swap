@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:32:48 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/13 18:48:04 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/14 15:51:21 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	argv_to_lst(int argc, char **argv, t_lst **stack_a)
 		{
 			if (!check_digital_input(malloced_arg[i]))
 				exit(handle_abnormal_input());
-			if (!create_new_dl_lst(stack_a, create_record(malloced_arg[i++])))
+			if (!ft_dl_lstnew(stack_a, create_record(malloced_arg[i++])))
 				exit(EXIT_FAILURE);
 		}
 		argv++;
