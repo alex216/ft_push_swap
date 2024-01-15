@@ -11,6 +11,7 @@ checker
 test.sh
 subject.txt
 push_swap_visualizer/*
+push_swap_visualizer
 
 # libft.a
 libft.a
