@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 12:20:49 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/14 21:11:39 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/18 14:11:50 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 #include "libft.h"
 #include "push_swap.h"
 
-static void	_calculate_task(t_lst **lst_a, t_lst **lst_b, t_lst **lst_procedure);
-static void	_free_all(t_lst **lst_a, t_lst **lst_b, t_lst **lst_procedure);
 static void	_print_list(t_lst *i_p);
 static void	_debug_stack(t_lst **stack_a, t_lst **stack_b);
 int	main(int argc, char **argv);
@@ -25,18 +23,11 @@ static void	_calculate_task(t_lst **lst_a, t_lst **lst_b, t_lst **lst_procedure)
 	if (ft_dl_lstsize(*lst_a) == 2)
 		ope_two_node(lst_a, lst_procedure);
 	if (ft_dl_lstsize(*lst_a) == 3)
-		ope_three_node(lst_a, lst_procedure);
-	if (ft_dl_lstsize(*lst_a) == 5)
-		ope_five_node(lst_a, lst_b, lst_procedure);
+		ope_three_node(lst_a, lst_b, lst_procedure);
+	// if (ft_dl_lstsize(*lst_a) <= 6)
+	// 	ope_less_six_node(lst_a, lst_b, lst_procedure);
 	// ope_long_node();
 	return ;
-}
-
-static void	_free_all(t_lst **lst_a, t_lst **lst_b, t_lst **lst_procedure)
-{
-	ft_dl_lstclear(lst_a, del);
-	ft_dl_lstclear(lst_b, del);
-	ft_dl_lstclear(lst_procedure, del);
 }
 
 static void	_print_list(t_lst *i_p)
@@ -76,6 +67,6 @@ int	main(int argc, char **argv)
 	// optimize_procedure(&lst_procedure);
 	_debug_stack(&stack_a, &stack_b);
 	_print_list(lst_procedure);
-	_free_all(&stack_a, &stack_b, &lst_procedure);
+	free_all(&stack_a, &stack_b, &lst_procedure);
 	return (0);
 }

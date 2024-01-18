@@ -6,11 +6,12 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 16:30:21 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/14 23:54:45 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/18 11:57:49 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdlib.h>
 
 void	operate_sb(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
 {
@@ -35,6 +36,7 @@ void	operate_rrb(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
 
 void	operate_pb(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
 {
-	push_top_to_another_stack(stack_a, stack_b);
+	if (!push_top_to_another_stack(stack_a, stack_b))
+		exit(EXIT_FAILURE);
 	append_to_procedure(lst_procedure, "pb");
 }

@@ -6,28 +6,32 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 21:06:29 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/15 10:12:50 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/15 19:46:23 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdlib.h>
 
-int	append_to_procedure(t_lst **lst_procedure, char *string);
+void	append_to_procedure(t_lst **lst_procedure, char *string);
 void	free_then_exit(void **double_pointer);
 ssize_t	is_ascending_order(t_lst *iter_p);
-void	a();
+void	free_all(t_lst **lst_a, t_lst **lst_b, t_lst **lst_procedure);
 
-int	append_to_procedure(t_lst **lst_procedure, char *string)
+void	append_to_procedure(t_lst **lst_procedure, char *string)
 {
 	t_record	*record_p;
 
 	record_p = create_record(string);
-	return (ft_dl_lstnew(lst_procedure, record_p));
+	if (!record_p)
+		exit(EXIT_FAILURE);
+	if (!ft_dl_lstappend(lst_procedure, record_p))
+		exit(EXIT_FAILURE);
 }
 
 void	free_then_exit(void **double_pointer)
 {
-	ft_dl_lstclear((t_lst **)double_pointer, *del);
+	ft_dl_lstclear((t_lst **)double_pointer, *del_push_swap);
 	exit(EXIT_FAILURE);
 }
 
@@ -47,19 +51,9 @@ ssize_t	is_ascending_order(t_lst *iter_p)
 	return (true);
 }
 
-void	a()
+void	free_all(t_lst **lst_a, t_lst **lst_b, t_lst **lst_procedure)
 {
-	static void *operations_array[13];
-
-	operations_array[0] = operate_sa;
-	operations_array[1] = operate_sb;
-	operations_array[2] = operate_ss;
-	operations_array[3] = operate_pa;
-	operations_array[4] = operate_pb;
-	operations_array[5] = operate_ra;
-	operations_array[6] = operate_rb;
-	operations_array[7] = operate_rr;
-	operations_array[8] = operate_rra;
-	operations_array[9] = operate_rrb;
-	operations_array[10] = operate_rrr;
-};
+	ft_dl_lstclear(lst_a, *del_push_swap);
+	ft_dl_lstclear(lst_b, *del_push_swap);
+	ft_dl_lstclear(lst_procedure, *del_push_swap);
+}

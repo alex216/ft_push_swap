@@ -6,11 +6,17 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 18:38:48 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/14 17:05:40 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/15 15:16:56 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "push_swap.h"
+
+static void	exchange_next_node_and_cur_node(t_lst *first_p);
+void	operate_swap_top_and_second_top(t_lst **lst_pp);
+void	operate_rotate_top_and_tail(t_lst **lst_pp);
+void	operate_rev_rotate_top_and_tail(t_lst **lst_pp);
+bool	push_top_to_another_stack(t_lst **src_pp, t_lst **dst_pp);
 
 static void	exchange_next_node_and_cur_node(t_lst *first_p)
 {
@@ -82,14 +88,14 @@ static t_lst *pick_top_from_stack(t_lst **lst_pp)
 	return (top_p);
 }
 
-void	push_top_to_another_stack(t_lst **src_pp, t_lst **dst_pp)
+bool	push_top_to_another_stack(t_lst **src_pp, t_lst **dst_pp)
 {
 	t_lst *tmp_p;
 
 	if (!src_pp || !*src_pp)
-		return ;
+		return (false);
 	tmp_p = (pick_top_from_stack(src_pp));
 	if (!tmp_p)
-		return ;
-	ft_dl_lstadd_front_with_lst(dst_pp, tmp_p);
+		return (false);
+	return (ft_dl_lstadd_front_with_lst(dst_pp, tmp_p));
 }
