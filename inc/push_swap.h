@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:31:29 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/18 11:49:23 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/18 18:29:54 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	ope_two_node(t_lst **stack_a, t_lst **lst_procedure);
 // ope_three_node.c
 void	ope_three_node(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
 
-// ope_five_node.c
+// ope_less_six_node.c
 void	ope_less_six_node(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
 
 // utils/utils_struct.c

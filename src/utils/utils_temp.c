@@ -6,10 +6,12 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 21:06:29 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/15 19:46:23 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/18 18:29:44 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
+#include "libft.h"
 #include "push_swap.h"
 #include <stdlib.h>
 
