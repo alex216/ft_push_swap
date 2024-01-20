@@ -6,35 +6,39 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 16:35:51 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/19 21:01:17 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/20 20:00:14 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "push_swap.h"
 
-void	operate_ss(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
+bool	operate_ss(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
 {
-	if (!*stack_a || !*stack_b)
-		return ;
+	if (!*stack_a || !*stack_b || (ft_dl_lstsize(*stack_a) == 1 && ft_dl_lstsize(*stack_b) == 1))
+		return (false);
 	operate_swap_top_and_second_top(stack_a);
 	operate_swap_top_and_second_top(stack_b);
 	append_to_procedure(lst_procedure, "ss");
+	return (true);
 }
 
-void	operate_rr(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
+bool	operate_rr(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
 {
-	if (!*stack_a || !*stack_b)
-		return ;
+	if (!*stack_a || !*stack_b || (ft_dl_lstsize(*stack_a) == 1 && ft_dl_lstsize(*stack_b) == 1))
+		return (false);
 	operate_rotate_top_and_tail(stack_a);
 	operate_rotate_top_and_tail(stack_b);
 	append_to_procedure(lst_procedure, "rr");
+	return (true);
 }
 
-void	operate_rrr(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
+bool	operate_rrr(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
 {
-	if (!*stack_a || !*stack_b)
-		return ;
+	if (!*stack_a || !*stack_b || (ft_dl_lstsize(*stack_a) == 1 && ft_dl_lstsize(*stack_b) == 1))
+		return (false);
 	operate_rev_rotate_top_and_tail(stack_a);
 	operate_rev_rotate_top_and_tail(stack_b);
 	append_to_procedure(lst_procedure, "rrr");
+	return (true);
 }

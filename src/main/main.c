@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 12:20:49 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/20 17:25:10 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/20 19:33:04 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,24 @@ static void	_calculate_task(t_lst **stack_a, t_lst **stack_b, t_lst **lst_proced
 	// 	ope_two_node(stack_a, lst_procedure);
 	// if (ft_dl_lstsize(*stack_a) == 3)
 	// 	ope_three_node(stack_a, stack_b, lst_procedure);
-	if (ft_dl_lstsize(*stack_a) == 3)
-		ope_less_six_node(stack_a, stack_b, lst_procedure);
+	// if (ft_dl_lstsize(*stack_a) == 3)
+	ope_less_six_node(stack_a, stack_b, lst_procedure);
 	// ope_long_node();
 	return ;
 }
 
 static void	_print_list(t_lst *i_p)
 {
-	while(!i_p->is_sentinel)
+	if (i_p)
 	{
-		ft_printf("%s\n", get_char_value_of(i_p));
-		i_p = i_p->next_p;
+		while(!i_p->is_sentinel)
+		{
+			ft_printf("%s\n", get_char_value_of(i_p));
+			i_p = i_p->next_p;
+		}
 	}
+	else 
+		ft_printf("could not find answer!\n");
 }
 
 static void	_debug_stack(t_lst **stack_a, t_lst **stack_b)

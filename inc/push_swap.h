@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:31:29 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/20 16:33:20 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/20 19:23:24 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_record {
 	void	*omni_p;
 }			t_record;
 
-typedef void	(*ope_p)(t_lst **, t_lst **, t_lst **);
+typedef bool	(*ope_p)(t_lst **, t_lst **, t_lst **);
 
 int	main(int argc, char **argv);
 
@@ -62,21 +62,21 @@ void	free_all(t_lst **lst_a, t_lst **lst_b, t_lst **lst_procedure);
 void	debug_func(t_lst **a, t_lst **b, t_lst **tmp, char *, char *, char *);
 
 // operate_stack_a.c
-void	operate_sa(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
-void	operate_ra(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
-void	operate_rra(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
-void	operate_pa(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
+bool	operate_sa(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
+bool	operate_ra(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
+bool	operate_rra(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
+bool	operate_pa(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
 
 // operate_stack_b.c
-void	operate_sb(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
-void	operate_rb(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
-void	operate_rrb(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
-void	operate_pb(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
+bool	operate_sb(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
+bool	operate_rb(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
+bool	operate_rrb(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
+bool	operate_pb(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
 
 // operate_both_stack.c
-void	operate_ss(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
-void	operate_rr(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
-void	operate_rrr(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
+bool	operate_ss(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
+bool	operate_rr(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
+bool	operate_rrr(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
 
 // basic_stack_operation.c
 void	operate_swap_top_and_second_top(t_lst **lst);

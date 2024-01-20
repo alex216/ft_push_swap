@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 21:06:29 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/19 20:08:35 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/20 19:05:57 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,11 @@ void	free_all(t_lst **lst_a, t_lst **lst_b, t_lst **lst_procedure)
 	ft_dl_lstclear(lst_procedure, *del_push_swap);
 }
 
+int	g_count = 0;
 void	debug_func(t_lst **a, t_lst **b, t_lst **tmp, char *q, char *w, char *e)
 {
+	g_count++;
+	ft_printf("%d", g_count);
 	ft_printf("%s    ", q);
 	ft_dl_pf_lst(*a, get_pointer_to_print);
 	ft_printf("%s    ", w);
