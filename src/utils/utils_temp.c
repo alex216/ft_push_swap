@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 21:06:29 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/18 18:29:44 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/19 20:08:35 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,16 @@ void	free_all(t_lst **lst_a, t_lst **lst_b, t_lst **lst_procedure)
 	ft_dl_lstclear(lst_a, *del_push_swap);
 	ft_dl_lstclear(lst_b, *del_push_swap);
 	ft_dl_lstclear(lst_procedure, *del_push_swap);
+}
+
+void	debug_func(t_lst **a, t_lst **b, t_lst **tmp, char *q, char *w, char *e)
+{
+	ft_printf("%s    ", q);
+	ft_dl_pf_lst(*a, get_pointer_to_print);
+	ft_printf("%s    ", w);
+	ft_dl_pf_lst(*b, get_pointer_to_print);
+	ft_printf("%s    ", e);
+	ft_dl_pf_lst(*tmp, get_pointer_to_print);
+	ft_printf("\n");
+
 }

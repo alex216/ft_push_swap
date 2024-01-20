@@ -6,13 +6,11 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:04:09 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/19 18:39:04 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/20 16:48:54 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
-#include "libft.h"
-#include <stdlib.h>
 
 static bool	ft_dl_lstadd_sentinel_to_node(t_lst *lst_pp)
 {
@@ -105,10 +103,12 @@ t_lst	*ft_dl_lstdup(t_lst **src_pp)
 	t_lst	*iter_cpy_p;
 	t_record	*record_p;
 
-	if (!src_pp || !*src_pp)
+	des_p = NULL;
+	if (!src_pp)
+		return (NULL);
+	if (!*src_pp)
 		return (NULL);
 	iter_p = *src_pp;
-	des_p = NULL;
 	while (!iter_p->is_sentinel)
 	{
 		record_p = create_record(iter_p->payload_p->char_content);

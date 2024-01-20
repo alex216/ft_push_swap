@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:31:29 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/18 18:29:54 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/20 16:33:20 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	append_to_procedure(t_lst **lst_procedure, char *string);
 void	free_then_exit(void **double_pointer);
 ssize_t	is_ascending_order(t_lst *iter_p);
 void	free_all(t_lst **lst_a, t_lst **lst_b, t_lst **lst_procedure);
+void	debug_func(t_lst **a, t_lst **b, t_lst **tmp, char *, char *, char *);
 
 // operate_stack_a.c
 void	operate_sa(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
