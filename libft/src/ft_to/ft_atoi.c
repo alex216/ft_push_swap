@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 23:45:33 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/11 11:54:48 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/21 16:12:34 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_atoi(const char *str)
 	n = 0;
 	flag = 1;
 	if (str == NULL)
-		exit(ENOMEM);
+		return (errno = EINVAL, 0);
 	while (is_space(*str) != '\0')
 		str++;
 	if (*str == '-' || *str == '+')
