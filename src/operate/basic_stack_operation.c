@@ -6,19 +6,20 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 18:38:48 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/20 16:47:45 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/22 16:38:01 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "push_swap.h"
 
-static void	exchange_next_node_and_cur_node(t_lst *first_p);
+static void	_exchange_next_node_and_cur_node(t_lst *first_p);
 void	operate_swap_top_and_second_top(t_lst **lst_pp);
 void	operate_rotate_top_and_tail(t_lst **lst_pp);
 void	operate_rev_rotate_top_and_tail(t_lst **lst_pp);
+static t_lst *_pick_top_from_stack(t_lst **lst_pp);
 bool	push_top_to_another_stack(t_lst **src_pp, t_lst **dst_pp);
 
-static void	exchange_next_node_and_cur_node(t_lst *first_p)
+static void	_exchange_next_node_and_cur_node(t_lst *first_p)
 {
 	t_lst *second_p;
 
@@ -33,47 +34,39 @@ static void	exchange_next_node_and_cur_node(t_lst *first_p)
 
 void operate_swap_top_and_second_top(t_lst **lst_pp)
 {
-	t_lst	*tmp_p;
+	t_lst	*top_p;
 
-	if (ft_dl_lstsize(*lst_pp) == 1)
-		return ;
-	tmp_p = *lst_pp;
-	exchange_next_node_and_cur_node(tmp_p);
-	*lst_pp = tmp_p->prev_p;
+	top_p = *lst_pp;
+	_exchange_next_node_and_cur_node(top_p);
+	*lst_pp = top_p->prev_p;
 }
 
 void operate_rotate_top_and_tail(t_lst **lst_pp)
 {
-	t_lst	*tmp_p;
+	t_lst	*sentinel_p;
 
-	if (ft_dl_lstsize(*lst_pp) == 1)
-		return ;
-	tmp_p = (*lst_pp)->prev_p;
-	exchange_next_node_and_cur_node(tmp_p);
-	*lst_pp = tmp_p->next_p;
+	sentinel_p = (*lst_pp)->prev_p;
+	_exchange_next_node_and_cur_node(sentinel_p);
+	*lst_pp = sentinel_p->next_p;
 }
 
 void operate_rev_rotate_top_and_tail(t_lst **lst_pp)
 {
-	t_lst	*tmp_p;
+	t_lst	*last_p;
 
-	if (ft_dl_lstsize(*lst_pp) == 1)
-		return ;
-	tmp_p = (*lst_pp)->prev_p->prev_p;
-	exchange_next_node_and_cur_node(tmp_p);
-	*lst_pp = tmp_p;
+	last_p = (*lst_pp)->prev_p->prev_p;
+	_exchange_next_node_and_cur_node(last_p);
+	*lst_pp = last_p;
 }
 
-static t_lst *pick_top_from_stack(t_lst **lst_pp)
+static t_lst *_pick_top_from_stack(t_lst **lst_pp)
 {
 	t_lst	*top_p;
 
-	if (!lst_pp || !*lst_pp)
-		return (NULL);
 	top_p = *lst_pp;
-	if (ft_dl_lstsize(*lst_pp) == 1)
+	if (top_p->next_p->is_sentinel == true)
 	{
-		free(top_p->prev_p);
+		free(top_p->next_p);
 		*lst_pp = NULL;
 	}
 	else
@@ -90,12 +83,10 @@ static t_lst *pick_top_from_stack(t_lst **lst_pp)
 
 bool	push_top_to_another_stack(t_lst **src_pp, t_lst **dst_pp)
 {
-	t_lst *tmp_p;
+	t_lst *top_p;
 
-	if (!src_pp || !*src_pp)
+	top_p = _pick_top_from_stack(src_pp);
+	if (!top_p)
 		return (false);
-	tmp_p = (pick_top_from_stack(src_pp));
-	if (!tmp_p)
-		return (false);
-	return (ft_dl_lstadd_front_with_lst(dst_pp, tmp_p));
+	return (ft_dl_lstadd_front_with_lst(dst_pp, top_p));
 }
