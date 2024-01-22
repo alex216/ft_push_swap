@@ -6,41 +6,51 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 17:50:00 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/15 18:32:42 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/22 17:04:50 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-int	get_int_value_of(t_lst *pointer);
-char	*get_char_value_of(t_lst *pointer);
-void	*get_pointer_to_print(t_lst *lst_p);
-void	del_push_swap(void *t_lst_p);
-void	*create_record(char *str);
+int	get_int_value_of(const t_lst *pointer);
+char	*get_char_of(const t_lst *pointer);
+void	*get_pointer_to_print(const t_lst *lst_p);
+void	del_push_swap(void *lst_p);
+void	*create_record(const char *str);
 
-int	get_int_value_of(t_lst *pointer)
+int	get_int_value_of(const t_lst *lst_p)
 {
-	return (pointer->payload_p->int_data);
+	if (!lst_p)
+		return (errno = EINVAL, 0);
+	return (lst_p->payload_p->int_data);
 }
 
-char	*get_char_value_of(t_lst *pointer)
+char	*get_char_of(const t_lst *lst_p)
 {
-	return (pointer->payload_p->char_content);
-}
-
-void	*get_pointer_to_print(t_lst *lst_p)
-{
+	if (!lst_p)
+		return (NULL);
 	return (lst_p->payload_p->char_content);
 }
 
-void	del_push_swap(void *t_lst_p)
+void	*get_pointer_to_print(const t_lst *lst_p)
 {
-	free(((t_lst *)t_lst_p)->payload_p->char_content);
-	free(((t_lst *)t_lst_p)->payload_p);
+	if (!lst_p)
+		return (NULL);
+	return (lst_p->payload_p->char_content);
 }
 
-void	*create_record(char *str)
+void	del_push_swap(void *lst_p)
+{
+	if (!lst_p)
+		return ;
+	if (((t_lst *)lst_p)->is_sentinel == true)
+		return;
+	free(((t_lst *)lst_p)->payload_p->char_content);
+	free(((t_lst *)lst_p)->payload_p);
+}
+
+void	*create_record(const char *str)
 {
 	t_record	*payload_p;
 
