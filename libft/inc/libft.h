@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 22:04:03 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/19 18:27:24 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/22 17:12:01 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ size_t	ft_dl_lstsize(const t_lst *lst);
 t_lst	*ft_dl_lstlast(const t_lst *lst);
 void	ft_dl_lstdelone(t_lst *lst, void (*del)(void *));
 void	ft_dl_lstclear(t_lst **lst_pp, void (*del)(void *));
-void	ft_dl_pf_lst(t_lst *lst_p, void *(*return_printable)(t_lst *));
+void	ft_dl_pf_lst(t_lst *lst_p, void *(*return_printable)(const t_lst *));
 
 // helper func
 t_lst	*ft_dl_lstcreate_a_node(t_record *record_p, size_t is_sentinel);

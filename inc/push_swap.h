@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:31:29 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/20 19:23:24 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/22 22:47:51 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,15 @@ void	ope_three_node(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
 void	ope_less_six_node(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
 
 // utils/utils_struct.c
-int		get_int_value_of(t_lst *pointer);
-char	*get_char_value_of(t_lst *pointer);
-void	*get_pointer_to_print(t_lst *lst_p);
+int		get_int_value_of(const t_lst *pointer);
+char	*get_char_of(const t_lst *pointer);
+void	*get_pointer_to_print(const t_lst *lst_p);
 void	del_push_swap(void *pointer);
-void	*create_record(char *str);
+void	*create_record(const char *str);
 
 // utils/utils_temp.c
-void	append_to_procedure(t_lst **lst_procedure, char *string);
-void	free_then_exit(void **double_pointer);
-ssize_t	is_ascending_order(t_lst *iter_p);
+void	append_to_procedure(t_lst **lst_procedure,const char *string);
+bool	is_ascending_order(const t_lst *iter_p);
 void	free_all(t_lst **lst_a, t_lst **lst_b, t_lst **lst_procedure);
 void	debug_func(t_lst **a, t_lst **b, t_lst **tmp, char *, char *, char *);
 
@@ -84,4 +83,5 @@ void	operate_rotate_top_and_tail(t_lst **lst);
 void	operate_rev_rotate_top_and_tail(t_lst **lst);
 bool	push_top_to_another_stack(t_lst **src_pp, t_lst **dst_pp);
 
+bool	check_last_operation_is(const char *str,const t_lst **lst);
 #endif
