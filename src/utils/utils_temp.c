@@ -6,21 +6,18 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 21:06:29 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/20 19:05:57 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/22 22:50:02 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft.h"
 #include "push_swap.h"
-#include <stdlib.h>
 
-void	append_to_procedure(t_lst **lst_procedure, char *string);
-void	free_then_exit(void **double_pointer);
-ssize_t	is_ascending_order(t_lst *iter_p);
+void	append_to_procedure(t_lst **lst_procedure, const char *string);
+bool	is_ascending_order(const t_lst *iter_p);
 void	free_all(t_lst **lst_a, t_lst **lst_b, t_lst **lst_procedure);
+bool	check_last_operation_is(const char *str, const t_lst **lst);
 
-void	append_to_procedure(t_lst **lst_procedure, char *string)
+void	append_to_procedure(t_lst **lst_procedure, const char *string)
 {
 	t_record	*record_p;
 
@@ -31,18 +28,14 @@ void	append_to_procedure(t_lst **lst_procedure, char *string)
 		exit(EXIT_FAILURE);
 }
 
-void	free_then_exit(void **double_pointer)
-{
-	ft_dl_lstclear((t_lst **)double_pointer, *del_push_swap);
-	exit(EXIT_FAILURE);
-}
-
-ssize_t	is_ascending_order(t_lst *iter_p)
+bool	is_ascending_order(const t_lst *iter_p)
 {
 	int	cur;
 	int	next;
 
-	while (!iter_p->next_p->is_sentinel)
+	if (!iter_p)
+		return (false);
+	while (iter_p && !iter_p->next_p->is_sentinel)
 	{
 		cur = get_int_value_of(iter_p);
 		next = get_int_value_of(iter_p->next_p);
@@ -60,17 +53,23 @@ void	free_all(t_lst **lst_a, t_lst **lst_b, t_lst **lst_procedure)
 	ft_dl_lstclear(lst_procedure, *del_push_swap);
 }
 
+bool	check_last_operation_is(const char *str, const t_lst **lst)
+{
+	char	*last_cmd;
+
+	last_cmd = get_char_of(ft_dl_lstlast(*lst));
+	return (!ft_strncmp(last_cmd, str, ft_strlen(str)));
+}
+
 int	g_count = 0;
 void	debug_func(t_lst **a, t_lst **b, t_lst **tmp, char *q, char *w, char *e)
 {
 	g_count++;
-	ft_printf("%d", g_count);
+	ft_printf("print is called [%d]\n", g_count);
 	ft_printf("%s    ", q);
 	ft_dl_pf_lst(*a, get_pointer_to_print);
 	ft_printf("%s    ", w);
 	ft_dl_pf_lst(*b, get_pointer_to_print);
 	ft_printf("%s    ", e);
 	ft_dl_pf_lst(*tmp, get_pointer_to_print);
-	ft_printf("\n");
-
 }
