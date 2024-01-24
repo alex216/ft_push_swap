@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 21:06:29 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/22 22:50:02 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/23 21:56:55 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	append_to_procedure(t_lst **lst_procedure, const char *string)
 		exit(EXIT_FAILURE);
 }
 
+// empty array that satisfy all condtion concerning elements return false here
+// dispite the math rule
 bool	is_ascending_order(const t_lst *iter_p)
 {
 	int	cur;
