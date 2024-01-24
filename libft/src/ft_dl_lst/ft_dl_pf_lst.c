@@ -6,18 +6,18 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 14:31:52 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/22 18:32:36 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/24 12:24:07 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
 
-static void	print_ascending_direction(t_lst *lst_p, void *(*return_printable)(const t_lst *))
+static void	print_ascending_direction(const t_lst *lst_p, void *(*return_printable)(const t_lst *))
 {
 	while (!lst_p->is_sentinel)
 	{
-		ft_printf("%s", return_printable(lst_p));
+		ft_printf("%s", return_printable((const t_lst *)lst_p));
 		lst_p = lst_p->next_p;
 		ft_printf(",");
 	}
@@ -37,7 +37,7 @@ static void	print_ascending_direction(t_lst *lst_p, void *(*return_printable)(co
 // 	ft_printf(" -> %s", return_printable(lst_p->prev_p));
 // }
 
-void	ft_dl_pf_lst(t_lst *lst_p, void *(*return_printable)(const t_lst *))
+void	ft_dl_pf_lst(const t_lst *lst_p, void *(*return_printable)(const t_lst *))
 {
 	if (!lst_p || !(*return_printable))
 	{
