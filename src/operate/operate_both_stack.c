@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 16:35:51 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/23 17:21:00 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/24 17:16:04 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ bool	operate_rrr(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
 
 bool	operate_ss(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
 {
-	if ((ft_dl_lstsize(*stack_a) == 1 && ft_dl_lstsize(*stack_b) == 1)
-		|| check_last_operation_is("ss", (const t_lst **)lst_procedure))
+	if ((ft_dl_lstsize(*stack_a) == 1 && ft_dl_lstsize(*stack_b) == 1))
+		// || check_last_operation_is("ss", (const t_lst **)lst_procedure))
 		return (false);
 	if (!*stack_a || ft_dl_lstsize(*stack_a) == 1)
 		return (operate_sb(stack_a, stack_b, lst_procedure));
@@ -34,8 +34,8 @@ bool	operate_ss(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
 
 bool	operate_rr(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
 {
-	if(check_last_operation_is("rrr", (const t_lst **)lst_procedure))
-		return (false);
+	// if(check_last_operation_is("rrr", (const t_lst **)lst_procedure))
+	// 	return (false);
 	if (!*stack_a || ft_dl_lstsize(*stack_a) == 1)
 		return (operate_rb(stack_a, stack_b, lst_procedure));
 	if (!*stack_b || ft_dl_lstsize(*stack_b) == 1)
@@ -48,8 +48,8 @@ bool	operate_rr(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
 
 bool	operate_rrr(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
 {
-	if (check_last_operation_is("rr", (const t_lst **)lst_procedure))
-		return (false);
+	// if (check_last_operation_is("rr", (const t_lst **)lst_procedure))
+	// 	return (false);
 	if (!*stack_a || ft_dl_lstsize(*stack_a) == 1)
 		return (operate_rrb(stack_a, stack_b, lst_procedure));
 	if (!*stack_b || ft_dl_lstsize(*stack_b) == 1)

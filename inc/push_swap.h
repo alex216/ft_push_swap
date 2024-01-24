@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:31:29 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/24 13:25:52 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/24 15:20:26 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ope_two_node(t_lst **stack_a, t_lst **lst_procedure);
 void	ope_three_node(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
 
 // ope_less_six_node.c
-void	ope_less_six_node(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
+void	ope_four_five_node(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
 
 // utils/utils_struct.c
 int		get_int_value_of(const t_lst *pointer);
@@ -60,6 +60,7 @@ bool	is_descending_order(const t_lst *iter_p);
 bool	is_ascending_order(const t_lst *iter_p);
 void	free_all(t_lst **lst_a, t_lst **lst_b, t_lst **lst_procedure);
 void	debug_func(t_lst **a, t_lst **b, t_lst **tmp, char *, char *, char *);
+ope_p	*define_function_pointer(void);
 
 // operate_stack_a.c
 bool	operate_sa(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);

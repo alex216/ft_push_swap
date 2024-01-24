@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:32:48 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/15 20:15:34 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/24 16:52:06 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,4 @@ void	argv_to_lst(int argc, char **argv, t_lst **stack_a)
 	}
 	if (!_has_duplicate_value(*stack_a))
 		exit(_handle_abnormal_input());
-	if (is_ascending_order(*stack_a))
-		exit(EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 18:39:43 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/24 13:33:03 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/24 16:52:25 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void	ope_three_node(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
 	int	second;
 	int	third;
 
+	if (is_ascending_order(*stack_a))
+		return ;
 	first = get_int_value_of(*stack_a);
 	second = get_int_value_of((*stack_a)->next_p);
 	third = get_int_value_of((*stack_a)->next_p->next_p);

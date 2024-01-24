@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 21:06:29 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/23 21:56:55 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/24 15:21:01 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,22 @@ void	debug_func(t_lst **a, t_lst **b, t_lst **tmp, char *q, char *w, char *e)
 	ft_dl_pf_lst(*b, get_pointer_to_print);
 	ft_printf("%s    ", e);
 	ft_dl_pf_lst(*tmp, get_pointer_to_print);
+}
+
+ope_p	*define_function_pointer(void)
+{
+	static ope_p ope_array[OPERATION_NUMBER];
+
+	ope_array[0] = operate_sa;
+	ope_array[1] = operate_sb;
+	ope_array[2] = operate_ss;
+	ope_array[3] = operate_pa;
+	ope_array[4] = operate_pb;
+	ope_array[5] = operate_ra;
+	ope_array[6] = operate_rb;
+	ope_array[7] = operate_rr;
+	ope_array[8] = operate_rra;
+	ope_array[9] = operate_rrb;
+	ope_array[10] = operate_rrr;
+	return (ope_array);
 }
