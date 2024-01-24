@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 16:35:51 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/22 16:57:09 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/23 17:21:00 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ bool	operate_rrr(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
 
 bool	operate_ss(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
 {
-	if (ft_dl_lstsize(*stack_a) == 1 && ft_dl_lstsize(*stack_b) == 1
+	if ((ft_dl_lstsize(*stack_a) == 1 && ft_dl_lstsize(*stack_b) == 1)
 		|| check_last_operation_is("ss", (const t_lst **)lst_procedure))
 		return (false);
 	if (!*stack_a || ft_dl_lstsize(*stack_a) == 1)
