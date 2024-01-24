@@ -10,8 +10,11 @@ push_swap
 checker
 test.sh
 subject.txt
-push_swap_visualizer/*
 push_swap_visualizer
+Push-Swap-Tester
+checker_Mac
+traces.txt
+push_swap_test.sh
 
 # libft.a
 libft.a
