@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:31:29 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/22 22:47:51 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/24 13:25:52 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	*create_record(const char *str);
 
 // utils/utils_temp.c
 void	append_to_procedure(t_lst **lst_procedure,const char *string);
+bool	is_descending_order(const t_lst *iter_p);
 bool	is_ascending_order(const t_lst *iter_p);
 void	free_all(t_lst **lst_a, t_lst **lst_b, t_lst **lst_procedure);
 void	debug_func(t_lst **a, t_lst **b, t_lst **tmp, char *, char *, char *);
