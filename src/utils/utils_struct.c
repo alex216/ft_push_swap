@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 17:50:00 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/22 17:04:50 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/24 13:10:36 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ void	del_push_swap(void *lst_p)
 {
 	if (!lst_p)
 		return ;
-	if (((t_lst *)lst_p)->is_sentinel == true)
-		return;
 	free(((t_lst *)lst_p)->payload_p->char_content);
 	free(((t_lst *)lst_p)->payload_p);
 }
