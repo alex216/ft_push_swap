@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 16:19:28 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/25 16:28:03 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/25 16:42:36 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	ope_four_five_node(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
 
 	while (ft_dl_lstsize(*stack_a) > 3)
 		operate_pb(stack_a, stack_b, lst_procedure);
-	ope_three_node(stack_a, stack_b, lst_procedure);
+	append_sa_if_needed(stack_a, stack_b, lst_procedure);
 	while (*stack_b)
 	{
 		ra_counter = _return_number_to_rotate(stack_a, *stack_b);

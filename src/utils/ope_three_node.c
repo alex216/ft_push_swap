@@ -6,10 +6,11 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 18:39:43 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/25 16:32:22 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/25 16:36:15 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "push_swap.h"
 
 static bool	_is_two_one_three(int first, int second, int third)
@@ -27,7 +28,7 @@ static bool	_is_descending_order(int first, int second, int third)
 	return (third < second && second < first);
 }
 
-void	ope_three_node(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
+void	append_sa_if_needed(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
 {
 	int	first;
 	int	second;
@@ -42,5 +43,10 @@ void	ope_three_node(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
 		_is_descending_order(first, second, third) ||
 		_is_one_three_two(first, second, third))
 		 operate_sa(stack_a, stack_b, lst_procedure);
+}
+
+void	ope_three_node(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
+{
+	append_sa_if_needed(stack_a, stack_b, lst_procedure);
 	sort_stack_using_only_ra_or_rra(stack_a, lst_procedure);
 }
