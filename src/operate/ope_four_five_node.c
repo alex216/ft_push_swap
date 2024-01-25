@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 16:19:28 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/25 15:37:59 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/25 16:28:03 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static	bool	_rotate_stack_in_shortest_way(t_lst **lst_pp, t_lst ** lst_procedure
 	return (true);
 }
 
-static void	_sort_stack_using_only_ra_or_rra(t_lst **lst_pp, t_lst **lst_procedure)
+void	sort_stack_using_only_ra_or_rra(t_lst **lst_pp, t_lst **lst_procedure)
 {
 	size_t	top_idx;
 	size_t	lst_size;
@@ -83,5 +83,5 @@ void	ope_four_five_node(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
 		_rotate_stack_in_shortest_way(stack_a, lst_procedure, ra_counter);
 		operate_pa(stack_a, stack_b, lst_procedure);
 	}
-	_sort_stack_using_only_ra_or_rra(stack_a, lst_procedure);
+	sort_stack_using_only_ra_or_rra(stack_a, lst_procedure);
 }

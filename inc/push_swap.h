@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:31:29 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/25 14:51:21 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/25 16:28:14 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	ope_three_node(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
 
 // ope_less_six_node.c
 void	ope_four_five_node(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
+void	sort_stack_using_only_ra_or_rra(t_lst **lst_pp, t_lst **lst_procedure);
 
 // utils/utils_struct.c
 size_t	get_index_of(const t_lst *pointer);
