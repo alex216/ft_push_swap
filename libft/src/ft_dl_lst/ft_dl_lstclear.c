@@ -6,13 +6,13 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:40:34 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/14 16:20:18 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/22 16:17:36 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void				ft_dl_lstclear(t_lst **lst_pp, void (*del)(void *))
+void	ft_dl_lstclear(t_lst **lst_pp, void (*del)(void *))
 {
 	t_lst	*iter_p;
 	t_lst	*tmp_p;
@@ -28,7 +28,7 @@ void				ft_dl_lstclear(t_lst **lst_pp, void (*del)(void *))
 		ft_dl_lstdelone(iter_p, del);
 		iter_p = tmp_p;
 	}
-	free(iter_p);
+	ft_dl_lstdelone(iter_p, del);
 	*lst_pp = NULL;
 }
 

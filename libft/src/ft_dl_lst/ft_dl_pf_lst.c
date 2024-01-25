@@ -6,50 +6,64 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 14:31:52 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/14 10:22:08 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/24 12:24:07 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
 
-static void	print_ascending_direction(t_lst *lst_p, void *(*return_printable)(t_lst *))
+static void	print_ascending_direction(const t_lst *lst_p, void *(*return_printable)(const t_lst *))
 {
 	while (!lst_p->is_sentinel)
 	{
-		ft_printf("%s", return_printable(lst_p));
+		ft_printf("%s", return_printable((const t_lst *)lst_p));
 		lst_p = lst_p->next_p;
-		ft_printf(" -> ");
+		ft_printf(",");
 	}
-	ft_printf("[%d]", lst_p->is_sentinel);
-	ft_printf(" -> %s", return_printable(lst_p->next_p));
+	// ft_printf("[%d]", lst_p->is_sentinel);
+	// ft_printf(" -> %s", return_printable(lst_p->next_p));
 }
 
-static void	print_descending_direction(t_lst *lst_p, void *(*return_printable)(t_lst *))
-{
-	while (!lst_p->is_sentinel)
-	{
-		ft_printf("%s", return_printable(lst_p));
-		lst_p = lst_p->prev_p;
-		ft_printf(" -> ");
-	}
-	ft_printf("[%d]", lst_p->is_sentinel);
-	ft_printf(" -> %s", return_printable(lst_p->prev_p));
-}
+// static void	print_descending_direction(t_lst *lst_p, void *(*return_printable)(t_lst *))
+// {
+// 	while (!lst_p->is_sentinel)
+// 	{
+// 		ft_printf("%s", return_printable(lst_p));
+// 		lst_p = lst_p->prev_p;
+// 		ft_printf(" -> ");
+// 	}
+// 	ft_printf("[%d]", lst_p->is_sentinel);
+// 	ft_printf(" -> %s", return_printable(lst_p->prev_p));
+// }
 
-void	ft_dl_pf_lst(t_lst *lst_p, void *(*return_printable)(t_lst *))
+void	ft_dl_pf_lst(const t_lst *lst_p, void *(*return_printable)(const t_lst *))
 {
 	if (!lst_p || !(*return_printable))
 	{
 		ft_printf("t_lst or funct pointer is NULL\n");
 		return ;
 	}
-	ft_printf("#####start#####[size:%d]\n" , ft_dl_lstsize(lst_p));
-	ft_printf("[->]");
+	// ft_printf("#####start#####[size:%d]\n" , ft_dl_lstsize(lst_p));
+	// ft_printf("[->]");
 	print_ascending_direction(lst_p, return_printable);
-	ft_printf("\n");
-	ft_printf("[<-]");
-	print_descending_direction(lst_p->prev_p->prev_p, return_printable);
 	ft_printf("\n");
 	return ;
 }
+
+// void	ft_dl_pf_lst(t_lst *lst_p, void *(*return_printable)(t_lst *))
+// {
+// 	if (!lst_p || !(*return_printable))
+// 	{
+// 		ft_printf("t_lst or funct pointer is NULL\n");
+// 		return ;
+// 	}
+// 	ft_printf("#####start#####[size:%d]\n" , ft_dl_lstsize(lst_p));
+// 	ft_printf("[->]");
+// 	print_ascending_direction(lst_p, return_printable);
+// 	ft_printf("\n");
+// 	ft_printf("[<-]");
+// 	print_descending_direction(lst_p->prev_p->prev_p, return_printable);
+// 	ft_printf("\n");
+// 	return ;
+// }

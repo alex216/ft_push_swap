@@ -6,29 +6,22 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:32:48 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/14 15:51:21 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/25 11:27:47 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
+#include "libft.h"
 #include "push_swap.h"
+#include <stddef.h>
 
-static ssize_t	is_ascending_order(t_lst *iter_p)
-{
-	int	cur;
-	int	next;
+static ssize_t	_has_duplicate_value(t_lst *iter_p);
+static char	**_convert_argv_to_str(const char *src_str);
+static ssize_t	_check_digital_input(const char *string);
+static int	_handle_abnormal_input();
+void	argv_to_lst(int argc, char **argv, t_lst **stack_a);
 
-	while (!iter_p->next_p->is_sentinel)
-	{
-		cur = get_int_value_of(iter_p);
-		next = get_int_value_of(iter_p->next_p);
-		if (cur > next)
-			return (false);
-		iter_p = iter_p->next_p;
-	}
-	return (true);
-}
-
-static ssize_t	has_duplicate_value(t_lst *iter_p)
+static ssize_t	_has_duplicate_value(t_lst *iter_p)
 {
 	t_lst	*temp_p;
 
@@ -46,7 +39,7 @@ static ssize_t	has_duplicate_value(t_lst *iter_p)
 	return (true);
 }
 
-static char	**convert_argv_to_str(const char *src_str)
+static char	**_convert_argv_to_str(const char *src_str)
 {
 	char	**malloced_str;
 
@@ -56,7 +49,7 @@ static char	**convert_argv_to_str(const char *src_str)
 	return (malloced_str);
 }
 
-static ssize_t	check_digital_input(const char *string)
+static ssize_t	_check_digital_input(const char *string)
 {
 	char	*tmp_str;
 	int		strncmp_res;
@@ -72,10 +65,39 @@ static ssize_t	check_digital_input(const char *string)
 		return(true);
 }
 
-static int	handle_abnormal_input()
+static int	_handle_abnormal_input()
 {
 	ft_printf("Error\n");
 	return (true);
+}
+
+static size_t	_count_how_large_the_new_node_is(t_lst **stack_a, t_lst *lst_p)
+{
+	t_lst	*iter_p;
+	size_t	larger;
+
+	iter_p = *stack_a;
+	larger = 1;
+	while (iter_p->is_sentinel == false)
+	{
+		if (get_int_value_of(iter_p) < get_int_value_of(lst_p))
+			larger++;
+		iter_p = iter_p->next_p;
+	}
+	return (larger);
+}
+
+static void	_compress_array(t_lst **stack_a)
+{
+	t_lst	*iter_p;
+
+	iter_p = *stack_a;
+	while (iter_p->is_sentinel == false)
+	{
+		iter_p->payload_p->index = _count_how_large_the_new_node_is(stack_a, iter_p);
+		iter_p = iter_p->next_p;
+	}
+
 }
 
 void	argv_to_lst(int argc, char **argv, t_lst **stack_a)
@@ -88,15 +110,15 @@ void	argv_to_lst(int argc, char **argv, t_lst **stack_a)
 	argv++;
 	while(*argv)
 	{
-		malloced_arg = convert_argv_to_str(*argv);
+		malloced_arg = _convert_argv_to_str(*argv);
 		if (!malloced_arg)
 			exit(EXIT_FAILURE);
 		i = 0;
 		while (malloced_arg[i])
 		{
-			if (!check_digital_input(malloced_arg[i]))
-				exit(handle_abnormal_input());
-			if (!ft_dl_lstnew(stack_a, create_record(malloced_arg[i++])))
+			if (!_check_digital_input(malloced_arg[i]))
+				exit(_handle_abnormal_input());
+			if (!ft_dl_lstappend(stack_a, create_record(malloced_arg[i++])))
 				exit(EXIT_FAILURE);
 		}
 		argv++;
@@ -104,8 +126,7 @@ void	argv_to_lst(int argc, char **argv, t_lst **stack_a)
 			free(malloced_arg[--i]);
 		free(malloced_arg);
 	}
-	if (!has_duplicate_value(*stack_a))
-		exit(handle_abnormal_input());
-	if (is_ascending_order(*stack_a))
-		exit(EXIT_SUCCESS);
+	if (!_has_duplicate_value(*stack_a))
+		exit(_handle_abnormal_input());
+	_compress_array(stack_a);
 }

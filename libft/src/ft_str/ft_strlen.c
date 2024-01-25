@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 22:25:18 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/11 11:54:47 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/21 16:16:23 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ size_t	ft_strlen(const char *str)
 	size_t	i;
 
 	if (str == NULL)
-		exit(ENOMEM);
+		return (errno = EINVAL, 0);
 	i = 0;
 	while (*(str + i) != '\0')
 		i++;

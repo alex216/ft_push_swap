@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 22:04:03 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/14 15:48:31 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/25 15:24:51 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,15 +104,16 @@ typedef struct s_lst {
 
 // dl version of libft
 //	ft_dl_lst_create_ope.c
-ssize_t	ft_dl_lstnew(t_lst **lst_pp, t_record *record_p);
-void	ft_dl_lstadd_front_with_lst(t_lst **lst, t_lst *new_node);
-void	ft_dl_lstadd_back_with_lst(t_lst **lst, t_lst *new_node);
+bool	ft_dl_lstadd_front_with_lst(t_lst **lst, t_lst *new_node);
+bool	ft_dl_lstadd_back_with_lst(t_lst **lst, t_lst *new_node);
+bool	ft_dl_lstappend(t_lst **lst_pp, t_record *record_p);
+// t_lst	*ft_dl_lstdup(t_lst **lst_pp);
 
 size_t	ft_dl_lstsize(const t_lst *lst);
 t_lst	*ft_dl_lstlast(const t_lst *lst);
 void	ft_dl_lstdelone(t_lst *lst, void (*del)(void *));
 void	ft_dl_lstclear(t_lst **lst_pp, void (*del)(void *));
-void	ft_dl_pf_lst(t_lst *lst_p, void *(*return_printable)(t_lst *));
+void	ft_dl_pf_lst(const t_lst *lst_p, void *(*return_printable)(const t_lst *));
 
 // helper func
 t_lst	*ft_dl_lstcreate_a_node(t_record *record_p, size_t is_sentinel);
