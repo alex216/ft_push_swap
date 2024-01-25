@@ -6,11 +6,14 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:32:48 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/24 16:52:06 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/25 11:27:47 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
+#include "libft.h"
 #include "push_swap.h"
+#include <stddef.h>
 
 static ssize_t	_has_duplicate_value(t_lst *iter_p);
 static char	**_convert_argv_to_str(const char *src_str);
@@ -68,6 +71,35 @@ static int	_handle_abnormal_input()
 	return (true);
 }
 
+static size_t	_count_how_large_the_new_node_is(t_lst **stack_a, t_lst *lst_p)
+{
+	t_lst	*iter_p;
+	size_t	larger;
+
+	iter_p = *stack_a;
+	larger = 1;
+	while (iter_p->is_sentinel == false)
+	{
+		if (get_int_value_of(iter_p) < get_int_value_of(lst_p))
+			larger++;
+		iter_p = iter_p->next_p;
+	}
+	return (larger);
+}
+
+static void	_compress_array(t_lst **stack_a)
+{
+	t_lst	*iter_p;
+
+	iter_p = *stack_a;
+	while (iter_p->is_sentinel == false)
+	{
+		iter_p->payload_p->index = _count_how_large_the_new_node_is(stack_a, iter_p);
+		iter_p = iter_p->next_p;
+	}
+
+}
+
 void	argv_to_lst(int argc, char **argv, t_lst **stack_a)
 {
 	char		**malloced_arg;
@@ -96,4 +128,5 @@ void	argv_to_lst(int argc, char **argv, t_lst **stack_a)
 	}
 	if (!_has_duplicate_value(*stack_a))
 		exit(_handle_abnormal_input());
+	_compress_array(stack_a);
 }

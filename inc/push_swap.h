@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:31:29 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/24 15:20:26 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/25 11:02:08 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_record	t_record;
 
 typedef struct s_record {
 	int		int_data;
+	size_t	index;
 	char	*char_content;
 	void	*omni_p;
 }			t_record;
@@ -48,7 +49,8 @@ void	ope_three_node(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
 void	ope_four_five_node(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
 
 // utils/utils_struct.c
-int		get_int_value_of(const t_lst *pointer);
+size_t	get_index_of(const t_lst *pointer);
+int	get_int_value_of(const t_lst *pointer);
 char	*get_char_of(const t_lst *pointer);
 void	*get_pointer_to_print(const t_lst *lst_p);
 void	del_push_swap(void *pointer);
