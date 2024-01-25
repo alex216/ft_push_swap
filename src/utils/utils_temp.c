@@ -6,10 +6,12 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 21:06:29 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/24 15:21:01 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/25 14:52:38 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
+#include "libft.h"
 #include "push_swap.h"
 
 void	append_to_procedure(t_lst **lst_procedure, const char *string);
@@ -92,4 +94,17 @@ ope_p	*define_function_pointer(void)
 	ope_array[9] = operate_rrb;
 	ope_array[10] = operate_rrr;
 	return (ope_array);
+}
+
+void	print_index(t_lst **lst_pp)
+{
+	t_lst	*iter_p;
+
+	iter_p = *lst_pp;
+
+	while (iter_p->is_sentinel == false)
+	{
+		ft_printf("elem [%d] idx [%d]\n", get_int_value_of(iter_p), get_index_of(iter_p));
+		iter_p = iter_p->next_p;
+	}
 }

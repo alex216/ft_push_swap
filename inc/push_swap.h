@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:31:29 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/25 11:02:08 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/25 14:51:21 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ bool	is_ascending_order(const t_lst *iter_p);
 void	free_all(t_lst **lst_a, t_lst **lst_b, t_lst **lst_procedure);
 void	debug_func(t_lst **a, t_lst **b, t_lst **tmp, char *, char *, char *);
 ope_p	*define_function_pointer(void);
+void	print_index(t_lst **lst_pp);
 
 // operate_stack_a.c
 bool	operate_sa(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);

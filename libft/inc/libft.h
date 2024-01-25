@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 22:04:03 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/24 12:23:23 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/25 15:24:51 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ typedef struct s_lst {
 bool	ft_dl_lstadd_front_with_lst(t_lst **lst, t_lst *new_node);
 bool	ft_dl_lstadd_back_with_lst(t_lst **lst, t_lst *new_node);
 bool	ft_dl_lstappend(t_lst **lst_pp, t_record *record_p);
-t_lst	*ft_dl_lstdup(t_lst **lst_pp);
+// t_lst	*ft_dl_lstdup(t_lst **lst_pp);
 
 size_t	ft_dl_lstsize(const t_lst *lst);
 t_lst	*ft_dl_lstlast(const t_lst *lst);
