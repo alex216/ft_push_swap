@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 21:06:29 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/30 14:33:00 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/30 15:59:41 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,5 @@ void	print_index(t_lst **lst_pp)
 int	handle_abnormal_input()
 {
 	ft_putendl_fd("Error", STDERR_FILENO);
-	return (true);
+	return (255);
 }

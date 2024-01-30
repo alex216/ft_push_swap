@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:32:48 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/30 14:02:38 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/30 16:02:25 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ static ssize_t	_has_duplicate_value(t_lst *iter_p)
 		while (!temp_p->is_sentinel)
 		{
 			if (get_int_value_of(temp_p) == get_int_value_of(iter_p))
-				return (false);
+				return (true);
 			temp_p = temp_p->prev_p;
 		}
 		iter_p = iter_p->next_p;
 	}
-	return (true);
+	return (false);
 }
 
 static char	**_convert_argv_to_str(const char *src_str)
@@ -121,7 +121,7 @@ void	argv_to_lst(int argc, char **argv, t_lst **stack_a)
 		free(malloced_arg);
 		argv++;
 	}
-	if (!_has_duplicate_value(*stack_a))
+	if (_has_duplicate_value(*stack_a))
 		exit(handle_abnormal_input());
 	_compress_array(stack_a);
 }

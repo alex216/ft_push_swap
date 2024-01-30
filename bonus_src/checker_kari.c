@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 23:23:49 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/30 15:03:52 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/30 16:00:04 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,61 +40,64 @@ static void	_put_data_to_ope_dictionary(t_operation_dictionary ope_dictionary[NU
 
 static bool	_validate_operation(char *ope_name, char *input)
 {
-	size_t len;
+	size_t	len;
 
 	len = ft_strlen(input);
 	return (!ft_strncmp(ope_name, input, len - 1) && input[len - 1] == '\n');
 }
 
-static bool _exec_valid_operation(
-	const t_operation_dictionary ope_dict[NUMBER_OPERATIONS],
-	t_lst **stack_a,
-	t_lst **stack_b,
-	t_lst **lst_procedure,
-	char *string)
+static bool	_exec_valid_operation(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure, char *string)
 {
 	int	i;
+	t_operation_dictionary	ope_dict[NUMBER_OPERATIONS];
 
+	_put_data_to_ope_dictionary(ope_dict);
 	i = 0;
 	while (i < NUMBER_OPERATIONS)
 	{
 		if (_validate_operation(ope_dict[i].operation_name, string))
-			return (ope_dict[i].operation_function(stack_a, stack_b, lst_procedure));
+			return (ope_dict[i].operation_function(stack_a, stack_b,
+					lst_procedure));
 		i++;
 	}
 	return (false);
 }
 
-int main(int argc, char **argv)
+static void	_read_loop(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
 {
-	t_lst	*stack_a;
-	t_lst	*stack_b;
-	t_lst	*lst_procedure;
-    ssize_t read_bytes;
-	t_operation_dictionary ope_dictionary[NUMBER_OPERATIONS];
+	ssize_t	read_bytes;
+	char	read_buf[MAX_READ_SIZE];
+
+	while (true)
+	{
+		read_bytes = read(STDIN_FILENO, &read_buf, MAX_READ_SIZE);
+		if (read_bytes < 0)
+			exit(EXIT_FAILURE);
+		if (read_bytes == 0)
+			break ;
+		if (read_bytes >= MAX_READ_SIZE)
+			exit(handle_abnormal_input());
+		read_buf[read_bytes] = '\0';
+		if (!_exec_valid_operation(stack_a, stack_b, lst_procedure, read_buf))
+			exit(handle_abnormal_input());
+	}
+}
+
+int	main(int argc, char **argv)
+{
+	t_lst					*stack_a;
+	t_lst					*stack_b;
+	t_lst					*lst_procedure;
 
 	stack_a = NULL;
 	stack_b = NULL;
 	lst_procedure = NULL;
-	(void)stack_b;
-	(void)lst_procedure;
-	_put_data_to_ope_dictionary(ope_dictionary);
 	argv_to_lst(argc, argv, &stack_a);
-	char	read_buf[MAX_READ_SIZE];
- //    while (1)
-	// {
-        read_bytes = read(STDIN_FILENO, &read_buf, MAX_READ_SIZE);
-        if (read_bytes <= 0)
-			exit(EXIT_FAILURE);
-		if (read_bytes >= MAX_READ_SIZE)
-			exit(handle_abnormal_input());
-		read_buf[read_bytes] = '\0';
-		if (!_exec_valid_operation(ope_dictionary, &stack_a, &stack_b, &lst_procedure, read_buf))
-			exit(handle_abnormal_input());
-    // }
+	_read_loop(&stack_a, &stack_b, &lst_procedure);
 	if (is_ascending_order(stack_a))
 		ft_putendl_fd("OK", STDOUT_FILENO);
 	else
 		ft_putendl_fd("KO", STDOUT_FILENO);
-    return 0;
+	free_all(&stack_a, &stack_b, &lst_procedure);
+	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 12:04:47 by yliu              #+#    #+#              #
-#    Updated: 2024/01/30 14:14:13 by yliu             ###   ########.fr        #
+#    Updated: 2024/01/30 15:11:19 by yliu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -103,7 +103,7 @@ $(OBJS_DIR)/%.o:$(MAKE_OBJDIR) $(SRCS_DIR)/%.c $(HEADERS)
 				@$(ECHO) -n "$(RED)\u2500$(DEF_COLOR)"
 
 $(BONUS_OBJS_DIR)/%.o:$(MAKE_B_OBJDIR) $(BONUS_SRCS_DIR)/%.c $(BONUS_HEADERS)
-				$(CC) $(CFLAGS) $(foreach dir_list,$(BONUS_INC_DIR),-I$(dir_list)) -c $< -o $@
+				@$(CC) $(CFLAGS) $(foreach dir_list,$(BONUS_INC_DIR),-I$(dir_list)) -c $< -o $@
 
 # other cmds
 clean:
