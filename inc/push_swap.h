@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:31:29 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/25 16:36:26 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/30 14:33:13 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@ typedef struct s_record {
 }			t_record;
 
 typedef bool	(*ope_p)(t_lst **, t_lst **, t_lst **);
+
+typedef struct s_operation_dictionary {
+	size_t	index;
+	char	*operation_name;
+	bool	(*operation_function)(t_lst **, t_lst **, t_lst **);
+}			t_operation_dictionary;
 
 int	main(int argc, char **argv);
 
@@ -64,8 +70,8 @@ bool	is_descending_order(const t_lst *iter_p);
 bool	is_ascending_order(const t_lst *iter_p);
 void	free_all(t_lst **lst_a, t_lst **lst_b, t_lst **lst_procedure);
 void	debug_func(t_lst **a, t_lst **b, t_lst **tmp, char *, char *, char *);
-ope_p	*define_function_pointer(void);
 void	print_index(t_lst **lst_pp);
+int	handle_abnormal_input();
 
 // operate_stack_a.c
 bool	operate_sa(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);

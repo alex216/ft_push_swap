@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 21:06:29 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/25 14:52:38 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/30 14:33:00 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,24 +78,6 @@ void	debug_func(t_lst **a, t_lst **b, t_lst **tmp, char *q, char *w, char *e)
 	ft_dl_pf_lst(*tmp, get_pointer_to_print);
 }
 
-ope_p	*define_function_pointer(void)
-{
-	static ope_p ope_array[OPERATION_NUMBER];
-
-	ope_array[0] = operate_sa;
-	ope_array[1] = operate_sb;
-	ope_array[2] = operate_ss;
-	ope_array[3] = operate_pa;
-	ope_array[4] = operate_pb;
-	ope_array[5] = operate_ra;
-	ope_array[6] = operate_rb;
-	ope_array[7] = operate_rr;
-	ope_array[8] = operate_rra;
-	ope_array[9] = operate_rrb;
-	ope_array[10] = operate_rrr;
-	return (ope_array);
-}
-
 void	print_index(t_lst **lst_pp)
 {
 	t_lst	*iter_p;
@@ -107,4 +89,10 @@ void	print_index(t_lst **lst_pp)
 		ft_printf("elem [%d] idx [%d]\n", get_int_value_of(iter_p), get_index_of(iter_p));
 		iter_p = iter_p->next_p;
 	}
+}
+
+int	handle_abnormal_input()
+{
+	ft_putendl_fd("Error", STDERR_FILENO);
+	return (true);
 }

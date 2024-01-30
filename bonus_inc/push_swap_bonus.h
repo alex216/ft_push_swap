@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 19:06:11 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/29 17:23:31 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/30 14:32:27 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "push_swap.h"
 
 # define NUMBER_OPERATIONS 11
+# define MAX_READ_SIZE 5
 
 int	main(int argc, char **argv);
 

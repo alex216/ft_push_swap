@@ -6,7 +6,7 @@
 #    By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 12:04:47 by yliu              #+#    #+#              #
-#    Updated: 2024/01/29 18:25:35 by yliu             ###   ########.fr        #
+#    Updated: 2024/01/30 14:14:13 by yliu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SHELL = /bin/zsh
 
 # compiler option and etc
 NAME			= push_swap
-BONUS_NAME		= checker_kari
+BONUS_NAME		= kari_checker
 LIBRARY			= libft.a
 CFLAGS			= -Wall -Wextra -Werror
 RM				= rm -rf
@@ -96,7 +96,7 @@ compile:		$(OBJS) $(HEADERS) $(LIBFT_HEADERS)
 				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(NAME)]\t./$(NAME) \t$(GREEN)compiled \u2714$(DEF_COLOR)"
 
 compile_bonus:	$(BONUS_OBJS) $(BONUS_HEADERS) $(LIBFT_HEADERS)
-				$(CC) $(CFLAGS) $(foreach dir_list,$(MAN_INC_DIR),-I$(dir_list)) ./obj/operate/basic_stack_operation.o  ./obj/operate/ope_four_five_node.o  ./obj/operate/operate_both_stack.o  ./obj/operate/operate_stack_a.o  ./obj/operate/operate_stack_b.o  ./obj/utils/argv_to_lst.o  ./obj/utils/ope_three_node.o  ./obj/utils/ope_two_node.o  ./obj/utils/utils_struct.o  ./obj/utils/utils_temp.o $(BONUS_OBJS) ./libft/libft.a -o $(BONUS_NAME)
+				@$(CC) $(CFLAGS) $(foreach dir_list,$(MAN_INC_DIR),-I$(dir_list)) ./obj/operate/basic_stack_operation.o  ./obj/operate/ope_four_five_node.o  ./obj/operate/operate_both_stack.o  ./obj/operate/operate_stack_a.o  ./obj/operate/operate_stack_b.o  ./obj/utils/argv_to_lst.o  ./obj/utils/ope_three_node.o  ./obj/utils/ope_two_node.o  ./obj/utils/utils_struct.o  ./obj/utils/utils_temp.o $(BONUS_OBJS) ./libft/libft.a -o $(BONUS_NAME)
 				
 $(OBJS_DIR)/%.o:$(MAKE_OBJDIR) $(SRCS_DIR)/%.c $(HEADERS)
 				@$(CC) $(CFLAGS) $(foreach dir_list,$(MAN_INC_DIR),-I$(dir_list)) -c $< -o $@

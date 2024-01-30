@@ -8,6 +8,7 @@ push_swap
 
 # tester
 checker*
+*checker
 test.sh
 subject.txt
 push_swap_visualizer
