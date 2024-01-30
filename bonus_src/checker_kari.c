@@ -6,13 +6,14 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 23:23:49 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/30 16:00:04 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/30 16:07:43 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-static void	_put_data_to_ope_dictionary(t_operation_dictionary ope_dictionary[NUMBER_OPERATIONS])
+static void	_put_data_to_ope_dictionary(
+	t_operation_dictionary ope_dictionary[NUMBER_OPERATIONS])
 {
 	ope_dictionary[0].operation_name = "sa";
 	ope_dictionary[1].operation_name = "sb";
@@ -46,9 +47,13 @@ static bool	_validate_operation(char *ope_name, char *input)
 	return (!ft_strncmp(ope_name, input, len - 1) && input[len - 1] == '\n');
 }
 
-static bool	_exec_valid_operation(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure, char *string)
+static bool	_exec_valid_operation(
+	char *string,
+	t_lst **stack_a,
+	t_lst **stack_b,
+	t_lst **lst_procedure)
 {
-	int	i;
+	int						i;
 	t_operation_dictionary	ope_dict[NUMBER_OPERATIONS];
 
 	_put_data_to_ope_dictionary(ope_dict);
