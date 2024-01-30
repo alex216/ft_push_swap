@@ -7,12 +7,11 @@ push_swap
 *.gch
 
 # tester
-checker
+checker*
 test.sh
 subject.txt
 push_swap_visualizer
 Push-Swap-Tester
-checker_Mac
 traces.txt
 push_swap_test.sh
 push_swap_tester
@@ -22,9 +21,11 @@ libft.a
 
 # obj
 obj
+bonus_obj
 
 # vscode
 .vscode/*
 
 # other
 tags
+compile_flags.txt

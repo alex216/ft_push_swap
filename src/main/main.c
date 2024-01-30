@@ -6,12 +6,10 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 12:20:49 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/24 17:06:21 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/29 16:12:05 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft.h"
 #include "push_swap.h"
 
 int	main(int argc, char **argv);
@@ -60,6 +58,7 @@ static void	_print_list(const t_lst *i_p)
 
 int	main(int argc, char **argv)
 {
+	//TODO: Makefile norm violation
 	t_lst	*stack_a;
 	t_lst	*stack_b;
 	t_lst	*lst_procedure;

@@ -6,7 +6,7 @@
 #    By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 12:04:47 by yliu              #+#    #+#              #
-#    Updated: 2024/01/14 16:48:50 by yliu             ###   ########.fr        #
+#    Updated: 2024/01/29 18:25:35 by yliu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,26 +14,45 @@ SHELL = /bin/zsh
 
 # compiler option and etc
 NAME			= push_swap
+BONUS_NAME		= checker_kari
 LIBRARY			= libft.a
 CFLAGS			= -Wall -Wextra -Werror
 RM				= rm -rf
 ECHO			= echo -e
 
-# directory
+##########################################
+# library directory
+LIB_DIR			= ./libft
+BASE_INC_DIR	= ./libft/inc
+
+# mandatory directory
 SRCS_DIR		= ./src
 OBJS_DIR		= ./obj
-INC_DIR			= ./inc ./libft/inc
-LIB_DIR			= ./libft
+MAN_INC_DIR		= $(BASE_INC_DIR) ./inc
 
-# files
+# bonus directory
+BONUS_SRCS_DIR	= ./bonus_src
+BONUS_OBJS_DIR	= ./bonus_obj
+BONUS_INC_DIR	= $(BASE_INC_DIR) ./inc ./bonus_inc
+
+##########################################
+# headers files
+ORIGIN_HEADERS	= $(wildcard $(BASE_INC_DIR)/*.h)
+LIB				= $(LIB_DIR)/$(LIBRARY)
+
+# mandatory files
 SRCS 	   		= $(wildcard $(SRCS_DIR)/*/*.c)
 OBJS			= $(subst $(SRCS_DIR), $(OBJS_DIR), $(SRCS:.c=.o))
-HEADERS 	   	= $(wildcard $(INC_DIR)/*.h)
-LIBFT_HEADERS 	= $(wildcard ./libft/$(INC_DIR)/*.h)
-LIB				= $(LIB_DIR)/$(LIBRARY)
+HEADERS 	   	= $(ORIGIN_HEADERS) ./inc/push_swap.h
+
+# bonus files
+BONUS_SRCS 	   	= $(BONUS_SRCS_DIR)/checker_kari.c
+BONUS_OBJS		= $(subst $(BONUS_SRCS_DIR), $(BONUS_OBJS_DIR), $(BONUS_SRCS:.c=.o))
+BONUS_HEADERS	= $(HEADERS) ./bonus_inc/push_swap_bonus.h
 
 # make obj dir recursively
 MAKE_OBJDIR		= $(shell mkdir -p $(subst $(SRCS_DIR), $(OBJS_DIR), $(dir $(SRCS))))
+MAKE_B_OBJDIR	= $(shell mkdir -p $(subst $(BONUS_SRCS_DIR), $(BONUS_OBJS_DIR), $(dir $(BONUS_SRCS))))
 
 # debug info
 ifdef DEBUG
@@ -55,10 +74,14 @@ LINE			= 	\u2500\u2500
 
 all:			$(NAME)
 
+bonus:			$(BONUS_NAME)
+
 debug:
 				make DEBUG=1 all
 
 $(NAME):		status_check
+
+$(BONUS_NAME):	compile_bonus
 
 status_check:
 				@cd $(LIB_DIR) && make
@@ -67,19 +90,26 @@ status_check:
 				@make compile
 				
 compile:		$(OBJS) $(HEADERS) $(LIBFT_HEADERS)
-				@$(CC) $(CFLAGS) $(foreach dir_list,$(INC_DIR),-I$(dir_list)) $(OBJS) ./libft/libft.a -o $(NAME)
+				@$(CC) $(CFLAGS) $(foreach dir_list,$(MAN_INC_DIR),-I$(dir_list)) $(OBJS) ./libft/libft.a -o $(NAME)
 				@$(ECHO) -n "\r\e$(GREEN)$(LINE)$(DEF_COLOR)"
 				@$(ECHO) "$(GREEN) \u2023 100% $(DEF_COLOR)"
 				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(NAME)]\t./$(NAME) \t$(GREEN)compiled \u2714$(DEF_COLOR)"
 
+compile_bonus:	$(BONUS_OBJS) $(BONUS_HEADERS) $(LIBFT_HEADERS)
+				$(CC) $(CFLAGS) $(foreach dir_list,$(MAN_INC_DIR),-I$(dir_list)) ./obj/operate/basic_stack_operation.o  ./obj/operate/ope_four_five_node.o  ./obj/operate/operate_both_stack.o  ./obj/operate/operate_stack_a.o  ./obj/operate/operate_stack_b.o  ./obj/utils/argv_to_lst.o  ./obj/utils/ope_three_node.o  ./obj/utils/ope_two_node.o  ./obj/utils/utils_struct.o  ./obj/utils/utils_temp.o $(BONUS_OBJS) ./libft/libft.a -o $(BONUS_NAME)
+				
 $(OBJS_DIR)/%.o:$(MAKE_OBJDIR) $(SRCS_DIR)/%.c $(HEADERS)
-				@$(CC) $(CFLAGS) $(foreach dir_list,$(INC_DIR), -I$(dir_list)) -c $< -o $@
+				@$(CC) $(CFLAGS) $(foreach dir_list,$(MAN_INC_DIR),-I$(dir_list)) -c $< -o $@
 				@$(ECHO) -n "$(RED)\u2500$(DEF_COLOR)"
+
+$(BONUS_OBJS_DIR)/%.o:$(MAKE_B_OBJDIR) $(BONUS_SRCS_DIR)/%.c $(BONUS_HEADERS)
+				$(CC) $(CFLAGS) $(foreach dir_list,$(BONUS_INC_DIR),-I$(dir_list)) -c $< -o $@
 
 # other cmds
 clean:
 				@cd $(LIB_DIR) && make clean
 				@$(RM) $(OBJS_DIR)
+				@$(RM) $(BONUS_OBJS_DIR)
 				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(NAME)]\tobject files \t$(GREEN)deleted \u2714$(DEF_COLOR)"
 
 fclean:			
@@ -98,14 +128,9 @@ norm:
 format_norm:
 				@c_formatter_42 $(SRCS) $(HEADERS)
 
-print_SRCS:
-				@echo $(SRCS)
+print_TEST:
+				@echo $(BONUS_HEADERS)
 
-print_OBJS:
-				@echo $(OBJS)
-
-print_LIBFT_HEADERS:
-				@echo $(LIBFT_HEADERS)
 
 
 .PHONY:			all clean fclean re bonus norm format_norm debug
