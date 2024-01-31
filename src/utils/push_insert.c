@@ -6,12 +6,10 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 12:16:41 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/31 17:10:28 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/31 19:40:20 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft.h"
 #include "push_swap.h"
 
 static void	_operate_ra_rb(int ra, int rb, t_lst **stack_a, t_lst **stack_b,
@@ -92,8 +90,8 @@ void	execute_optimized_push(int minimum, int ra, t_lst **stack_a,
 	while (temp_index--)
 		iter_p = iter_p->next_p;
 	rra = ft_dl_lstsize(*stack_a) - ra;
-	// rb = return_number_to_rotate_descending(stack_b, iter_p);
-	rb = return_number_to_rotate_ascending(stack_b, iter_p);
+	rb = return_number_to_rotate_descending(stack_b, iter_p);
+	// rb = return_number_to_rotate_ascending(stack_b, iter_p);
 	rrb = ft_dl_lstsize(*stack_b) - rb;
 	if (ft_max(ra, rb) == minimum)
 		_operate_ra_rb(ra, rb, stack_a, stack_b, lst_procedure);

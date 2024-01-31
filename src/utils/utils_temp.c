@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 21:06:29 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/31 17:30:54 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/31 19:39:30 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ size_t	return_number_to_rotate_descending(t_lst **lst_pp, const t_lst *node_p)
 			a_prev = get_index_of(iter_p->prev_p->prev_p);
 		else
 			a_prev = get_index_of(iter_p->prev_p);
-		if ((a_prev > a_curr && (b_top > a_prev && b_top < a_curr))
-			|| (a_prev < a_curr && (b_top > a_prev || b_top < a_curr)))
+		if ((a_prev > a_curr && (b_top < a_prev && b_top > a_curr))
+			|| (a_prev < a_curr && (b_top < a_prev || b_top > a_curr)))
 			break ;
 		iter_p = iter_p->next_p;
 		ra_counter++;

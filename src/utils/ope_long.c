@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 19:13:04 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/31 17:10:06 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/31 19:45:48 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,12 @@ void	ope_long(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
 	int		optimal_push_insert_node_index;
 	int		temp;
 
+	// operate_pb(stack_a, stack_b, lst_procedure);
+	// operate_pb(stack_a, stack_b, lst_procedure);
+	// operate_pb(stack_a, stack_b, lst_procedure);
+	//
 	// debug_func(stack_a, stack_b, lst_procedure, "a", "b", "lst");
+	
 	while (*stack_a)
 	{
 		iter_p = *stack_a;
@@ -46,11 +51,11 @@ void	ope_long(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
 		optimal_push_insert_node_index = 0;
 		while (iter_p->is_sentinel == false)
 		{
-			rb_num = return_number_to_rotate_ascending(stack_b, iter_p);
-			// rb_num = return_number_to_rotate_descending(stack_b, iter_p);
+			// rb_num = return_number_to_rotate_ascending(stack_b, iter_p);
+			rb_num = return_number_to_rotate_descending(stack_b, iter_p);
 			// ft_printf("rb num is %d\n", rb_num);
-			temp = return_minimum_step_of_push_insert(ra_num, rb_num, stack_a,
-					stack_b);
+			// exit(42);
+			temp = return_minimum_step_of_push_insert(ra_num, rb_num, stack_a, stack_b);
 			if (temp < minimum)
 			{
 				minimum = temp;
@@ -63,10 +68,15 @@ void	ope_long(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
 			stack_b, lst_procedure);
 	}
 	sort_stack_using_only_ra_or_rra_in_fastest_way_in_b(stack_b, lst_procedure);
-	while (*stack_b)
-	{
-		operate_rrb(stack_a, stack_b, lst_procedure);
-		operate_pa(stack_a, stack_b, lst_procedure);
-	}
+	operate_rb(stack_a, stack_b, lst_procedure);
 	// debug_func(stack_a, stack_b, lst_procedure, "a", "b", "lst");
+
+	// while (*stack_b)
+	// {
+	// 	operate_rrb(stack_a, stack_b, lst_procedure);
+	// 	operate_pa(stack_a, stack_b, lst_procedure);
+	// }
+
+	while (*stack_b)
+		operate_pa(stack_a, stack_b, lst_procedure);
 }
