@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:31:29 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/30 14:33:13 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/31 17:05:12 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,14 @@ void	ope_two_node(t_lst **stack_a, t_lst **lst_procedure);
 
 // ope_three_node.c
 void	ope_three_node(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
-void	append_sa_if_needed(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
 
 // ope_less_six_node.c
 void	ope_four_five_node(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
-void	sort_stack_using_only_ra_or_rra(t_lst **lst_pp, t_lst **lst_procedure);
+void	sort_stack_using_only_ra_or_rra_in_fastest_way_in_a(t_lst **lst_pp, t_lst **lst_procedure);
+void	sort_stack_using_only_ra_or_rra_in_fastest_way_in_b(t_lst **lst_pp, t_lst **lst_procedure);
+
+// ope_long.c
+void	ope_long(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
 
 // utils/utils_struct.c
 size_t	get_index_of(const t_lst *pointer);
@@ -72,6 +75,17 @@ void	free_all(t_lst **lst_a, t_lst **lst_b, t_lst **lst_procedure);
 void	debug_func(t_lst **a, t_lst **b, t_lst **tmp, char *, char *, char *);
 void	print_index(t_lst **lst_pp);
 int	handle_abnormal_input();
+void	append_sa_if_needed(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
+size_t return_number_to_rotate_ascending(t_lst **lst_pp, const t_lst *node_p);
+size_t return_number_to_rotate_descending(t_lst **lst_pp, const t_lst *node_p);
+
+// utils/utils_basic.c
+int	ft_min(int a, int b);
+int	ft_max(int a, int b);
+int	ft_four_min(int a, int b, int c, int d);
+
+// push_insert.c
+void	execute_optimized_push(int minimum, int ra_num, t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
 
 // operate_stack_a.c
 bool	operate_sa(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);

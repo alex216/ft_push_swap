@@ -6,7 +6,7 @@
 #    By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 12:04:47 by yliu              #+#    #+#              #
-#    Updated: 2024/01/30 15:11:19 by yliu             ###   ########.fr        #
+#    Updated: 2024/01/31 12:14:31 by yliu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SHELL = /bin/zsh
 NAME			= push_swap
 BONUS_NAME		= kari_checker
 LIBRARY			= libft.a
-CFLAGS			= -Wall -Wextra -Werror
+CFLAGS			= -Wall -Wextra -Werror -g -fsanitize=address
 RM				= rm -rf
 ECHO			= echo -e
 
@@ -70,7 +70,7 @@ BLUE			=	\033[0;94m
 MAGENTA			=	\033[0;95m
 CYAN			=	\033[0;96m
 WHITE			=	\033[0;97m
-LINE			= 	\u2500\u2500
+LINE			= 	\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 
 all:			$(NAME)
 
@@ -84,7 +84,7 @@ $(NAME):		status_check
 $(BONUS_NAME):	compile_bonus
 
 status_check:
-				@cd $(LIB_DIR) && make
+				cd $(LIB_DIR) && make
 				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(NAME)]\t./$(NAME) \t$(WHITE)checking...$(DEF_COLOR)"
 				@$(ECHO) -n "\e$(GRAY)$(LINE)\r$(DEF_COLOR)"
 				@make compile
@@ -131,6 +131,8 @@ format_norm:
 print_TEST:
 				@echo $(BONUS_HEADERS)
 
+visual:			all
+				@bash shell_script/pain.sh
 
 
 .PHONY:			all clean fclean re bonus norm format_norm debug

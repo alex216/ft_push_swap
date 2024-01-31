@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 21:06:29 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/30 15:59:41 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/31 17:04:40 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,4 +95,62 @@ int	handle_abnormal_input()
 {
 	ft_putendl_fd("Error", STDERR_FILENO);
 	return (255);
+}
+
+size_t return_number_to_rotate_ascending(t_lst **lst_pp, const t_lst *node_p)
+{
+	int a_curr;
+	int	a_prev;
+	int	b_top;
+	size_t	ra_counter;
+	t_lst	*iter_p;
+
+	if (!*lst_pp || ft_dl_lstsize(*lst_pp) == 1)
+		return (0);
+	ra_counter = 0;
+	iter_p = *lst_pp;
+	b_top = get_index_of(node_p);
+	while (iter_p->is_sentinel == false)
+	{
+		a_curr = get_index_of(iter_p);
+		if (iter_p->prev_p->is_sentinel)
+			a_prev = get_index_of(iter_p->prev_p->prev_p);
+		else
+			a_prev = get_index_of(iter_p->prev_p);
+		if ((a_prev < a_curr && (b_top > a_prev && b_top < a_curr))
+		|| (a_prev > a_curr && (b_top > a_prev || b_top < a_curr)))
+				break;
+		iter_p = iter_p->next_p;
+		ra_counter++;
+	}
+	return (ra_counter);
+}
+
+size_t return_number_to_rotate_descending(t_lst **lst_pp, const t_lst *node_p)
+{
+	int a_curr;
+	int	a_prev;
+	int	b_top;
+	size_t	ra_counter;
+	t_lst	*iter_p;
+
+	if (!*lst_pp || ft_dl_lstsize(*lst_pp) == 1)
+		return (0);
+	ra_counter = 0;
+	iter_p = *lst_pp;
+	b_top = get_index_of(node_p);
+	while (iter_p->is_sentinel == false)
+	{
+		a_curr = get_index_of(iter_p);
+		if (iter_p->prev_p->is_sentinel)
+			a_prev = get_index_of(iter_p->prev_p->prev_p);
+		else
+			a_prev = get_index_of(iter_p->prev_p);
+		if ((a_prev > a_curr && (b_top > a_prev && b_top < a_curr))
+		|| (a_prev < a_curr && (b_top > a_prev || b_top < a_curr)))
+				break;
+		iter_p = iter_p->next_p;
+		ra_counter++;
+	}
+	return (ra_counter);
 }
