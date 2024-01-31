@@ -6,19 +6,11 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:32:48 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/30 16:02:25 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/31 18:24:45 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft.h"
 #include "push_swap.h"
-#include <stddef.h>
-
-static ssize_t	_has_duplicate_value(t_lst *iter_p);
-static char	**_convert_argv_to_str(const char *src_str);
-static ssize_t	_check_digital_input(const char *string);
-void	argv_to_lst(int argc, char **argv, t_lst **stack_a);
 
 static ssize_t	_has_duplicate_value(t_lst *iter_p)
 {
@@ -55,13 +47,13 @@ static ssize_t	_check_digital_input(const char *string)
 
 	tmp_str = ft_itoa(ft_atoi(string));
 	if (!tmp_str)
-		return(false);
+		return (false);
 	strncmp_res = ft_strncmp(string, tmp_str, ft_strlen(string));
 	free(tmp_str);
 	if (strncmp_res)
-		return(false);
+		return (false);
 	else
-		return(true);
+		return (true);
 }
 
 static size_t	_count_how_large_the_new_node_is(t_lst **stack_a, t_lst *lst_p)
@@ -87,21 +79,21 @@ static void	_compress_array(t_lst **stack_a)
 	iter_p = *stack_a;
 	while (iter_p->is_sentinel == false)
 	{
-		iter_p->payload_p->index = _count_how_large_the_new_node_is(stack_a, iter_p);
+		iter_p->payload_p->index = _count_how_large_the_new_node_is(stack_a,
+				iter_p);
 		iter_p = iter_p->next_p;
 	}
-
 }
 
 void	argv_to_lst(int argc, char **argv, t_lst **stack_a)
 {
-	char		**malloced_arg;
-	size_t		i;
+	char	**malloced_arg;
+	size_t	i;
 
 	if (argc <= 1)
 		exit(0);
 	argv++;
-	while(*argv)
+	while (*argv)
 	{
 		malloced_arg = _convert_argv_to_str(*argv);
 		if (!malloced_arg)

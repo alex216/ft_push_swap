@@ -10,9 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "push_swap.h"
+#include "push_swap.h"
 
-static	bool	_rotate_stack_in_shortest_way(t_lst **lst_pp, t_lst ** lst_procedure, size_t ra_counter)
+static bool	_rotate_stack_in_shortest_way(t_lst **lst_pp, t_lst **lst_procedure,
+		size_t ra_counter)
 {
 	size_t	lst_size;
 
@@ -26,7 +27,8 @@ static	bool	_rotate_stack_in_shortest_way(t_lst **lst_pp, t_lst ** lst_procedure
 	return (true);
 }
 
-void	sort_stack_using_only_ra_or_rra_in_fastest_way_in_a(t_lst **lst_pp, t_lst **lst_procedure)
+void	sort_stack_using_only_ra_or_rra_in_fastest_way_in_a(t_lst **lst_pp,
+		t_lst **lst_procedure)
 {
 	size_t	top_idx;
 	size_t	lst_size;
@@ -41,7 +43,8 @@ void	sort_stack_using_only_ra_or_rra_in_fastest_way_in_a(t_lst **lst_pp, t_lst *
 			operate_ra(lst_pp, lst_pp, lst_procedure);
 }
 
-void	sort_stack_using_only_ra_or_rra_in_fastest_way_in_b(t_lst **lst_pp, t_lst **lst_procedure)
+void	sort_stack_using_only_ra_or_rra_in_fastest_way_in_b(t_lst **lst_pp,
+		t_lst **lst_procedure)
 {
 	size_t	top_idx;
 	size_t	lst_size;
@@ -56,9 +59,10 @@ void	sort_stack_using_only_ra_or_rra_in_fastest_way_in_b(t_lst **lst_pp, t_lst *
 			operate_rb(lst_pp, lst_pp, lst_procedure);
 }
 
-void	ope_four_five_node(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
+void	ope_four_five_node(t_lst **stack_a, t_lst **stack_b,
+		t_lst **lst_procedure)
 {
-	size_t ra_counter;
+	size_t	ra_counter;
 
 	while (ft_dl_lstsize(*stack_a) > 3)
 		operate_pb(stack_a, stack_b, lst_procedure);

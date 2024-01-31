@@ -42,11 +42,11 @@ bool	check_last_operation_is(const char *str, const t_lst **lst)
 	return (!ft_strncmp(last_cmd, str, ft_strlen(str)));
 }
 
-size_t return_number_to_rotate_ascending(t_lst **lst_pp, const t_lst *node_p)
+size_t	return_number_to_rotate_ascending(t_lst **lst_pp, const t_lst *node_p)
 {
-	int a_curr;
-	int	a_prev;
-	int	b_top;
+	int		a_curr;
+	int		a_prev;
+	int		b_top;
 	size_t	ra_counter;
 	t_lst	*iter_p;
 
@@ -63,19 +63,19 @@ size_t return_number_to_rotate_ascending(t_lst **lst_pp, const t_lst *node_p)
 		else
 			a_prev = get_index_of(iter_p->prev_p);
 		if ((a_prev < a_curr && (b_top > a_prev && b_top < a_curr))
-		|| (a_prev > a_curr && (b_top > a_prev || b_top < a_curr)))
-				break;
+			|| (a_prev > a_curr && (b_top > a_prev || b_top < a_curr)))
+			break ;
 		iter_p = iter_p->next_p;
 		ra_counter++;
 	}
 	return (ra_counter);
 }
 
-size_t return_number_to_rotate_descending(t_lst **lst_pp, const t_lst *node_p)
+size_t	return_number_to_rotate_descending(t_lst **lst_pp, const t_lst *node_p)
 {
-	int a_curr;
-	int	a_prev;
-	int	b_top;
+	int		a_curr;
+	int		a_prev;
+	int		b_top;
 	size_t	ra_counter;
 	t_lst	*iter_p;
 
@@ -92,8 +92,8 @@ size_t return_number_to_rotate_descending(t_lst **lst_pp, const t_lst *node_p)
 		else
 			a_prev = get_index_of(iter_p->prev_p);
 		if ((a_prev > a_curr && (b_top > a_prev && b_top < a_curr))
-		|| (a_prev < a_curr && (b_top > a_prev || b_top < a_curr)))
-				break;
+			|| (a_prev < a_curr && (b_top > a_prev || b_top < a_curr)))
+			break ;
 		iter_p = iter_p->next_p;
 		ra_counter++;
 	}

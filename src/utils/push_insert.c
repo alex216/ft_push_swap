@@ -14,7 +14,8 @@
 #include "libft.h"
 #include "push_swap.h"
 
-static void _operate_ra_rb(int ra, int rb, t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
+static void	_operate_ra_rb(int ra, int rb, t_lst **stack_a, t_lst **stack_b,
+		t_lst **lst_procedure)
 {
 	int	ra_rb_min;
 
@@ -29,7 +30,8 @@ static void _operate_ra_rb(int ra, int rb, t_lst **stack_a, t_lst **stack_b, t_l
 }
 
 // this can be ra then rrb or rrb then ra
-static void _operate_ra_rrb(int ra, int rb, t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
+static void	_operate_ra_rrb(int ra, int rb, t_lst **stack_a, t_lst **stack_b,
+		t_lst **lst_procedure)
 {
 	int	rrb;
 
@@ -43,7 +45,8 @@ static void _operate_ra_rrb(int ra, int rb, t_lst **stack_a, t_lst **stack_b, t_
 }
 
 // this can be rra then rb or rb then rra
-static void _operate_rra_rb(int ra, int rb, t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
+static void	_operate_rra_rb(int ra, int rb, t_lst **stack_a, t_lst **stack_b,
+		t_lst **lst_procedure)
 {
 	int	rra;
 
@@ -56,9 +59,10 @@ static void _operate_rra_rb(int ra, int rb, t_lst **stack_a, t_lst **stack_b, t_
 	operate_pb(stack_a, stack_b, lst_procedure);
 }
 
-static void _operate_rra_rrb(int ra, int rb, t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
+static void	_operate_rra_rrb(int ra, int rb, t_lst **stack_a, t_lst **stack_b,
+		t_lst **lst_procedure)
 {
-	int rra;
+	int	rra;
 	int	rrb;
 	int	rra_rrb_min;
 
@@ -74,7 +78,8 @@ static void _operate_rra_rrb(int ra, int rb, t_lst **stack_a, t_lst **stack_b, t
 	operate_pb(stack_a, stack_b, lst_procedure);
 }
 
-void	execute_optimized_push(int minimum, int ra, t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
+void	execute_optimized_push(int minimum, int ra, t_lst **stack_a,
+		t_lst **stack_b, t_lst **lst_procedure)
 {
 	int		temp_index;
 	int		rb;
@@ -90,13 +95,12 @@ void	execute_optimized_push(int minimum, int ra, t_lst **stack_a, t_lst **stack_
 	// rb = return_number_to_rotate_descending(stack_b, iter_p);
 	rb = return_number_to_rotate_ascending(stack_b, iter_p);
 	rrb = ft_dl_lstsize(*stack_b) - rb;
-
 	if (ft_max(ra, rb) == minimum)
 		_operate_ra_rb(ra, rb, stack_a, stack_b, lst_procedure);
 	else if (ra + rrb == minimum)
 		_operate_ra_rrb(ra, rb, stack_a, stack_b, lst_procedure);
 	else if (rra + rb == minimum)
 		_operate_rra_rb(ra, rb, stack_a, stack_b, lst_procedure);
-	if (ft_max(rra, rrb)== minimum)
+	if (ft_max(rra, rrb) == minimum)
 		_operate_rra_rrb(ra, rb, stack_a, stack_b, lst_procedure);
 }

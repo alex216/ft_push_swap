@@ -15,8 +15,7 @@
 bool	operate_sa(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
 {
 	(void)stack_b;
-	if (!*stack_a
-		|| ft_dl_lstsize(*stack_a) == 1)
+	if (!*stack_a || ft_dl_lstsize(*stack_a) == 1)
 		// || check_last_operation_is("sa", (const t_lst **)lst_procedure))
 		return (false);
 	operate_swap_top_and_second_top(stack_a);
@@ -27,8 +26,7 @@ bool	operate_sa(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
 bool	operate_ra(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
 {
 	(void)stack_b;
-	if (!*stack_a
-		|| ft_dl_lstsize(*stack_a) == 1)
+	if (!*stack_a || ft_dl_lstsize(*stack_a) == 1)
 		// || check_last_operation_is("rra", (const t_lst **)lst_procedure))
 		return (false);
 	operate_rotate_top_and_tail(stack_a);
@@ -39,8 +37,7 @@ bool	operate_ra(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
 bool	operate_rra(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
 {
 	(void)stack_b;
-	if (!*stack_a
-		|| ft_dl_lstsize(*stack_a) == 1)
+	if (!*stack_a || ft_dl_lstsize(*stack_a) == 1)
 		// || check_last_operation_is("ra", (const t_lst **)lst_procedure))
 		return (false);
 	operate_rev_rotate_top_and_tail(stack_a);

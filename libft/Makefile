@@ -5,33 +5,33 @@
 #                                                     +:+ +:+         +:+      #
 #    By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/09 18:02:13 by yliu              #+#    #+#              #
-#    Updated: 2024/01/31 12:15:24 by yliu             ###   ########.fr        #
+#    Created: 2024/01/31 18:12:04 by yliu              #+#    #+#              #
+#    Updated: 2024/01/31 18:37:43 by yliu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SHELL = /bin/zsh
 
-# compiler option and etc
+#compiler option and etc
 NAME			= libft.a
 CFLAGS			= -Wall -Wextra -Werror
 RM				= rm -rf
 ECHO			= echo -e
 
-# directory
+#directory
 SRCS_DIR		= ./src/
 OBJS_DIR		= ./obj/
 INCLUDE			= ./inc/
 
-# files
-SRCS 	   		= $(wildcard $(SRCS_DIR)ft_*/*.c)
+#files
+SRCS 			= $(wildcard $(SRCS_DIR)ft_*/*.c)
 OBJS			= $(subst $(SRCS_DIR), $(OBJS_DIR), $(SRCS:.c=.o))
-HEADERS 	   	= $(wildcard $(INCLUDE)/*.h)
+HEADERS 		= $(wildcard $(INCLUDE)/*.h)
 
-# make obj dir recursively
+#make obj dir recursively
 MAKE_OBJDIR		= $(shell mkdir -p $(subst $(SRCS_DIR), $(OBJS_DIR), $(dir $(SRCS))))
 
-# color and line
+#color and line
 DEF_COLOR		=	\033[0;39m
 ORANGE			=	\033[0;33m
 GRAY			=	\033[0;90m
@@ -64,7 +64,8 @@ $(OBJS_DIR)%.o:	$(MAKE_OBJDIR) $(DROW_GRA) $(SRCS_DIR)%.c $(HEADERS)
 				@$(CC) $(CFLAGS) -I $(INCLUDE) -c $< -o $@
 				@$(ECHO) -n "$(RED)\u2500$(DEF_COLOR)"
 
-# other cmds
+#other cmds
+
 clean:
 				@$(RM) $(OBJS_DIR)
 				@$(ECHO) "$(DEF_COLOR)$(BLUE)[LIBFT]\t\tobject files \t$(GREEN)deleted \u2714$(DEF_COLOR)"

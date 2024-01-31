@@ -27,7 +27,8 @@ static bool	_is_descending_order(int first, int second, int third)
 	return (third < second && second < first);
 }
 
-void	append_sa_if_needed(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
+void	append_sa_if_needed(t_lst **stack_a, t_lst **stack_b,
+		t_lst **lst_procedure)
 {
 	int	first;
 	int	second;
@@ -38,8 +39,7 @@ void	append_sa_if_needed(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure
 	first = get_int_value_of(*stack_a);
 	second = get_int_value_of((*stack_a)->next_p);
 	third = get_int_value_of((*stack_a)->next_p->next_p);
-	if (_is_two_one_three(first, second, third)
-		|| _is_descending_order(first, second, third)
-		|| _is_one_three_two(first, second, third))
-		 operate_sa(stack_a, stack_b, lst_procedure);
+	if (_is_two_one_three(first, second, third) || _is_descending_order(first,
+			second, third) || _is_one_three_two(first, second, third))
+		operate_sa(stack_a, stack_b, lst_procedure);
 }

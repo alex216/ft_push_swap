@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "push_swap.h"
+#include "push_swap.h"
 
 int	ft_min(int a, int b)
 {
@@ -30,5 +30,5 @@ int	ft_max(int a, int b)
 
 int	ft_four_min(int a, int b, int c, int d)
 {
-	return (ft_min(ft_min(ft_min(a,b),c),d));
+	return (ft_min(ft_min(ft_min(a, b), c), d));
 }

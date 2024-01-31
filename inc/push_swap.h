@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:31:29 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/31 17:38:13 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/31 18:22:25 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,10 +112,12 @@ bool	operate_rb(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
 bool	operate_rrb(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
 bool	operate_pb(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
 
-// basic_stack_operation.c
+// operate/basic_stack_ope1.c
 void	operate_swap_top_and_second_top(t_lst **lst);
 void	operate_rotate_top_and_tail(t_lst **lst);
 void	operate_rev_rotate_top_and_tail(t_lst **lst);
+
+// operate/basic_stack_ope2.c
 bool	push_top_to_another_stack(t_lst **src_pp, t_lst **dst_pp);
 
 // utils/utils_basic.c

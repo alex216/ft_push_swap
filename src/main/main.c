@@ -6,15 +6,16 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 12:20:49 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/31 17:39:58 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/31 18:38:29 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv);
+int			main(int argc, char **argv);
 
-static void	_calculate_task(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
+static void	_calculate_task(t_lst **stack_a, t_lst **stack_b,
+		t_lst **lst_procedure)
 {
 	if (ft_dl_lstsize(*stack_a) == 1)
 		return ;
@@ -33,15 +34,15 @@ static void	_print_list(const t_lst *i_p)
 {
 	if (i_p)
 	{
-		while(!i_p->is_sentinel)
+		while (!i_p->is_sentinel)
 		{
 			ft_printf("%s\n", get_char_of(i_p));
 			i_p = i_p->next_p;
 		}
 	}
-	else 
+	else
 		return ;
-		// ft_printf("could not find answer!\n");
+	// ft_printf("could not find answer!\n");
 }
 
 // static void	_debug_stack(const t_lst **stack_a, const t_lst **stack_b)
@@ -59,11 +60,11 @@ static void	_print_list(const t_lst *i_p)
 
 int	main(int argc, char **argv)
 {
-	//TODO: Makefile norm violation
 	t_lst	*stack_a;
 	t_lst	*stack_b;
 	t_lst	*lst_procedure;
 
+	// TODO: Makefile norm violation
 	stack_a = NULL;
 	stack_b = NULL;
 	lst_procedure = NULL;
