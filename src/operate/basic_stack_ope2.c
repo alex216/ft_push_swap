@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 18:21:49 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/31 18:21:59 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/01 10:16:30 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static t_lst	*_pick_top_from_stack(t_lst **lst_pp)
 	t_lst	*top_p;
 
 	top_p = *lst_pp;
-	if (top_p->next_p->is_sentinel == true)
+	if (top_p->next_p->is_sentinel == 1)
 	{
 		free(top_p->next_p);
 		*lst_pp = NULL;

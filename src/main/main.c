@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 12:20:49 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/31 18:38:29 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/01 10:35:24 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ static void	_print_list(const t_lst *i_p)
 	}
 	else
 		return ;
-	// ft_printf("could not find answer!\n");
 }
 
 // static void	_debug_stack(const t_lst **stack_a, const t_lst **stack_b)
@@ -71,7 +70,6 @@ int	main(int argc, char **argv)
 	argv_to_lst(argc, argv, &stack_a);
 	_calculate_task(&stack_a, &stack_b, &lst_procedure);
 	// optimize_procedure(&lst_procedure);
-	// _debug_stack((const t_lst **)&stack_a,(const t_lst **)&stack_b);
 	_print_list(lst_procedure);
 	free_all(&stack_a, &stack_b, &lst_procedure);
 	return (0);

@@ -6,10 +6,12 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 16:19:28 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/31 16:50:06 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/31 20:28:47 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
+#include "libft.h"
 #include "push_swap.h"
 
 static bool	_rotate_stack_in_shortest_way(t_lst **lst_pp, t_lst **lst_procedure,
@@ -49,7 +51,10 @@ void	sort_stack_using_only_ra_or_rra_in_fastest_way_in_b(t_lst **lst_pp,
 	size_t	top_idx;
 	size_t	lst_size;
 
-	top_idx = get_index_of(*lst_pp) - 1;
+	top_idx = ft_dl_lstsize(*lst_pp) - get_index_of(*lst_pp);
+
+	// ft_printf("top idx is %d\n", top_idx);
+	// exit(42);
 	lst_size = ft_dl_lstsize(*lst_pp);
 	if (2 * top_idx < lst_size)
 		while (top_idx--)

@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 12:16:41 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/31 19:40:20 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/01 10:34:53 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ void	execute_optimized_push(int minimum, int ra, t_lst **stack_a,
 		iter_p = iter_p->next_p;
 	rra = ft_dl_lstsize(*stack_a) - ra;
 	rb = return_number_to_rotate_descending(stack_b, iter_p);
-	// rb = return_number_to_rotate_ascending(stack_b, iter_p);
 	rrb = ft_dl_lstsize(*stack_b) - rb;
 	if (ft_max(ra, rb) == minimum)
 		_operate_ra_rb(ra, rb, stack_a, stack_b, lst_procedure);
@@ -99,6 +98,6 @@ void	execute_optimized_push(int minimum, int ra, t_lst **stack_a,
 		_operate_ra_rrb(ra, rb, stack_a, stack_b, lst_procedure);
 	else if (rra + rb == minimum)
 		_operate_rra_rb(ra, rb, stack_a, stack_b, lst_procedure);
-	if (ft_max(rra, rrb) == minimum)
+	else if (ft_max(rra, rrb) == minimum)
 		_operate_rra_rrb(ra, rb, stack_a, stack_b, lst_procedure);
 }
