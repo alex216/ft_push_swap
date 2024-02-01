@@ -30,7 +30,7 @@ bool	ft_dl_lstadd_back_with_lst(t_lst **lst_pp, t_lst *new_p)
 {
 	t_lst	*sentinel_p;
 
-	if(!new_p || !lst_pp)
+	if (!new_p || !lst_pp)
 		return (false);
 	if (!*lst_pp)
 	{
@@ -52,7 +52,7 @@ bool	ft_dl_lstadd_back_with_lst(t_lst **lst_pp, t_lst *new_p)
 
 bool	ft_dl_lstadd_front_with_lst(t_lst **lst_pp, t_lst *new_p)
 {
-	if (!new_p ||!lst_pp)
+	if (!new_p || !lst_pp)
 		return (false);
 	if (!*lst_pp)
 	{
@@ -74,7 +74,7 @@ bool	ft_dl_lstadd_front_with_lst(t_lst **lst_pp, t_lst *new_p)
 
 bool	ft_dl_lstappend(t_lst **lst_pp, t_record *record_p)
 {
-	t_lst		*lst_p;
+	t_lst	*lst_p;
 
 	if (!record_p || !lst_pp)
 		return (false);

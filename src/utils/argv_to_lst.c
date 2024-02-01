@@ -6,20 +6,11 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:32:48 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/25 18:43:22 by yliu             ###   ########.fr       */
+/*   Updated: 2024/01/31 18:24:45 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft.h"
 #include "push_swap.h"
-#include <stddef.h>
-
-static ssize_t	_has_duplicate_value(t_lst *iter_p);
-static char	**_convert_argv_to_str(const char *src_str);
-static ssize_t	_check_digital_input(const char *string);
-static int	_handle_abnormal_input();
-void	argv_to_lst(int argc, char **argv, t_lst **stack_a);
 
 static ssize_t	_has_duplicate_value(t_lst *iter_p)
 {
@@ -31,12 +22,12 @@ static ssize_t	_has_duplicate_value(t_lst *iter_p)
 		while (!temp_p->is_sentinel)
 		{
 			if (get_int_value_of(temp_p) == get_int_value_of(iter_p))
-				return (false);
+				return (true);
 			temp_p = temp_p->prev_p;
 		}
 		iter_p = iter_p->next_p;
 	}
-	return (true);
+	return (false);
 }
 
 static char	**_convert_argv_to_str(const char *src_str)
@@ -56,19 +47,13 @@ static ssize_t	_check_digital_input(const char *string)
 
 	tmp_str = ft_itoa(ft_atoi(string));
 	if (!tmp_str)
-		return(false);
+		return (false);
 	strncmp_res = ft_strncmp(string, tmp_str, ft_strlen(string));
 	free(tmp_str);
 	if (strncmp_res)
-		return(false);
+		return (false);
 	else
-		return(true);
-}
-
-static int	_handle_abnormal_input()
-{
-	ft_putendl_fd("Error", STDERR_FILENO);
-	return (true);
+		return (true);
 }
 
 static size_t	_count_how_large_the_new_node_is(t_lst **stack_a, t_lst *lst_p)
@@ -94,32 +79,32 @@ static void	_compress_array(t_lst **stack_a)
 	iter_p = *stack_a;
 	while (iter_p->is_sentinel == false)
 	{
-		iter_p->payload_p->index = _count_how_large_the_new_node_is(stack_a, iter_p);
+		iter_p->payload_p->index = _count_how_large_the_new_node_is(stack_a,
+				iter_p);
 		iter_p = iter_p->next_p;
 	}
-
 }
 
 void	argv_to_lst(int argc, char **argv, t_lst **stack_a)
 {
-	char		**malloced_arg;
-	size_t		i;
+	char	**malloced_arg;
+	size_t	i;
 
 	if (argc <= 1)
 		exit(0);
 	argv++;
-	while(*argv)
+	while (*argv)
 	{
 		malloced_arg = _convert_argv_to_str(*argv);
 		if (!malloced_arg)
 			exit(EXIT_FAILURE);
 		if (!*malloced_arg)
-			exit(_handle_abnormal_input());
+			exit(handle_abnormal_input());
 		i = 0;
 		while (malloced_arg[i])
 		{
 			if (!_check_digital_input(malloced_arg[i]))
-				exit(_handle_abnormal_input());
+				exit(handle_abnormal_input());
 			if (!ft_dl_lstappend(stack_a, create_record(malloced_arg[i++])))
 				exit(EXIT_FAILURE);
 		}
@@ -128,7 +113,7 @@ void	argv_to_lst(int argc, char **argv, t_lst **stack_a)
 		free(malloced_arg);
 		argv++;
 	}
-	if (!_has_duplicate_value(*stack_a))
-		exit(_handle_abnormal_input());
+	if (_has_duplicate_value(*stack_a))
+		exit(handle_abnormal_input());
 	_compress_array(stack_a);
 }

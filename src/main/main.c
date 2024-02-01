@@ -6,27 +6,27 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 12:20:49 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/24 17:06:21 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/01 10:35:24 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft.h"
 #include "push_swap.h"
 
-int	main(int argc, char **argv);
+int			main(int argc, char **argv);
 
-static void	_calculate_task(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
+static void	_calculate_task(t_lst **stack_a, t_lst **stack_b,
+		t_lst **lst_procedure)
 {
 	if (ft_dl_lstsize(*stack_a) == 1)
 		return ;
-	if (ft_dl_lstsize(*stack_a) == 2)
+	else if (ft_dl_lstsize(*stack_a) == 2)
 		ope_two_node(stack_a, lst_procedure);
 	else if (ft_dl_lstsize(*stack_a) == 3)
 		ope_three_node(stack_a, stack_b, lst_procedure);
 	else if (ft_dl_lstsize(*stack_a) == 4 || ft_dl_lstsize(*stack_a) == 5)
 		ope_four_five_node(stack_a, stack_b, lst_procedure);
-	// ope_long_node();
+	else
+		ope_long(stack_a, stack_b, lst_procedure);
 	return ;
 }
 
@@ -34,15 +34,14 @@ static void	_print_list(const t_lst *i_p)
 {
 	if (i_p)
 	{
-		while(!i_p->is_sentinel)
+		while (!i_p->is_sentinel)
 		{
 			ft_printf("%s\n", get_char_of(i_p));
 			i_p = i_p->next_p;
 		}
 	}
-	else 
+	else
 		return ;
-		// ft_printf("could not find answer!\n");
 }
 
 // static void	_debug_stack(const t_lst **stack_a, const t_lst **stack_b)
@@ -64,13 +63,13 @@ int	main(int argc, char **argv)
 	t_lst	*stack_b;
 	t_lst	*lst_procedure;
 
+	// TODO: Makefile norm violation
 	stack_a = NULL;
 	stack_b = NULL;
 	lst_procedure = NULL;
 	argv_to_lst(argc, argv, &stack_a);
 	_calculate_task(&stack_a, &stack_b, &lst_procedure);
 	// optimize_procedure(&lst_procedure);
-	// _debug_stack((const t_lst **)&stack_a,(const t_lst **)&stack_b);
 	_print_list(lst_procedure);
 	free_all(&stack_a, &stack_b, &lst_procedure);
 	return (0);
