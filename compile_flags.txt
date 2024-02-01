@@ -1,0 +1,3 @@
+-I./inc/
+-I./libft/inc/
+-I./bonus_inc/
