@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 16:35:51 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/01 13:22:22 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/01 17:51:40 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ bool	operate_ss(t_game_lists *game_lists)
 	a_size = ft_dl_lstsize(game_lists->stack_a);
 	b_size = ft_dl_lstsize(game_lists->stack_b);
 	if (a_size == 1 && b_size == 1)
-		// || check_last_operation_is("ss", (const t_lst **)lst_procedure))
 		return (false);
 	if (!game_lists->stack_a || a_size == 1)
 		return (operate_sb(game_lists));
@@ -40,8 +39,6 @@ bool	operate_rr(t_game_lists *game_lists)
 
 	a_size = ft_dl_lstsize(game_lists->stack_a);
 	b_size = ft_dl_lstsize(game_lists->stack_b);
-	// if(check_last_operation_is("rrr", (const t_lst **)lst_procedure))
-	// 	return (false);
 	if (!game_lists->stack_a || a_size == 1)
 		return (operate_rb(game_lists));
 	if (!game_lists->stack_b || b_size == 1)
@@ -59,8 +56,6 @@ bool	operate_rrr(t_game_lists *game_lists)
 
 	a_size = ft_dl_lstsize(game_lists->stack_a);
 	b_size = ft_dl_lstsize(game_lists->stack_b);
-	// if (check_last_operation_is("rr", (const t_lst **)lst_procedure))
-	// 	return (false);
 	if (!game_lists->stack_a || a_size == 1)
 		return (operate_rrb(game_lists));
 	if (!game_lists->stack_b || b_size == 1)

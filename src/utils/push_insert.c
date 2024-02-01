@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 12:16:41 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/01 13:01:39 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/01 17:19:20 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	execute_optimized_push(int minimum, int ra, t_game_lists *game_lists)
 	while (temp_index--)
 		iter_p = iter_p->next_p;
 	rra = ft_dl_lstsize(game_lists->stack_a) - ra;
-	rb = return_number_to_rotate_descending(&game_lists->stack_b, iter_p);
+	rb = return_num_to_descending(&game_lists->stack_b, iter_p);
 	rrb = ft_dl_lstsize(game_lists->stack_b) - rb;
 	if (ft_max(ra, rb) == minimum)
 		_operate_ra_rb(ra, rb, game_lists);
