@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 17:33:06 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/01 13:04:01 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/01 14:33:13 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ void	append_sa_if_needed(t_game_lists *game_lists)
 	first = get_int_value_of(game_lists->stack_a);
 	second = get_int_value_of((game_lists->stack_a)->next_p);
 	third = get_int_value_of((game_lists->stack_a)->next_p->next_p);
-	if (_is_two_one_three(first, second, third) || _is_descending_order(first,
-			second, third) || _is_one_three_two(first, second, third))
+	if (_is_two_one_three(first, second, third)
+		|| _is_descending_order(first, second, third)
+		|| _is_one_three_two(first, second, third))
 		operate_sa(game_lists);
 }

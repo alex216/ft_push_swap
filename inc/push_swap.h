@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:31:29 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/01 14:26:22 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/01 14:49:08 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,8 @@ void	*get_pointer_to_print(const t_lst *lst_p);
 /// strategy
 // ope_two_node.c
 void	ope_two_node(t_game_lists *game_lists);
-// ope_three_node.c
-void	ope_three_node(t_game_lists *game_lists);
 // ope_four_five_node.c
-void	ope_four_five_node(t_game_lists *game_lists);
+void	ope_three_four_five_node(t_game_lists *game_lists);
 void	sort_stack_using_only_ra_or_rra_in_fastest_way_in_a(t_lst **lst_pp, t_game_lists *game_lists);
 void	sort_stack_using_only_ra_or_rra_in_fastest_way_in_b(t_lst **lst_pp, t_game_lists *game_lists);
 // ope_long.c

@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 16:19:28 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/01 14:14:53 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/01 14:47:19 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	sort_stack_using_only_ra_or_rra_in_fastest_way_in_b(t_lst **lst_pp, t_game_
 			operate_rb(game_lists);
 }
 
-void	ope_four_five_node(t_game_lists *game_lists)
+void	ope_three_four_five_node(t_game_lists *game_lists)
 {
 	int	ra;
 

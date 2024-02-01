@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 12:20:49 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/01 13:30:41 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/01 14:47:15 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ static void	_calculate_task(t_game_lists *game_lists)
 	else if (ft_dl_lstsize(game_lists->stack_a) == 2)
 		ope_two_node(game_lists);
 	else if (ft_dl_lstsize(game_lists->stack_a) == 3)
-		ope_three_node(game_lists);
+		// ope_three_node(game_lists);
+		ope_three_four_five_node(game_lists);
 	else if (ft_dl_lstsize(game_lists->stack_a) == 4 || ft_dl_lstsize(game_lists->stack_a) == 5)
-		ope_four_five_node(game_lists);
+		ope_three_four_five_node(game_lists);
 	else
 		ope_long(game_lists);
 	return ;
