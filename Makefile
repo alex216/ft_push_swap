@@ -6,7 +6,7 @@
 #    By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 12:04:47 by yliu              #+#    #+#              #
-#    Updated: 2024/01/31 17:50:36 by yliu             ###   ########.fr        #
+#    Updated: 2024/02/01 20:34:25 by yliu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SHELL = /bin/zsh
 NAME			= push_swap
 BONUS_NAME		= kari_checker
 LIBRARY			= libft.a
-CFLAGS			= -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS			= -Wall -Wextra -Werror -g -fsanitize=address -fsanitize=integer -fsanitize=undefined
 RM				= rm -rf
 ECHO			= echo -e
 
@@ -96,8 +96,8 @@ compile:		$(OBJS) $(HEADERS) $(LIBFT_HEADERS)
 				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(NAME)]\t./$(NAME) \t$(GREEN)compiled \u2714$(DEF_COLOR)"
 
 compile_bonus:	$(BONUS_OBJS) $(BONUS_HEADERS) $(LIBFT_HEADERS)
-				@$(CC) $(CFLAGS) $(foreach dir_list,$(MAN_INC_DIR),-I$(dir_list)) ./obj/operate/basic_stack_operation.o  ./obj/operate/ope_four_five_node.o  ./obj/operate/operate_both_stack.o  ./obj/operate/operate_stack_a.o  ./obj/operate/operate_stack_b.o  ./obj/utils/argv_to_lst.o  ./obj/utils/ope_three_node.o  ./obj/utils/ope_two_node.o  ./obj/utils/utils_struct.o  ./obj/utils/utils_temp.o $(BONUS_OBJS) ./libft/libft.a -o $(BONUS_NAME)
-				
+				@$(CC) $(CFLAGS) $(foreach dir_list,$(MAN_INC_DIR),-I$(dir_list)) ./obj/main/copy_argv_to_lst.o  ./obj/main/copy_argv_to_lst_helper.o ./obj/operate/operate_basic_stack_ope1.o  ./obj/operate/operate_basic_stack_ope2.o  ./obj/operate/operate_both_stack.o  ./obj/operate/operate_stack_a.o  ./obj/operate/operate_stack_b.o  ./obj/strategy/ope_long.o  ./obj/strategy/ope_three_four_five_node.o  ./obj/utils/append_sa_if_needed.o  ./obj/utils/push_insert.o  ./obj/utils/struct_modify.o  ./obj/utils/utils_basic.o  ./obj/utils/utils_debug.o  ./obj/utils/utils_list_cmds.o  ./obj/utils/utils_list_query.o  ./obj/utils/utils_struct_get_context.o  ./obj/utils/utils_temp.o  ./obj/utils/utils_trivial.o $(BONUS_OBJS) ./libft/libft.a -o $(BONUS_NAME)
+
 $(OBJS_DIR)/%.o:$(MAKE_OBJDIR) $(SRCS_DIR)/%.c $(HEADERS)
 				@$(CC) $(CFLAGS) $(foreach dir_list,$(MAN_INC_DIR),-I$(dir_list)) -c $< -o $@
 				@$(ECHO) -n "$(RED)\u2500$(DEF_COLOR)"

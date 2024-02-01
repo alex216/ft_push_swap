@@ -6,10 +6,12 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 23:23:49 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/30 16:07:43 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/01 20:49:37 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+#include "push_swap.h"
 #include "push_swap_bonus.h"
 
 static void	_put_data_to_ope_dictionary(
@@ -47,11 +49,7 @@ static bool	_validate_operation(char *ope_name, char *input)
 	return (!ft_strncmp(ope_name, input, len - 1) && input[len - 1] == '\n');
 }
 
-static bool	_exec_valid_operation(
-	char *string,
-	t_lst **stack_a,
-	t_lst **stack_b,
-	t_lst **lst_procedure)
+static bool	_exec_valid_operation(char *string, t_game_lists *game)
 {
 	int						i;
 	t_operation_dictionary	ope_dict[NUMBER_OPERATIONS];
@@ -61,14 +59,13 @@ static bool	_exec_valid_operation(
 	while (i < NUMBER_OPERATIONS)
 	{
 		if (_validate_operation(ope_dict[i].operation_name, string))
-			return (ope_dict[i].operation_function(stack_a, stack_b,
-					lst_procedure));
+			return (ope_dict[i].operation_function(game));
 		i++;
 	}
 	return (false);
 }
 
-static void	_read_loop(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
+static void	_read_loop(t_game_lists *game)
 {
 	ssize_t	read_bytes;
 	char	read_buf[MAX_READ_SIZE];
@@ -83,26 +80,24 @@ static void	_read_loop(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure)
 		if (read_bytes >= MAX_READ_SIZE)
 			exit(handle_abnormal_input());
 		read_buf[read_bytes] = '\0';
-		if (!_exec_valid_operation(stack_a, stack_b, lst_procedure, read_buf))
+		if (!_exec_valid_operation(read_buf, game))
 			exit(handle_abnormal_input());
 	}
 }
 
 int	main(int argc, char **argv)
 {
-	t_lst					*stack_a;
-	t_lst					*stack_b;
-	t_lst					*lst_procedure;
+	t_game_lists	game_lists;
 
-	stack_a = NULL;
-	stack_b = NULL;
-	lst_procedure = NULL;
-	argv_to_lst(argc, argv, &stack_a);
-	_read_loop(&stack_a, &stack_b, &lst_procedure);
-	if (is_ascending_order(stack_a))
+	game_lists.stack_a = NULL;
+	game_lists.stack_b = NULL;
+	game_lists.lst_procedure = NULL;
+	copy_argv_to_lst(argc, argv, &game_lists.stack_a);
+	_read_loop(&game_lists);
+	if (is_ascending_order(game_lists.stack_a))
 		ft_putendl_fd("OK", STDOUT_FILENO);
 	else
 		ft_putendl_fd("KO", STDOUT_FILENO);
-	free_all(&stack_a, &stack_b, &lst_procedure);
+	free_all_lists(&game_lists);
 	return (0);
 }
