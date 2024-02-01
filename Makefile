@@ -6,7 +6,7 @@
 #    By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 12:04:47 by yliu              #+#    #+#              #
-#    Updated: 2024/01/31 17:50:36 by yliu             ###   ########.fr        #
+#    Updated: 2024/02/01 12:33:11 by yliu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SHELL = /bin/zsh
 NAME			= push_swap
 BONUS_NAME		= kari_checker
 LIBRARY			= libft.a
-CFLAGS			= -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS			= -Wall -Wextra -Werror -g -fsanitize=address -fsanitize=integer -fsanitize=undefined
 RM				= rm -rf
 ECHO			= echo -e
 

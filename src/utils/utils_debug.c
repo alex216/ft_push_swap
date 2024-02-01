@@ -6,17 +6,18 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 17:23:01 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/31 17:25:55 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/01 12:34:31 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
 #include "push_swap.h"
 
-void	free_all(t_lst **lst_a, t_lst **lst_b, t_lst **lst_procedure)
+void	free_all(t_game_lists *game_lists)
 {
-	ft_dl_lstclear(lst_a, *del_push_swap);
-	ft_dl_lstclear(lst_b, *del_push_swap);
-	ft_dl_lstclear(lst_procedure, *del_push_swap);
+	ft_dl_lstclear(&game_lists->stack_a, *del_push_swap);
+	ft_dl_lstclear(&game_lists->stack_b, *del_push_swap);
+	ft_dl_lstclear(&game_lists->lst_procedure, *del_push_swap);
 }
 
 int		g_count = 0;

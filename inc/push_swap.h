@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:31:29 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/31 18:22:25 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/01 13:16:00 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,12 @@ typedef struct s_operation_dictionary {
 	bool	(*operation_function)(t_lst **, t_lst **, t_lst **);
 }			t_operation_dictionary;
 
+typedef struct s_game_lists {
+	t_lst	*stack_a;
+	t_lst	*stack_b;
+	t_lst	*lst_procedure;
+}			t_game_lists;
+
 //////////////////////////////////////////
 // main.c
 int	main(int argc, char **argv);
@@ -49,25 +55,26 @@ void	argv_to_lst(int argc, char **argv, t_lst **lst_pp);
 
 //////////////////////////////////////////
 // ope_two_node.c
-void	ope_two_node(t_lst **stack_a, t_lst **lst_procedure);
+void	ope_two_node(t_game_lists *game_lists);
 
 // ope_three_node.c
-void	ope_three_node(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
+void	ope_three_node(t_game_lists *game_lists);
 
 // ope_less_six_node.c
-void	ope_four_five_node(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
-void	sort_stack_using_only_ra_or_rra_in_fastest_way_in_a(t_lst **lst_pp, t_lst **lst_procedure);
-void	sort_stack_using_only_ra_or_rra_in_fastest_way_in_b(t_lst **lst_pp, t_lst **lst_procedure);
+void	ope_four_five_node(t_game_lists *game_lists);
+void	sort_stack_using_only_ra_or_rra_in_fastest_way_in_a(t_lst **lst_pp, t_game_lists *game_lists);
+void	sort_stack_using_only_ra_or_rra_in_fastest_way_in_b(t_lst **lst_pp, t_game_lists *game_lists);
 
 // ope_long.c
-void	ope_long(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
+// void	ope_long(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
+void	ope_long(t_game_lists *game_lists);
 
 //////////////////////////////////////////
 // push_insert.c
-void	execute_optimized_push(int minimum, int ra_num, t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
+void	execute_optimized_push(int minimum, int ra_num, t_game_lists *game_lists);
 
 // utils/append_sa_if_needed.c
-void	append_sa_if_needed(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
+void	append_sa_if_needed(t_game_lists *game_lists);
 
 // utils/utils_struct_modify.c
 size_t	get_index_of(const t_lst *pointer);
@@ -89,28 +96,29 @@ size_t return_number_to_rotate_descending(t_lst **lst_pp, const t_lst *node_p);
 bool	check_last_operation_is(const char *str, const t_lst **lst);
 
 // utils/utils_debug.c
-void	free_all(t_lst **lst_a, t_lst **lst_b, t_lst **lst_procedure);
+// void	free_all(t_lst **lst_a, t_lst **lst_b, t_lst **lst_procedure);
+void	free_all(t_game_lists *game_lists);
 void	debug_func(t_lst **a, t_lst **b, t_lst **tmp, char *, char *, char *);
 void	print_index(t_lst **lst_pp);
 int	handle_abnormal_input();
 
 //////////////////////////////////////////
 // operate_both_stack.c
-bool	operate_ss(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
-bool	operate_rr(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
-bool	operate_rrr(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
+bool	operate_ss(t_game_lists *game_lists);
+bool	operate_rr(t_game_lists *game_lists);
+bool	operate_rrr(t_game_lists *game_lists);
 
 // operate_stack_a.c
-bool	operate_sa(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
-bool	operate_ra(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
-bool	operate_rra(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
-bool	operate_pa(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
+bool	operate_sa(t_game_lists *game_lists);
+bool	operate_ra(t_game_lists *game_lists);
+bool	operate_rra(t_game_lists *game_lists);
+bool	operate_pa(t_game_lists *game_lists);
 
 // operate_stack_b.c
-bool	operate_sb(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
-bool	operate_rb(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
-bool	operate_rrb(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
-bool	operate_pb(t_lst **stack_a, t_lst **stack_b, t_lst **lst_procedure);
+bool	operate_sb(t_game_lists *game_lists);
+bool	operate_rb(t_game_lists *game_lists);
+bool	operate_rrb(t_game_lists *game_lists);
+bool	operate_pb(t_game_lists *game_lists);
 
 // operate/basic_stack_ope1.c
 void	operate_swap_top_and_second_top(t_lst **lst);
