@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 16:30:21 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/01 12:57:11 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/01 14:25:33 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ bool	operate_pb(t_game_lists *game_lists)
 	if (!game_lists->stack_a)
 		// || check_last_operation_is("pa", (const t_lst **)lst_procedure))
 		return (false);
-	if (!push_top_to_another_stack(&game_lists->stack_a, &game_lists->stack_b))
+	if (!operate_push_top_to_another_stack(&game_lists->stack_a, &game_lists->stack_b))
 		exit(EXIT_FAILURE);
 	append_to_procedure(&game_lists->lst_procedure, "pb");
 	return (true);

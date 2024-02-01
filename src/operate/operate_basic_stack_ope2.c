@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   basic_stack_ope2.c                                 :+:      :+:    :+:   */
+/*   operate_basic_stack_ope2.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 18:21:49 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/01 10:16:30 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/01 14:24:57 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static t_lst	*_pick_top_from_stack(t_lst **lst_pp)
 	return (top_p);
 }
 
-bool	push_top_to_another_stack(t_lst **src_pp, t_lst **dst_pp)
+bool	operate_push_top_to_another_stack(t_lst **src_pp, t_lst **dst_pp)
 {
 	t_lst	*top_p;
 

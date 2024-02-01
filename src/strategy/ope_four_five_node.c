@@ -6,12 +6,10 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 16:19:28 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/01 13:23:25 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/01 14:14:53 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft.h"
 #include "push_swap.h"
 
 static bool	_rotate_stack_in_shortest_way(t_lst **lst_pp, t_game_lists *game_lists, int ra_counter)
