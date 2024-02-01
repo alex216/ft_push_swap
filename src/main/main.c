@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 12:20:49 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/01 14:47:15 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/01 15:30:37 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 static void	_calculate_task(t_game_lists *game_lists)
 {
-	if (ft_dl_lstsize(game_lists->stack_a) == 1)
-		return ;
-	else if (ft_dl_lstsize(game_lists->stack_a) == 2)
-		ope_two_node(game_lists);
-	else if (ft_dl_lstsize(game_lists->stack_a) == 3)
-		// ope_three_node(game_lists);
-		ope_three_four_five_node(game_lists);
-	else if (ft_dl_lstsize(game_lists->stack_a) == 4 || ft_dl_lstsize(game_lists->stack_a) == 5)
+	int	a_size;
+
+	if (is_ascending_order(game_lists->stack_a))
+		return;
+	a_size = ft_dl_lstsize(game_lists->stack_a);
+	if (a_size == 2)
+		operate_sa(game_lists);
+	else if (a_size >= 3 && a_size <= 5)
 		ope_three_four_five_node(game_lists);
 	else
 		ope_long(game_lists);
@@ -38,19 +38,6 @@ static void	_print_list(const t_lst *i_p)
 		i_p = i_p->next_p;
 	}
 }
-
-// static void	_debug_stack(const t_lst **stack_a, const t_lst **stack_b)
-// {
-// 	(void) stack_a;
-// 	(void) stack_b;
-// 	#ifdef DEBUG
-// 	ft_printf("a \n");
-// 	ft_dl_pf_lst(*stack_a, get_pointer_to_print);
-// 	ft_printf("b \n");
-// 	ft_dl_pf_lst(*stack_b, get_pointer_to_print);
-// 	ft_printf("\n");
-// 	#endif
-// }
 
 int	main(int argc, char **argv)
 {

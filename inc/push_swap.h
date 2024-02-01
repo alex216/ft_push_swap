@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:31:29 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/01 14:49:08 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/01 15:31:33 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,7 @@ void	*get_pointer_to_print(const t_lst *lst_p);
 
 //////////////////////////////////////////
 /// strategy
-// ope_two_node.c
-void	ope_two_node(t_game_lists *game_lists);
-// ope_four_five_node.c
+// ope_three_four_five_node.c
 void	ope_three_four_five_node(t_game_lists *game_lists);
 void	sort_stack_using_only_ra_or_rra_in_fastest_way_in_a(t_lst **lst_pp, t_game_lists *game_lists);
 void	sort_stack_using_only_ra_or_rra_in_fastest_way_in_b(t_lst **lst_pp, t_game_lists *game_lists);
@@ -100,27 +98,25 @@ void	operate_rev_rotate_top_and_tail(t_lst **lst);
 // basic_stack_ope2.c
 bool	operate_push_top_to_another_stack(t_lst **src_pp, t_lst **dst_pp);
 
-// utils/utils_struct_modify.c
-void	del_push_swap(void *pointer);
-void	*create_record(const char *str);
-void	append_to_procedure(t_lst **lst_procedure,const char *string);
-
-// utils/utils_temp.c
-bool	is_descending_order(const t_lst *iter_p);
-bool	is_ascending_order(const t_lst *iter_p);
-size_t return_number_to_rotate_ascending(t_lst **lst_pp, const t_lst *node_p);
-size_t return_number_to_rotate_descending(t_lst **lst_pp, const t_lst *node_p);
-bool	check_last_operation_is(const char *str, const t_lst **lst);
-
-// utils/utils_debug.c
+//////////////////////////////////////////
+/// utils
+// utils_basic.c
+int	ft_min(int a, int b);
+int	ft_max(int a, int b);
+int	ft_four_min(int a, int b, int c, int d);
+// utils_debug.c
 void	free_all(t_game_lists *game_lists);
 void	debug_func(t_lst **a, t_lst **b, t_lst **tmp, char *, char *, char *);
 void	print_index(t_lst **lst_pp);
 int	handle_abnormal_input();
-
-// utils/utils_basic.c
-int	ft_min(int a, int b);
-int	ft_max(int a, int b);
-int	ft_four_min(int a, int b, int c, int d);
+// utils_temp.c
+bool	is_ascending_order(const t_lst *iter_p);
+size_t return_number_to_rotate_ascending(t_lst **lst_pp, const t_lst *node_p);
+size_t return_number_to_rotate_descending(t_lst **lst_pp, const t_lst *node_p);
+bool	check_last_operation_is(const char *str, const t_lst **lst);
+// utils_struct_modify.c
+void	del_push_swap(void *pointer);
+void	*create_record(const char *str);
+void	append_to_procedure(t_lst **lst_procedure,const char *string);
 
 #endif

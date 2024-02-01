@@ -6,23 +6,20 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 21:06:29 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/31 19:39:30 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/01 15:29:45 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft.h"
 #include "push_swap.h"
 
-// empty array that satisfy all condtion concerning elements return false here
-// dispite the math rule
+// empty array returns true
 bool	is_ascending_order(const t_lst *iter_p)
 {
 	int	cur;
 	int	next;
 
 	if (!iter_p)
-		return (false);
+		return (true);
 	while (iter_p && !iter_p->next_p->is_sentinel)
 	{
 		cur = get_int_value_of(iter_p);
