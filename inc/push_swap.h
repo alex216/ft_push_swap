@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:31:29 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/01 19:51:15 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/02 16:38:19 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int			ft_min(int a, int b);
 int			ft_max(int a, int b);
 int			ft_four_min(int a, int b, int c, int d);
 // utils_debug.c
-void		debug_func(const t_lst **a, const t_lst **b, const t_lst **c);
+void		debug_func(const t_game_lists *game);
 void		print_index(const t_lst **lst_pp);
 
 #endif

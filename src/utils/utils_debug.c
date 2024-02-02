@@ -6,18 +6,18 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 17:23:01 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/01 17:20:45 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/02 16:38:02 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "push_swap.h"
 
-void	debug_func(const t_lst **a, const t_lst **b, const t_lst **tmp)
+void	debug_func(const t_game_lists *game)
 {
-	ft_dl_pf_lst(*a, get_pointer_to_print);
-	ft_dl_pf_lst(*b, get_pointer_to_print);
-	ft_dl_pf_lst(*tmp, get_pointer_to_print);
+	ft_dl_pf_lst(game->stack_a, get_pointer_to_print);
+	ft_dl_pf_lst(game->stack_b, get_pointer_to_print);
+	ft_dl_pf_lst(game->lst_procedure, get_pointer_to_print);
 }
 
 void	print_index(const t_lst **lst_pp)

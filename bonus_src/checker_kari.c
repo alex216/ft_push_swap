@@ -6,10 +6,12 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 23:23:49 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/01 20:49:37 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/02 16:45:36 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
+#include "get_next_line.h"
 #include "libft.h"
 #include "push_swap.h"
 #include "push_swap_bonus.h"
@@ -43,7 +45,7 @@ static void	_put_data_to_ope_dictionary(
 
 static bool	_validate_operation(char *ope_name, char *input)
 {
-	size_t	len;
+	int	len;
 
 	len = ft_strlen(input);
 	return (!ft_strncmp(ope_name, input, len - 1) && input[len - 1] == '\n');
@@ -67,21 +69,16 @@ static bool	_exec_valid_operation(char *string, t_game_lists *game)
 
 static void	_read_loop(t_game_lists *game)
 {
-	ssize_t	read_bytes;
-	char	read_buf[MAX_READ_SIZE];
+	char	*cmd_string;
 
 	while (true)
 	{
-		read_bytes = read(STDIN_FILENO, &read_buf, MAX_READ_SIZE);
-		if (read_bytes < 0)
-			exit(EXIT_FAILURE);
-		if (read_bytes == 0)
+		cmd_string = get_next_line(STDIN_FILENO);
+		if (!cmd_string)
 			break ;
-		if (read_bytes >= MAX_READ_SIZE)
+		if (!_exec_valid_operation(cmd_string, game))
 			exit(handle_abnormal_input());
-		read_buf[read_bytes] = '\0';
-		if (!_exec_valid_operation(read_buf, game))
-			exit(handle_abnormal_input());
+		free(cmd_string);
 	}
 }
 
