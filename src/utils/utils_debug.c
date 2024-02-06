@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_debug.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
+/*   By: yliu <yliu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 17:23:01 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/02 16:38:02 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/06 11:23:22 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 void	debug_func(const t_game_lists *game)
 {
-	ft_dl_pf_lst(game->stack_a, get_pointer_to_print);
-	ft_dl_pf_lst(game->stack_b, get_pointer_to_print);
-	ft_dl_pf_lst(game->lst_procedure, get_pointer_to_print);
+	ft_dl_pf_lst(game->stack_a, (void *)get_char_of);
+	ft_dl_pf_lst(game->stack_b, (void *)get_char_of);
+	ft_dl_pf_lst(game->lst_procedure, (void *)get_char_of);
 }
 
 void	print_index(const t_lst **lst_pp)

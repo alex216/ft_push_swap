@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_struct_get_context.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
+/*   By: yliu <yliu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 17:50:00 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/01 16:18:13 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/06 11:08:39 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,6 @@ int	get_int_value_of(const t_lst *lst_p)
 }
 
 char	*get_char_of(const t_lst *lst_p)
-{
-	if (!lst_p)
-		return (NULL);
-	return (lst_p->payload_p->char_content);
-}
-
-void	*get_pointer_to_print(const t_lst *lst_p)
 {
 	if (!lst_p)
 		return (NULL);

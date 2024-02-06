@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:31:29 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/06 10:03:23 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/06 11:07:44 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ void		append_to_procedure(t_lst **lst_procedure, const char *string);
 size_t		get_index_of(const t_lst *pointer);
 int			get_int_value_of(const t_lst *pointer);
 char		*get_char_of(const t_lst *pointer);
-void		*get_pointer_to_print(const t_lst *lst_p);
 bool		check_last_operation_is(const char *str, const t_lst **lst);
 // utils_trivial.c
 int			handle_abnormal_input(void);
