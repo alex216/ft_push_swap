@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 12:20:49 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/01 20:53:00 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/06 10:04:54 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,7 @@ int	main(int argc, char **argv)
 	game_lists.lst_procedure = NULL;
 	copy_argv_to_lst(argc, argv, &game_lists.stack_a);
 	_calculate_procedure(&game_lists);
-	// TODO: Makefile norm violation to not use the wildcard TODO: not yet
-	// TODO: checker pipe
+	// TODO: Makefile norm violation to not use the wildcard
 	optimize_procedure(&game_lists.lst_procedure);
 	print_procedure(game_lists.lst_procedure);
 	free_all_lists(&game_lists);
