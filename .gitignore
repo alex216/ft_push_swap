@@ -16,6 +16,7 @@ Push-Swap-Tester
 traces.txt
 push_swap_test.sh
 push_swap_tester
+shell_script/*
 
 # libft.a
 libft.a

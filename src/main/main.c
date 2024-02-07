@@ -5,12 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/30 12:20:49 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/06 10:04:54 by yliu             ###   ########.fr       */
+/*   Created: 2024/02/07 13:20:43 by yliu              #+#    #+#             */
+/*   Updated: 2024/02/07 13:20:45 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
 
 static void	_calculate_procedure(t_game_lists *game_lists)
 {
@@ -38,8 +39,12 @@ int	main(int argc, char **argv)
 	copy_argv_to_lst(argc, argv, &game_lists.stack_a);
 	_calculate_procedure(&game_lists);
 	// TODO: Makefile norm violation to not use the wildcard
+	// TODO: last three node is really expensive
+	// TODO: adjust cost func to choose opposite position of exit of stack_a
 	optimize_procedure(&game_lists.lst_procedure);
+	#ifndef DEBUG2
 	print_procedure(game_lists.lst_procedure);
+	#endif
 	free_all_lists(&game_lists);
 	return (0);
 }

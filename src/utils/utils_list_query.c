@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 16:44:23 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/06 11:45:21 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/06 12:40:30 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,21 +46,21 @@ static bool	_is_index_among_descending(t_lst *prev_p, t_lst *curr_p, int x)
 
 size_t	return_num_to_ascending(t_lst **lst_pp, const t_lst *node_p)
 {
-	int		b_top;
+	int		top;
 	size_t	ra_counter;
 	t_lst	*iter_p;
 
 	if (!*lst_pp || ft_dl_lstsize(*lst_pp) == 1)
 		return (0);
 	iter_p = *lst_pp;
-	b_top = get_index_of(node_p);
-	if (_is_index_among_ascending(iter_p->prev_p->prev_p, iter_p, b_top))
+	top = get_index_of(node_p);
+	if (_is_index_among_ascending(iter_p->prev_p->prev_p, iter_p, top))
 		return (0);
 	iter_p = iter_p->next_p;
 	ra_counter = 1;
 	while (iter_p->is_sentinel == false)
 	{
-		if (_is_index_among_ascending(iter_p->prev_p, iter_p, b_top))
+		if (_is_index_among_ascending(iter_p->prev_p, iter_p, top))
 			break ;
 		iter_p = iter_p->next_p;
 		ra_counter++;
@@ -70,21 +70,21 @@ size_t	return_num_to_ascending(t_lst **lst_pp, const t_lst *node_p)
 
 size_t	return_num_to_descending(t_lst **lst_pp, const t_lst *node_p)
 {
-	int		b_top;
+	int		top;
 	size_t	ra_counter;
 	t_lst	*iter_p;
 
 	if (!*lst_pp || ft_dl_lstsize(*lst_pp) == 1)
 		return (0);
 	iter_p = *lst_pp;
-	b_top = get_index_of(node_p);
-	if (_is_index_among_descending(iter_p->prev_p->prev_p, iter_p, b_top))
+	top = get_index_of(node_p);
+	if (_is_index_among_descending(iter_p->prev_p->prev_p, iter_p, top))
 		return (0);
 	iter_p = iter_p->next_p;
 	ra_counter = 1;
 	while (iter_p->is_sentinel == false)
 	{
-		if (_is_index_among_descending(iter_p->prev_p, iter_p, b_top))
+		if (_is_index_among_descending(iter_p->prev_p, iter_p, top))
 			break ;
 		iter_p = iter_p->next_p;
 		ra_counter++;

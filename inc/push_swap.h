@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:31:29 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/06 11:07:44 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/07 16:35:29 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,16 @@ typedef struct s_game_lists
 	t_lst	*lst_procedure;
 }			t_game_lists;
 
+typedef struct s_node
+{
+	t_lst	*lst_p;
+	int		ra;
+	int		rra;
+	int		rb;
+	int		rrb;
+	int		min_cost;
+}			t_node;
+
 //////////////////////////////////////////
 /// main
 // main.c
@@ -49,6 +59,7 @@ ssize_t		has_duplicate_value(const t_lst *iter_p);
 void		ope_three_four_five_node(t_game_lists *game_lists);
 // ope_long.c
 void		ope_long(t_game_lists *game_lists);
+void		create_node_info_from_lst_p(t_lst *iter_p, t_node *node, t_game_lists *game);
 //////////////////////////////////////////
 /// operate
 // operate_both_stack.c
@@ -73,13 +84,13 @@ void		operate_rev_rotate_top_and_tail(t_lst **lst);
 bool		operate_push_top_to_another_stack(t_lst **src, t_lst **dst);
 //////////////////////////////////////////
 // push_insert.c
-void		execute_optimized_push(int min, int ra, t_game_lists *game);
+// void		execute_optimized_push(int ra, t_game_lists *game);
+void		execute_optimized_push(t_lst *optimal_node, t_game_lists *game_lists);
 // utils/append_sa_if_needed.c
 void		append_sa_if_needed(t_game_lists *game_lists);
 
 //////////////////////////////////////////
 /// utils
-// utils_temp.c
 // utils_list_query.c
 bool		is_ascending_order(const t_lst *iter_p);
 size_t		return_num_to_ascending(t_lst **lst_pp, const t_lst *node_p);
@@ -96,6 +107,8 @@ size_t		get_index_of(const t_lst *pointer);
 int			get_int_value_of(const t_lst *pointer);
 char		*get_char_of(const t_lst *pointer);
 bool		check_last_operation_is(const char *str, const t_lst **lst);
+size_t		get_ra_counter(t_lst **lst_pp, const t_lst *lst_p);
+size_t		get_min_cost_to_push(t_lst **lst_pp, const t_lst *iter_p);
 // utils_trivial.c
 int			handle_abnormal_input(void);
 void		free_all_lists(t_game_lists *game_lists);
