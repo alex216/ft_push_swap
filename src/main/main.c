@@ -6,12 +6,11 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 13:20:43 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/08 11:51:53 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/08 18:57:10 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 static void	_calculate_procedure(t_game_lists *game_lists)
 {
@@ -25,7 +24,8 @@ static void	_calculate_procedure(t_game_lists *game_lists)
 	if (a_size >= 3 && a_size <= 5)
 		ope_three_four_five_node(game_lists);
 	else
-		ope_select_insert(game_lists);
+		// ope_select_insert(game_lists);
+		ope_quick_sort(game_lists);
 	return ;
 }
 

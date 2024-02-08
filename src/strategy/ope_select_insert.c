@@ -6,42 +6,43 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 19:13:04 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/08 13:24:30 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/08 20:15:16 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static t_lst	*_return_optimal_lst_p(t_lst **stack_a, t_game_lists *game)
+void	return_optimal_lst_p(t_node *node_info, t_lst **lst_pp,
+			t_game_lists *game, void (*func)(t_lst *, t_node *, t_game_lists *))
 {
 	t_node	temp_node_info;
-	t_lst	*iter_p;
 	int		temp_min_cost;
-	t_lst	*optimal_lst_p;
+	t_lst	*iter_p;
 
-	iter_p = *stack_a;
+	iter_p = *lst_pp;
 	temp_min_cost = INT_MAX;
 	while (iter_p->is_sentinel == false)
 	{
-		create_node_info(iter_p, &temp_node_info, game);
+		func(iter_p, &temp_node_info, game);
 		if (temp_node_info.min_cost < temp_min_cost)
 		{
-			optimal_lst_p = iter_p;
+			func(iter_p, node_info, game);
 			temp_min_cost = temp_node_info.min_cost;
 		}
 		iter_p = iter_p->next_p;
 	}
-	return (optimal_lst_p);
 }
 
 void	ope_select_insert(t_game_lists *game)
 {
-	t_lst	*optimal_lst_p;
+	t_node	node_info;
 
 	while (game->stack_a)
 	{
-		optimal_lst_p = _return_optimal_lst_p(&game->stack_a, game);
-		select_push_insert(optimal_lst_p, game);
+		return_optimal_lst_p(&node_info, &game->stack_a, game,
+					   create_node_info_to_insert_to_b);
+		rotate_both_stack_for_push(&node_info, game);
+		operate_pb(game);
 	}
 	sort_stack_use_rb_rrb(&game->stack_b, game);
 	while (game->stack_b)

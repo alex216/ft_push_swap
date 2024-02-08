@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:31:29 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/08 13:28:30 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/08 18:49:10 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,15 @@ ssize_t		has_duplicate_value(const t_lst *iter_p);
 void		ope_three_four_five_node(t_game_lists *game_lists);
 // ope_select_insert.c
 void		ope_select_insert(t_game_lists *game_lists);
+void		return_optimal_lst_p(t_node *node_info, t_lst **lst_pp, t_game_lists *game,
+					void (*func)(t_lst *, t_node *, t_game_lists *));
 // ope_bubble_sort.c
-void		bubble_sort(t_game_lists *game);
+void		ope_bubble_sort(t_game_lists *game);
+// quick_sort.c
+void		ope_quick_sort(t_game_lists *game);
 //////////////////////////////////////////
-// select_push_insert.c
-void		select_push_insert(t_lst *optimal_node, t_game_lists *game_lists);
+// select_push_insert.c 5
+void		rotate_both_stack_for_push(t_node *node_info, t_game_lists *game_lists);
 // utils/append_sa_if_needed.c
 void		append_sa_if_needed(t_game_lists *game_lists);
 //////////////////////////////////////////
@@ -72,7 +76,7 @@ void		append_sa_if_needed(t_game_lists *game_lists);
 size_t		get_index_of(const t_lst *pointer);
 int			get_int_value_of(const t_lst *pointer);
 char		*get_char_of(const t_lst *pointer);
-size_t		get_ra_counter(t_lst **lst_pp, const t_lst *lst_p);
+size_t		get_rotate_cost(t_lst **lst_pp, const t_lst *lst_p);
 size_t		get_min_cost_to_push(t_lst **lst_pp, const t_lst *iter_p);
 // utils_list_query.c 5
 bool		is_ascending_order(const t_lst *iter_p);
@@ -80,10 +84,11 @@ size_t		return_num_to_ascending(t_lst **lst_pp, const t_lst *node_p);
 size_t		return_num_to_descending(t_lst **lst_pp, const t_lst *node_p);
 // utils_list_query1.c 4
 bool		check_last_operation_is(const char *str, const t_lst **lst);
+void		create_node_info_to_insert_to_a(t_lst *iter_p, t_node *node, t_game_lists *game);
+void		create_node_info_to_insert_to_b(t_lst *iter_p, t_node *node, t_game_lists *game);
 // utils_list_cmds.c 2
 void		sort_stack_use_ra_rra(t_lst **stack, t_game_lists *game);
 void		sort_stack_use_rb_rrb(t_lst **stack, t_game_lists *game);
-void		create_node_info(t_lst *iter_p, t_node *node, t_game_lists *game);
 // utils_struct_modify.c 3
 void		del_push_swap(void *pointer);
 void		*create_record(const char *str);

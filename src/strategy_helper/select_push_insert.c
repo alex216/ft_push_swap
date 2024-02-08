@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 12:16:41 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/08 13:25:09 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/08 18:10:57 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ static void	_operate_ra_rb(t_node *node, t_game_lists *game_lists)
 		operate_rb(game_lists);
 	while (ra_rb_min--)
 		operate_rr(game_lists);
-	operate_pb(game_lists);
 }
 
 // this can be ra then rrb or rrb then ra
@@ -43,7 +42,6 @@ static void	_operate_ra_rrb(t_node *node, t_game_lists *game_lists)
 	ra++;
 	while (rrb--)
 		operate_rrb(game_lists);
-	operate_pb(game_lists);
 }
 
 // this can be rra then rb or rb then rra
@@ -59,7 +57,6 @@ static void	_operate_rra_rb(t_node *node, t_game_lists *game_lists)
 	rra++;
 	while (rb--)
 		operate_rb(game_lists);
-	operate_pb(game_lists);
 }
 
 static void	_operate_rra_rrb(t_node *node, t_game_lists *game_lists)
@@ -77,20 +74,16 @@ static void	_operate_rra_rrb(t_node *node, t_game_lists *game_lists)
 		operate_rrb(game_lists);
 	while (rra_rrb_min--)
 		operate_rrr(game_lists);
-	operate_pb(game_lists);
 }
 
-void	select_push_insert(t_lst *optimal_node, t_game_lists *game_lists)
+void	rotate_both_stack_for_push(t_node *node_info, t_game_lists *game_lists)
 {
-	t_node	node_info;
-
-	create_node_info(optimal_node, &node_info, game_lists);
-	if (ft_max(node_info.ra, node_info.rb) == node_info.min_cost)
-		_operate_ra_rb(&node_info, game_lists);
-	else if (node_info.ra + node_info.rrb == node_info.min_cost)
-		_operate_ra_rrb(&node_info, game_lists);
-	else if (node_info.rra + node_info.rb == node_info.min_cost)
-		_operate_rra_rb(&node_info, game_lists);
-	else if (ft_max(node_info.rra, node_info.rrb) == node_info.min_cost)
-		_operate_rra_rrb(&node_info, game_lists);
+	if (ft_max(node_info->ra, node_info->rb) == node_info->min_cost)
+		_operate_ra_rb(node_info, game_lists);
+	else if (node_info->ra + node_info->rrb == node_info->min_cost)
+		_operate_ra_rrb(node_info, game_lists);
+	else if (node_info->rra + node_info->rb == node_info->min_cost)
+		_operate_rra_rb(node_info, game_lists);
+	else if (ft_max(node_info->rra, node_info->rrb) == node_info->min_cost)
+		_operate_rra_rrb(node_info, game_lists);
 }
