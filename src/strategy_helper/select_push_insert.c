@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_insert.c                                      :+:      :+:    :+:   */
+/*   select_push_insert.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 12:16:41 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/07 16:30:40 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/08 13:25:09 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,11 @@ static void	_operate_rra_rrb(t_node *node, t_game_lists *game_lists)
 	operate_pb(game_lists);
 }
 
-void	execute_optimized_push(t_lst *optimal_node, t_game_lists *game_lists)
+void	select_push_insert(t_lst *optimal_node, t_game_lists *game_lists)
 {
 	t_node	node_info;
 
-	create_node_info_from_lst_p(optimal_node, &node_info, game_lists);
+	create_node_info(optimal_node, &node_info, game_lists);
 	if (ft_max(node_info.ra, node_info.rb) == node_info.min_cost)
 		_operate_ra_rb(&node_info, game_lists);
 	else if (node_info.ra + node_info.rrb == node_info.min_cost)

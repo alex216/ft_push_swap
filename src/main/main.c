@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 13:20:43 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/07 13:20:45 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/08 11:51:53 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ static void	_calculate_procedure(t_game_lists *game_lists)
 	a_size = ft_dl_lstsize(game_lists->stack_a);
 	if (a_size == 2)
 		operate_sa(game_lists);
-	else if (a_size >= 3 && a_size <= 5)
+	if (a_size >= 3 && a_size <= 5)
 		ope_three_four_five_node(game_lists);
 	else
-		ope_long(game_lists);
+		ope_select_insert(game_lists);
 	return ;
 }
 
@@ -45,6 +45,7 @@ int	main(int argc, char **argv)
 	#ifndef DEBUG2
 	print_procedure(game_lists.lst_procedure);
 	#endif
+	// debug_func(&game_lists);
 	free_all_lists(&game_lists);
 	return (0);
 }

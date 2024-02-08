@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   copy_argv_to_lst.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
+/*   By: yliu <yliu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:32:48 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/01 16:10:02 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/08 10:19:24 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ static void	_compress_array(t_lst **stack_a)
 	iter_p = *stack_a;
 	while (iter_p->is_sentinel == false)
 	{
-		iter_p->payload_p->index = _count_how_large_the_new_node_is(stack_a,
-				iter_p);
+		iter_p->payload_p->index
+			= _count_how_large_the_new_node_is(stack_a, iter_p);
 		iter_p = iter_p->next_p;
 	}
 }
