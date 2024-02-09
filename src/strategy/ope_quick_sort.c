@@ -6,35 +6,65 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:43:02 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/09 16:24:16 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/11 22:58:27 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "push_swap.h"
-#include <stddef.h>
 
-void	_divide(size_t width, t_game_lists *game)
+static void	_return_optimal_lst_p(t_node *node_info, t_game_lists *game,
+				int min_index_can_move)
 {
-	int		temp_size;
+	t_node	temp_node_info;
+	int		temp_min_cost;
+	t_lst	*iter_p;
+
+	iter_p = game->stack_b;
+	temp_min_cost = INT_MAX;
+	while (iter_p->is_sentinel == false)
+	{
+		if ((int)get_index_of(iter_p) > min_index_can_move)
+		{
+			create_node_info_to_insert_to_a(iter_p, &temp_node_info, game);
+			if (temp_node_info.min_cost < temp_min_cost)
+			{
+				create_node_info_to_insert_to_a(iter_p, node_info, game);
+				temp_min_cost = temp_node_info.min_cost;
+			}
+		}
+		iter_p = iter_p->next_p;
+	}
+}
+
+static void	_exec_pb_or_ra(size_t pivot, size_t width, t_game_lists *game)
+{
+	size_t	pushing_index;
+
+	pushing_index = get_index_of(game->stack_a);
+	if (pushing_index <= pivot + width)
+	{
+		operate_pb(game);
+		if (pushing_index <= pivot)
+			operate_rb(game);
+	}
+	else
+		operate_ra(game);
+}
+
+static void	_divide(size_t width, t_game_lists *game)
+{
+	int		stack_a_size;
 	size_t	pivot;
+	int		i;
 
 	pivot = width;
 	while (game->stack_a)
 	{
-		temp_size = ft_dl_lstsize(game->stack_a);
-		int i = 0;
-		while (i < temp_size)
+		stack_a_size = ft_dl_lstsize(game->stack_a);
+		i = 0;
+		while (i < stack_a_size)
 		{
-			size_t pushing_index = get_index_of(game->stack_a);
-			if (pushing_index <= pivot + width)
-			{
-				operate_pb(game);
-				if (pushing_index <= pivot)
-					operate_rb(game);
-			}
-			else
-				operate_ra(game);
+			_exec_pb_or_ra(pivot, width, game);
 			i++;
 		}
 		pivot += 2 * width;
@@ -44,19 +74,19 @@ void	_divide(size_t width, t_game_lists *game)
 void	ope_quick_sort(t_game_lists *game)
 {
 	t_node	node_info;
-	size_t	divide_width;
-	int		divided;
-	int	min_index_can_move;
+	int		divide_width;
+	int		divided_num;
+	int		min_index_can_move;
+	int		cnt;
 
-	divided = 10;
-	divide_width = ft_dl_lstsize(game->stack_a) / divided;
+	divided_num = 6;
+	divide_width = ft_dl_lstsize(game->stack_a) / divided_num;
 	min_index_can_move = ft_dl_lstsize(game->stack_a) - divide_width;
 	_divide(divide_width, game);
-	size_t cnt = 0;
+	cnt = 0;
 	while (game->stack_b)
 	{
-		return_optimal_lst_p(&node_info, &game->stack_b, game, min_index_can_move,
-									   create_node_info_to_insert_to_a);
+		_return_optimal_lst_p(&node_info, game, min_index_can_move);
 		rotate_both_stack_for_push(&node_info, game);
 		operate_pa(game);
 		cnt++;

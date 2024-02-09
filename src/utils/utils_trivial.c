@@ -6,11 +6,18 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 16:33:20 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/01 17:51:46 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/09 17:59:33 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	initialize_game_list(t_game_lists *game)
+{
+	game->stack_a = NULL;
+	game->stack_b = NULL;
+	game->lst_procedure = NULL;
+}
 
 int	handle_abnormal_input(void)
 {
