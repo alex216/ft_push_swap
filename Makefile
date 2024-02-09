@@ -6,7 +6,7 @@
 #    By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 12:04:47 by yliu              #+#    #+#              #
-#    Updated: 2024/02/01 20:34:25 by yliu             ###   ########.fr        #
+#    Updated: 2024/02/06 14:24:51 by yliu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,10 @@ ifdef DEBUG
 CFLAGS += -g -fsanitize=address -fsanitize=integer -DDEBUG
 endif
 
+ifdef DEBUG2
+CFLAGS += -D DEBUG2=1
+endif
+
 # color and line
 DEF_COLOR		=	\033[0;39m
 ORANGE			=	\033[0;33m
@@ -78,6 +82,9 @@ bonus:			$(BONUS_NAME)
 
 debug:
 				make DEBUG=1 all
+
+debug2:
+				make DEBUG2=1 all
 
 $(NAME):		status_check
 
