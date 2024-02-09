@@ -6,14 +6,15 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 19:13:04 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/08 20:15:16 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/09 15:36:12 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stddef.h>
 
 void	return_optimal_lst_p(t_node *node_info, t_lst **lst_pp,
-			t_game_lists *game, void (*func)(t_lst *, t_node *, t_game_lists *))
+			t_game_lists *game, int min_index_can_move, void (*func)(t_lst *, t_node *, t_game_lists *))
 {
 	t_node	temp_node_info;
 	int		temp_min_cost;
@@ -23,11 +24,14 @@ void	return_optimal_lst_p(t_node *node_info, t_lst **lst_pp,
 	temp_min_cost = INT_MAX;
 	while (iter_p->is_sentinel == false)
 	{
-		func(iter_p, &temp_node_info, game);
-		if (temp_node_info.min_cost < temp_min_cost)
+		if ((int)get_index_of(iter_p) > min_index_can_move)
 		{
-			func(iter_p, node_info, game);
-			temp_min_cost = temp_node_info.min_cost;
+			func(iter_p, &temp_node_info, game);
+			if (temp_node_info.min_cost < temp_min_cost)
+			{
+				func(iter_p, node_info, game);
+				temp_min_cost = temp_node_info.min_cost;
+			}
 		}
 		iter_p = iter_p->next_p;
 	}
@@ -39,7 +43,7 @@ void	ope_select_insert(t_game_lists *game)
 
 	while (game->stack_a)
 	{
-		return_optimal_lst_p(&node_info, &game->stack_a, game,
+		return_optimal_lst_p(&node_info, &game->stack_a, game, 0,
 					   create_node_info_to_insert_to_b);
 		rotate_both_stack_for_push(&node_info, game);
 		operate_pb(game);

@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:31:29 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/08 18:49:10 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/09 15:36:17 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include "ft_printf.h"
 # include "get_next_line.h"
 # include "libft.h"
+#include <stddef.h>
 
 # define EXIT_ERROR -1
 # define OPERATION_NUMBER 11
@@ -60,7 +61,7 @@ void		ope_three_four_five_node(t_game_lists *game_lists);
 // ope_select_insert.c
 void		ope_select_insert(t_game_lists *game_lists);
 void		return_optimal_lst_p(t_node *node_info, t_lst **lst_pp, t_game_lists *game,
-					void (*func)(t_lst *, t_node *, t_game_lists *));
+					int min_index_can_move, void (*func)(t_lst *, t_node *, t_game_lists *));
 // ope_bubble_sort.c
 void		ope_bubble_sort(t_game_lists *game);
 // quick_sort.c
