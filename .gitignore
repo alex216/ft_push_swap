@@ -10,6 +10,7 @@ push_swap
 checker*
 *checker
 test.sh
+test1.sh
 subject.txt
 push_swap_visualizer
 Push-Swap-Tester

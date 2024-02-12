@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   calculate_procedure.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/07 13:20:43 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/11 23:26:01 by yliu             ###   ########.fr       */
+/*   Created: 2024/02/09 16:41:47 by yliu              #+#    #+#             */
+/*   Updated: 2024/02/09 18:07:32 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void	calculate_procedure(t_game_lists *game_lists)
 {
-	t_game_lists	game_lists;
-	// TODO: Makefile norm violation to not use the wildcard
-	// sort from middle
+	int	a_size;
 
-	initialize_game_list(&game_lists);
-	copy_argv_to_lst(argc, argv, &game_lists.stack_a);
-	calculate_procedure(&game_lists);
-	print_procedure(game_lists.lst_procedure);
-	optimize_procedure(&game_lists.lst_procedure);
-	free_all_lists(&game_lists);
-	return (0);
+	if (is_ascending_order(game_lists->stack_a))
+		return ;
+	a_size = ft_dl_lstsize(game_lists->stack_a);
+	if (a_size == 2)
+		operate_sa(game_lists);
+	else if (a_size >= 3 && a_size <= 5)
+		ope_three_four_five_node(game_lists);
+	else if (a_size < 150)
+		ope_select_insert(game_lists);
+	else
+		ope_quick_sort(game_lists);
+	return ;
 }
