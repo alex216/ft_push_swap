@@ -6,7 +6,7 @@
 #    By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 12:04:47 by yliu              #+#    #+#              #
-#    Updated: 2024/02/06 14:24:51 by yliu             ###   ########.fr        #
+#    Updated: 2024/02/12 15:29:02 by yliu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,24 @@ SHELL = /bin/zsh
 
 # compiler option and etc
 NAME			= push_swap
-BONUS_NAME		= kari_checker
+BONUS_NAME		= checker
 LIBRARY			= libft.a
-CFLAGS			= -Wall -Wextra -Werror -g -fsanitize=address -fsanitize=integer -fsanitize=undefined
+CFLAGS			= -Wall -Wextra -Werror -g -fsanitize=address,integer,undefined
 RM				= rm -rf
 ECHO			= echo -e
+
+# color and line
+DEF_COLOR		=	\033[0;39m
+ORANGE			=	\033[0;33m
+GRAY			=	\033[0;90m
+RED				=	\033[0;91m
+GREEN			=	\033[1;92m
+YELLOW			=	\033[1;93m
+BLUE			=	\033[0;94m
+MAGENTA			=	\033[0;95m
+CYAN			=	\033[0;96m
+WHITE			=	\033[0;97m
+LINE			= 	\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 
 ##########################################
 # library directory
@@ -37,16 +50,44 @@ BONUS_INC_DIR	= $(BASE_INC_DIR) ./inc ./bonus_inc
 
 ##########################################
 # headers files
-ORIGIN_HEADERS	= $(wildcard $(BASE_INC_DIR)/*.h)
+ORIGIN_HEADERS	= ./inc/push_swap.h
 LIB				= $(LIB_DIR)/$(LIBRARY)
 
+BASIC_SRCS 		= \
+				  ./src/main/calculate_procedure.c \
+				  ./src/main/copy_argv_to_lst.c \
+				  ./src/main/copy_argv_to_lst_helper.c \
+				  \
+				  ./src/operate/operate_basic_stack_ope1.c \
+				  ./src/operate/operate_basic_stack_ope2.c \
+				  ./src/operate/operate_both_stack.c \
+				  ./src/operate/operate_stack_a.c \
+				  ./src/operate/operate_stack_b.c \
+				  \
+				  ./src/strategy/ope_bubble_sort.c \
+				  ./src/strategy/ope_quick_sort.c \
+				  ./src/strategy/ope_select_insert.c \
+				  ./src/strategy/ope_three_four_five_node.c \
+				  \
+				  ./src/strategy_helper/append_sa_if_needed.c \
+				  ./src/strategy_helper/select_push_insert.c \
+				  \
+				  ./src/utils/utils_basic.c \
+				  ./src/utils/utils_debug.c \
+				  ./src/utils/utils_list_cmds.c \
+				  ./src/utils/utils_list_query.c \
+				  ./src/utils/utils_list_query1.c \
+				  ./src/utils/utils_struct_get_context.c \
+				  ./src/utils/utils_struct_modify.c \
+				  ./src/utils/utils_trivial.c \
 # mandatory files
-SRCS 	   		= $(wildcard $(SRCS_DIR)/*/*.c)
+SRCS			= $(BASIC_SRCS) ./src/main/main.c
+BASIC_OBJS		= $(subst $(SRCS_DIR), $(OBJS_DIR), $(BASIC_SRCS:.c=.o))
 OBJS			= $(subst $(SRCS_DIR), $(OBJS_DIR), $(SRCS:.c=.o))
 HEADERS 	   	= $(ORIGIN_HEADERS) ./inc/push_swap.h
 
 # bonus files
-BONUS_SRCS 	   	= $(BONUS_SRCS_DIR)/checker_kari.c
+BONUS_SRCS 	   	= $(BONUS_SRCS_DIR)/checker.c
 BONUS_OBJS		= $(subst $(BONUS_SRCS_DIR), $(BONUS_OBJS_DIR), $(BONUS_SRCS:.c=.o))
 BONUS_HEADERS	= $(HEADERS) ./bonus_inc/push_swap_bonus.h
 
@@ -54,37 +95,9 @@ BONUS_HEADERS	= $(HEADERS) ./bonus_inc/push_swap_bonus.h
 MAKE_OBJDIR		= $(shell mkdir -p $(subst $(SRCS_DIR), $(OBJS_DIR), $(dir $(SRCS))))
 MAKE_B_OBJDIR	= $(shell mkdir -p $(subst $(BONUS_SRCS_DIR), $(BONUS_OBJS_DIR), $(dir $(BONUS_SRCS))))
 
-# debug info
-ifdef DEBUG
-CFLAGS += -g -fsanitize=address -fsanitize=integer -DDEBUG
-endif
-
-ifdef DEBUG2
-CFLAGS += -D DEBUG2=1
-endif
-
-# color and line
-DEF_COLOR		=	\033[0;39m
-ORANGE			=	\033[0;33m
-GRAY			=	\033[0;90m
-RED				=	\033[0;91m
-GREEN			=	\033[1;92m
-YELLOW			=	\033[1;93m
-BLUE			=	\033[0;94m
-MAGENTA			=	\033[0;95m
-CYAN			=	\033[0;96m
-WHITE			=	\033[0;97m
-LINE			= 	\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
-
 all:			$(NAME)
 
 bonus:			$(BONUS_NAME)
-
-debug:
-				make DEBUG=1 all
-
-debug2:
-				make DEBUG2=1 all
 
 $(NAME):		status_check
 
@@ -103,7 +116,7 @@ compile:		$(OBJS) $(HEADERS) $(LIBFT_HEADERS)
 				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(NAME)]\t./$(NAME) \t$(GREEN)compiled \u2714$(DEF_COLOR)"
 
 compile_bonus:	$(BONUS_OBJS) $(BONUS_HEADERS) $(LIBFT_HEADERS)
-				@$(CC) $(CFLAGS) $(foreach dir_list,$(MAN_INC_DIR),-I$(dir_list)) ./obj/main/copy_argv_to_lst.o  ./obj/main/copy_argv_to_lst_helper.o ./obj/operate/operate_basic_stack_ope1.o  ./obj/operate/operate_basic_stack_ope2.o  ./obj/operate/operate_both_stack.o  ./obj/operate/operate_stack_a.o  ./obj/operate/operate_stack_b.o  ./obj/strategy/ope_long.o  ./obj/strategy/ope_three_four_five_node.o  ./obj/utils/append_sa_if_needed.o  ./obj/utils/push_insert.o  ./obj/utils/struct_modify.o  ./obj/utils/utils_basic.o  ./obj/utils/utils_debug.o  ./obj/utils/utils_list_cmds.o  ./obj/utils/utils_list_query.o  ./obj/utils/utils_struct_get_context.o  ./obj/utils/utils_temp.o  ./obj/utils/utils_trivial.o $(BONUS_OBJS) ./libft/libft.a -o $(BONUS_NAME)
+				@$(CC) $(CFLAGS) $(foreach dir_list,$(BONUS_INC_DIR),-I$(dir_list)) $(BASIC_OBJS) $(BONUS_OBJS) ./libft/libft.a -o $(BONUS_NAME)
 
 $(OBJS_DIR)/%.o:$(MAKE_OBJDIR) $(SRCS_DIR)/%.c $(HEADERS)
 				@$(CC) $(CFLAGS) $(foreach dir_list,$(MAN_INC_DIR),-I$(dir_list)) -c $< -o $@
@@ -124,7 +137,7 @@ fclean:
 				@$(RM) $(OBJS_DIR)
 				@$(RM) $(BONUS_OBJS_DIR)
 				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(NAME)]\tobject files \t$(GREEN)deleted \u2714$(DEF_COLOR)"
-				@$(RM) $(NAME)
+				@$(RM) $(NAME) $(BONUS_NAME)
 				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(NAME)]\t./$(NAME) \t$(GREEN)deleted \u2714$(DEF_COLOR)"
 
 re:				fclean
