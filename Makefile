@@ -6,7 +6,7 @@
 #    By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 12:04:47 by yliu              #+#    #+#              #
-#    Updated: 2024/02/13 17:17:36 by yliu             ###   ########.fr        #
+#    Updated: 2024/02/13 17:54:52 by yliu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -166,6 +166,6 @@ format_norm:
 				@make norm
 
 visual:			all
-				@bash shell_script/pain.sh
+				pain.sh
 
 .PHONY:			all clean fclean re bonus norm format_norm visual
