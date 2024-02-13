@@ -18,7 +18,6 @@ push_swap_test.sh
 push_swap_tester
 shell_script/*
 shell_script/*
-pain.sh
 push-swap-pain
 
 # libft.a
