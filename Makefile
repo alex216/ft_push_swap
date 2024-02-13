@@ -6,7 +6,7 @@
 #    By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 12:04:47 by yliu              #+#    #+#              #
-#    Updated: 2024/02/13 18:32:41 by yliu             ###   ########.fr        #
+#    Updated: 2024/02/13 20:19:15 by yliu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -158,10 +158,10 @@ re:				fclean
 				@make
 
 norm:
-				@norminette $(SRCS) $(HEADERS) | grep -v 'OK'; norminette -v
+				@norminette $(SRCS) $(BONUS_SRCS) $(HEADERS) | grep -v 'OK'; norminette -v
 
 format_norm:
-				@c_formatter_42 $(SRCS) $(HEADERS)
+				@c_formatter_42 $(SRCS) $(BONUS_SRCS) $(HEADERS)
 				@make norm
 
 visual:			all
