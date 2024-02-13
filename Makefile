@@ -6,7 +6,7 @@
 #    By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 12:04:47 by yliu              #+#    #+#              #
-#    Updated: 2024/02/13 16:30:21 by yliu             ###   ########.fr        #
+#    Updated: 2024/02/13 17:05:31 by yliu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ MAGENTA			=	\033[0;95m
 CYAN			=	\033[0;96m
 WHITE			=	\033[0;97m
 LINE			= 	\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+LINE_BONUS		= 	\u2500
 
 BASIC_SRCS 		= \
 				  ./src/main/calculate_procedure.c \
@@ -125,12 +126,12 @@ $(OBJS_DIR)/%.o:$(SRCS_DIR)/%.c $(HEADERS)
 
 bonus_step_0:
 				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(BONUS_NAME)]\t./$(BONUS_NAME) \t$(WHITE)checking...$(DEF_COLOR)"
-				@$(ECHO) -n "\e$(GRAY)$(LINE)\r$(DEF_COLOR)"
+				@$(ECHO) -n "\e$(GRAY)$(LINE_BONUS)\r$(DEF_COLOR)"
 				@make bonus_step_1
 
 bonus_step_1:	$(BASIC_OBJS) $(BONUS_OBJS) $(LIB)
 				@$(CC) $(CFLAGS) $^ -o $(BONUS_NAME)
-				@$(ECHO) -n "\r\e$(GREEN)$(LINE)$(DEF_COLOR)"
+				@$(ECHO) -n "\r\e$(GREEN)$(LINE_BONUS)$(DEF_COLOR)"
 				@$(ECHO) "$(GREEN) \u2023 100% $(DEF_COLOR)"
 				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(BONUS_NAME)]\t./$(BONUS_NAME) \t$(GREEN)compiled \u2714$(DEF_COLOR)"
 
@@ -151,7 +152,7 @@ fclean:
 				@$(RM) $(NAME)
 				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(NAME)]\t./$(NAME) \t$(GREEN)deleted \u2714$(DEF_COLOR)"
 				@$(RM) $(BONUS_NAME)
-				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(NAME)]\t./$(BONUS_NAME) \t$(GREEN)deleted \u2714$(DEF_COLOR)"
+				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(BONUS_NAME)]\t./$(BONUS_NAME) \t$(GREEN)deleted \u2714$(DEF_COLOR)"
 
 re:				fclean
 				@make
