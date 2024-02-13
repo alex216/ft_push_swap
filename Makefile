@@ -6,7 +6,7 @@
 #    By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 12:04:47 by yliu              #+#    #+#              #
-#    Updated: 2024/02/13 09:55:45 by yliu             ###   ########.fr        #
+#    Updated: 2024/02/13 11:18:11 by yliu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -116,7 +116,7 @@ temp0:
 				@make temp
 
 temp:			$(OBJS) $(LIB)
-				@$(CC) $(CFLAGS) $^ -o $@
+				@$(CC) $(CFLAGS) $^ -o $(NAME)
 				@$(ECHO) -n "\r\e$(GREEN)$(LINE)$(DEF_COLOR)"
 				@$(ECHO) "$(GREEN) \u2023 100% $(DEF_COLOR)"
 				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(NAME)]\t./$(NAME) \t$(GREEN)compiled \u2714$(DEF_COLOR)"
@@ -134,18 +134,18 @@ $(BONUS_OBJS_DIR)/%.o:$(MAKE_B_OBJDIR) $(BONUS_SRCS_DIR)/%.c $(BONUS_HEADERS)
 
 # other cmds
 clean:
-				@cd $(LIB_DIR) && make clean
+				@make clean -C $(LIB_DIR)
 				@$(RM) $(OBJS_DIR)
-				@$(RM) $(BONUS_OBJS_DIR)
 				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(NAME)]\tobject files \t$(GREEN)deleted \u2714$(DEF_COLOR)"
+				@$(RM) $(BONUS_OBJS_DIR)
+				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(BONUS_NAME)]\tobject files \t$(GREEN)deleted \u2714$(DEF_COLOR)"
 
 fclean:			
-				@cd $(LIB_DIR) && make fclean
-				@$(RM) $(OBJS_DIR)
-				@$(RM) $(BONUS_OBJS_DIR)
-				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(NAME)]\tobject files \t$(GREEN)deleted \u2714$(DEF_COLOR)"
-				@$(RM) $(NAME) $(BONUS_NAME)
+				@make clean
+				@$(RM) $(NAME)
 				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(NAME)]\t./$(NAME) \t$(GREEN)deleted \u2714$(DEF_COLOR)"
+				@$(RM) $(BONUS_NAME)
+				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(NAME)]\t./$(BONUS_NAME) \t$(GREEN)deleted \u2714$(DEF_COLOR)"
 
 re:				fclean
 				@make
@@ -160,4 +160,4 @@ format_norm:
 visual:			all
 				@bash shell_script/pain.sh
 
-.PHONY:			all clean fclean re bonus norm format_norm debug
+.PHONY:			all clean fclean re bonus norm format_norm visual
