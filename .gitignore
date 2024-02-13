@@ -7,8 +7,7 @@ push_swap
 *.gch
 
 # tester
-checker*
-*checker
+checker
 test.sh
 test1.sh
 subject.txt
