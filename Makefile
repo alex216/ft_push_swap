@@ -6,7 +6,7 @@
 #    By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 12:04:47 by yliu              #+#    #+#              #
-#    Updated: 2024/02/12 15:29:02 by yliu             ###   ########.fr        #
+#    Updated: 2024/02/13 09:55:45 by yliu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,27 +31,7 @@ BLUE			=	\033[0;94m
 MAGENTA			=	\033[0;95m
 CYAN			=	\033[0;96m
 WHITE			=	\033[0;97m
-LINE			= 	\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
-
-##########################################
-# library directory
-LIB_DIR			= ./libft
-BASE_INC_DIR	= ./libft/inc
-
-# mandatory directory
-SRCS_DIR		= ./src
-OBJS_DIR		= ./obj
-MAN_INC_DIR		= $(BASE_INC_DIR) ./inc
-
-# bonus directory
-BONUS_SRCS_DIR	= ./bonus_src
-BONUS_OBJS_DIR	= ./bonus_obj
-BONUS_INC_DIR	= $(BASE_INC_DIR) ./inc ./bonus_inc
-
-##########################################
-# headers files
-ORIGIN_HEADERS	= ./inc/push_swap.h
-LIB				= $(LIB_DIR)/$(LIBRARY)
+LINE			= 	\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 
 BASIC_SRCS 		= \
 				  ./src/main/calculate_procedure.c \
@@ -80,43 +60,70 @@ BASIC_SRCS 		= \
 				  ./src/utils/utils_struct_get_context.c \
 				  ./src/utils/utils_struct_modify.c \
 				  ./src/utils/utils_trivial.c \
+
+##########################################
+# library directory
+LIB_DIR			= ./libft
+BASE_INC_DIR	= ./libft/inc
+
+# mandatory directory
+SRCS_DIR		= ./src
+OBJS_DIR		= ./obj
+MAN_INC_DIR		= $(BASE_INC_DIR) ./inc
+
+# bonus directory
+BONUS_SRCS_DIR	= ./bonus_src
+BONUS_OBJS_DIR	= ./bonus_obj
+BONUS_INC_DIR	= $(BASE_INC_DIR) ./inc ./bonus_inc
+
+##########################################
+# headers files
+ORIGIN_HEADERS	= ./inc/push_swap.h
+LIB				= $(LIB_DIR)/$(LIBRARY)
+
 # mandatory files
 SRCS			= $(BASIC_SRCS) ./src/main/main.c
 BASIC_OBJS		= $(subst $(SRCS_DIR), $(OBJS_DIR), $(BASIC_SRCS:.c=.o))
 OBJS			= $(subst $(SRCS_DIR), $(OBJS_DIR), $(SRCS:.c=.o))
-HEADERS 	   	= $(ORIGIN_HEADERS) ./inc/push_swap.h
+HEADERS 	   	= $(ORIGIN_HEADERS)
 
 # bonus files
 BONUS_SRCS 	   	= $(BONUS_SRCS_DIR)/checker.c
 BONUS_OBJS		= $(subst $(BONUS_SRCS_DIR), $(BONUS_OBJS_DIR), $(BONUS_SRCS:.c=.o))
 BONUS_HEADERS	= $(HEADERS) ./bonus_inc/push_swap_bonus.h
-
+##########################################
 # make obj dir recursively
 MAKE_OBJDIR		= $(shell mkdir -p $(subst $(SRCS_DIR), $(OBJS_DIR), $(dir $(SRCS))))
 MAKE_B_OBJDIR	= $(shell mkdir -p $(subst $(BONUS_SRCS_DIR), $(BONUS_OBJS_DIR), $(dir $(BONUS_SRCS))))
+
+##########################################
 
 all:			$(NAME)
 
 bonus:			$(BONUS_NAME)
 
-$(NAME):		status_check
-
 $(BONUS_NAME):	compile_bonus
 
-status_check:
-				cd $(LIB_DIR) && make
+$(NAME):		$(LIB)
+				@make temp0
+
+$(LIB):
+				@make -C ./libft
+
+temp0:			
 				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(NAME)]\t./$(NAME) \t$(WHITE)checking...$(DEF_COLOR)"
 				@$(ECHO) -n "\e$(GRAY)$(LINE)\r$(DEF_COLOR)"
-				@make compile
-				
-compile:		$(OBJS) $(HEADERS) $(LIBFT_HEADERS)
-				@$(CC) $(CFLAGS) $(foreach dir_list,$(MAN_INC_DIR),-I$(dir_list)) $(OBJS) ./libft/libft.a -o $(NAME)
+				@make temp
+
+temp:			$(OBJS) $(LIB)
+				@$(CC) $(CFLAGS) $^ -o $@
 				@$(ECHO) -n "\r\e$(GREEN)$(LINE)$(DEF_COLOR)"
 				@$(ECHO) "$(GREEN) \u2023 100% $(DEF_COLOR)"
 				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(NAME)]\t./$(NAME) \t$(GREEN)compiled \u2714$(DEF_COLOR)"
 
-compile_bonus:	$(BONUS_OBJS) $(BONUS_HEADERS) $(LIBFT_HEADERS)
-				@$(CC) $(CFLAGS) $(foreach dir_list,$(BONUS_INC_DIR),-I$(dir_list)) $(BASIC_OBJS) $(BONUS_OBJS) ./libft/libft.a -o $(BONUS_NAME)
+
+compile_bonus:	$(BONUS_HEADERS) $(BONUS_OBJS) $(LIB)
+				@$(CC) $(CFLAGS) $(BASIC_OBJS) $(BONUS_OBJS) $(LIB) -o $(BONUS_NAME)
 
 $(OBJS_DIR)/%.o:$(MAKE_OBJDIR) $(SRCS_DIR)/%.c $(HEADERS)
 				@$(CC) $(CFLAGS) $(foreach dir_list,$(MAN_INC_DIR),-I$(dir_list)) -c $< -o $@
@@ -144,16 +151,13 @@ re:				fclean
 				@make
 
 norm:
-				@norminette $(SRCS) $(HEADERS); norminette -v
+				@norminette $(SRCS) $(HEADERS) | grep -v 'OK'; norminette -v
 
 format_norm:
 				@c_formatter_42 $(SRCS) $(HEADERS)
-
-print_TEST:
-				@echo $(BONUS_HEADERS)
+				@make norm
 
 visual:			all
 				@bash shell_script/pain.sh
-
 
 .PHONY:			all clean fclean re bonus norm format_norm debug
