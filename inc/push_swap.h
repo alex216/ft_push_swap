@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:31:29 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/09 17:59:41 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/12 17:50:23 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # include "ft_printf.h"
 # include "get_next_line.h"
 # include "libft.h"
-# include <stddef.h>
 
 # define EXIT_ERROR -1
 # define OPERATION_NUMBER 11
@@ -68,8 +67,7 @@ void		ope_bubble_sort(t_game_lists *game);
 void		ope_quick_sort(t_game_lists *game);
 //////////////////////////////////////////
 // select_push_insert.c 5
-void		rotate_both_stack_for_push(t_node *node_info,
-				t_game_lists *game);
+void		rotate_both_stack_for_push(t_node *node_info, t_game_lists *game);
 // utils/append_sa_if_needed.c
 void		append_sa_if_needed(t_game_lists *game);
 //////////////////////////////////////////
