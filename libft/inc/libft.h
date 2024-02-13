@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 22:04:03 by yliu              #+#    #+#             */
-/*   Updated: 2024/01/31 18:03:42 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/13 18:36:50 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ typedef struct s_lst
 }						t_lst;
 
 // dl version of libft
-//	ft_dl_lst_create_ope.c
+//	ft_dl_lstcreate_ope.c
 bool					ft_dl_lstadd_front_with_lst(t_lst **lst,
 							t_lst *new_node);
 bool					ft_dl_lstadd_back_with_lst(t_lst **lst,

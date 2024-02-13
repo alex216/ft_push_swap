@@ -6,7 +6,7 @@
 #    By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/31 18:12:04 by yliu              #+#    #+#              #
-#    Updated: 2024/02/12 15:03:59 by yliu             ###   ########.fr        #
+#    Updated: 2024/02/13 18:38:23 by yliu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,12 +27,11 @@ INCLUDE			= ./inc/
 # SRCS 			= $(wildcard $(SRCS_DIR)ft_*/*.c)
 
 SRCS 			=\
-				 ./src/ft_dl_lst/ft_dl_lst_create_ope.c \
+				 ./src/ft_dl_lst/ft_dl_lstcreate_ope.c \
 				 ./src/ft_dl_lst/ft_dl_lstclear.c \
 				 ./src/ft_dl_lst/ft_dl_lstcreate_a_node.c \
 				 ./src/ft_dl_lst/ft_dl_lstdelone.c \
 				 ./src/ft_dl_lst/ft_dl_lstlast.c \
-				 ./src/ft_dl_lst/ft_dl_lstnew.c \
 				 ./src/ft_dl_lst/ft_dl_lstsize.c \
 				 ./src/ft_dl_lst/ft_dl_pf_lst.c \
 				 \
@@ -52,7 +51,6 @@ SRCS 			=\
 				 ./src/ft_lst/ft_lstiter.c \
 				 ./src/ft_lst/ft_lstlast.c \
 				 ./src/ft_lst/ft_lstmap.c \
-				 ./src/ft_lst/ft_lstnew.c \
 				 ./src/ft_lst/ft_lstsize.c \
 				 \
 				 ./src/ft_mem/ft_bzero.c \
