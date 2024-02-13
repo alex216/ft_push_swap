@@ -6,7 +6,7 @@
 #    By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 12:04:47 by yliu              #+#    #+#              #
-#    Updated: 2024/02/13 14:24:52 by yliu             ###   ########.fr        #
+#    Updated: 2024/02/13 16:30:21 by yliu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,18 +91,15 @@ HEADERS 	   	= $(ORIGIN_HEADERS)
 BONUS_SRCS 	   	= $(BONUS_SRCS_DIR)/checker.c
 BONUS_OBJS		= $(subst $(BONUS_SRCS_DIR), $(BONUS_OBJS_DIR), $(BONUS_SRCS:.c=.o))
 BONUS_HEADERS	= $(HEADERS) ./bonus_inc/push_swap_bonus.h
-##########################################
-# make obj dir recursively
-MAKE_OBJDIR		= $(shell mkdir -p $(subst $(SRCS_DIR), $(OBJS_DIR), $(dir $(SRCS))))
-MAKE_B_OBJDIR	= $(shell mkdir -p $(subst $(BONUS_SRCS_DIR), $(BONUS_OBJS_DIR), $(dir $(BONUS_SRCS))))
 
 ##########################################
 
-all:			$(NAME)
+all:			$(NAME) $(BONUS_NAME)
 
 bonus:			$(BONUS_NAME)
 
-$(BONUS_NAME):	compile_bonus
+$(BONUS_NAME):	$(LIB)
+				@make bonus_step_0
 
 $(NAME):		$(LIB)
 				@make man_step_0
@@ -121,14 +118,24 @@ man_step_1:		$(OBJS) $(LIB)
 				@$(ECHO) "$(GREEN) \u2023 100% $(DEF_COLOR)"
 				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(NAME)]\t./$(NAME) \t$(GREEN)compiled \u2714$(DEF_COLOR)"
 
-$(OBJS_DIR)/%.o:$(MAKE_OBJDIR) $(SRCS_DIR)/%.c $(HEADERS)
+$(OBJS_DIR)/%.o:$(SRCS_DIR)/%.c $(HEADERS)
+				@mkdir -p $(@D)
 				@$(CC) $(CFLAGS) $(foreach dir_list,$(MAN_INC_DIR),-I$(dir_list)) -c $< -o $@
 				@$(ECHO) -n "$(RED)\u2500$(DEF_COLOR)"
 
-compile_bonus:	$(BASIC_OBJS) $(BONUS_OBJS) $(LIB)
-				@$(CC) $(CFLAGS) $^ -o $(BONUS_NAME)
+bonus_step_0:
+				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(BONUS_NAME)]\t./$(BONUS_NAME) \t$(WHITE)checking...$(DEF_COLOR)"
+				@$(ECHO) -n "\e$(GRAY)$(LINE)\r$(DEF_COLOR)"
+				@make bonus_step_1
 
-$(BONUS_OBJS_DIR)/%.o:$(MAKE_B_OBJDIR) $(BONUS_SRCS_DIR)/%.c $(BONUS_HEADERS)
+bonus_step_1:	$(BASIC_OBJS) $(BONUS_OBJS) $(LIB)
+				@$(CC) $(CFLAGS) $^ -o $(BONUS_NAME)
+				@$(ECHO) -n "\r\e$(GREEN)$(LINE)$(DEF_COLOR)"
+				@$(ECHO) "$(GREEN) \u2023 100% $(DEF_COLOR)"
+				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(BONUS_NAME)]\t./$(BONUS_NAME) \t$(GREEN)compiled \u2714$(DEF_COLOR)"
+
+$(BONUS_OBJS_DIR)/%.o:$(BONUS_SRCS_DIR)/%.c $(BONUS_HEADERS)
+				@mkdir -p $(@D)
 				@$(CC) $(CFLAGS) $(foreach dir_list,$(BONUS_INC_DIR),-I$(dir_list)) -c $< -o $@
 
 # other cmds
@@ -148,6 +155,7 @@ fclean:
 
 re:				fclean
 				@make
+				@make bonus
 
 norm:
 				@norminette $(SRCS) $(HEADERS) | grep -v 'OK'; norminette -v
