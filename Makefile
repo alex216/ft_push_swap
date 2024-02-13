@@ -6,7 +6,7 @@
 #    By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 12:04:47 by yliu              #+#    #+#              #
-#    Updated: 2024/02/13 17:54:52 by yliu             ###   ########.fr        #
+#    Updated: 2024/02/13 18:04:08 by yliu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -156,7 +156,6 @@ fclean:
 
 re:				fclean
 				@make
-				@make bonus
 
 norm:
 				@norminette $(SRCS) $(HEADERS) | grep -v 'OK'; norminette -v

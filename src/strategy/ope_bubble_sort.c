@@ -6,11 +6,10 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 20:15:17 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/08 13:47:05 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/13 18:07:36 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "push_swap.h"
 
 void	ope_bubble_sort(t_game_lists *game)

@@ -6,14 +6,10 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 23:23:49 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/13 16:38:26 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/13 18:02:37 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "get_next_line.h"
-#include "libft.h"
-#include "push_swap.h"
 #include "push_swap_bonus.h"
 
 static void	_put_data_to_ope_dictionary(

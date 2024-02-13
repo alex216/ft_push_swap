@@ -6,11 +6,10 @@
 /*   By: yliu <yliu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:32:48 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/10 15:12:04 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/13 18:06:30 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
 #include "push_swap.h"
 
 static ssize_t	_check_digital_input(const char *string)

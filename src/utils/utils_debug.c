@@ -6,11 +6,10 @@
 /*   By: yliu <yliu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 17:23:01 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/06 11:23:22 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/13 18:05:46 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
 #include "push_swap.h"
 
 void	debug_func(const t_game_lists *game)

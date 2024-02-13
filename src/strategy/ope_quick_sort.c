@@ -6,13 +6,13 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:43:02 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/12 13:48:55 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/13 18:00:25 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	_return_optimal_lst_p(t_node *node_info, t_game_lists *game,
+static void	_set_optimal_lst_info(t_node *node_info, t_game_lists *game,
 		int min_index_can_move)
 {
 	t_node	temp_node_info;
@@ -86,7 +86,7 @@ void	ope_quick_sort(t_game_lists *game)
 	cnt = 0;
 	while (game->stack_b)
 	{
-		_return_optimal_lst_p(&node_info, game, min_index_can_move);
+		_set_optimal_lst_info(&node_info, game, min_index_can_move);
 		rotate_both_stack_for_push(&node_info, game);
 		operate_pa(game);
 		cnt++;

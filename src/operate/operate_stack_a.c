@@ -6,11 +6,10 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 13:26:49 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/01 17:50:11 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/13 18:06:10 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "push_swap.h"
 
 bool	operate_sa(t_game_lists *game_lists)
