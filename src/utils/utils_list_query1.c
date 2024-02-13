@@ -37,7 +37,7 @@ static int	_return_min_cost_of_push_insert(t_node *node)
 }
 
 void	create_node_info_to_insert_to_b(t_lst *iter_p, t_node *node,
-		t_game_lists *game)
+			t_game_lists *game)
 {
 	node->ra = get_rotate_cost(&game->stack_a, iter_p);
 	node->rb = return_num_to_descending(&game->stack_b, iter_p);
@@ -47,7 +47,7 @@ void	create_node_info_to_insert_to_b(t_lst *iter_p, t_node *node,
 }
 
 void	create_node_info_to_insert_to_a(t_lst *iter_p, t_node *node,
-		t_game_lists *game)
+			t_game_lists *game)
 {
 	node->rb = get_rotate_cost(&game->stack_b, iter_p);
 	node->ra = return_num_to_ascending(&game->stack_a, iter_p);
