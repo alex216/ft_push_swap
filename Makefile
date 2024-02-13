@@ -6,7 +6,7 @@
 #    By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 12:04:47 by yliu              #+#    #+#              #
-#    Updated: 2024/02/13 18:04:08 by yliu             ###   ########.fr        #
+#    Updated: 2024/02/13 18:32:41 by yliu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -141,7 +141,7 @@ $(BONUS_OBJS_DIR)/%.o:$(BONUS_SRCS_DIR)/%.c $(BONUS_HEADERS)
 
 # other cmds
 clean:
-				@make clean -C $(LIB_DIR)
+				@make fclean -C $(LIB_DIR)
 				@$(RM) $(OBJS_DIR)
 				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(NAME)]\tobject files \t$(GREEN)deleted \u2714$(DEF_COLOR)"
 				@$(RM) $(BONUS_OBJS_DIR)
