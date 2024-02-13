@@ -13,7 +13,7 @@
 #include "push_swap.h"
 
 static void	_return_optimal_lst_p(t_node *node_info, t_game_lists *game,
-				int min_index_can_move)
+		int min_index_can_move)
 {
 	t_node	temp_node_info;
 	int		temp_min_cost;
