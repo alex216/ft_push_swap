@@ -6,7 +6,7 @@
 #    By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 12:04:47 by yliu              #+#    #+#              #
-#    Updated: 2024/02/13 20:19:15 by yliu             ###   ########.fr        #
+#    Updated: 2024/02/15 22:06:23 by yliu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -102,7 +102,7 @@ bonus:			$(BONUS_NAME)
 $(BONUS_NAME):	$(LIB)
 				@make bonus_step_0
 
-$(NAME):		$(LIB)
+$(NAME):		$(LIB) $(SRCS)
 				@make man_step_0
 
 $(LIB):
