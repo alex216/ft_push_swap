@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:31:29 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/12 17:50:23 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/26 20:21:22 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ void		initialize_game_list(t_game_lists *game);
 int			handle_abnormal_input(void);
 void		free_all_lists(t_game_lists *game);
 void		print_procedure(const t_lst *i_p);
-void		optimize_procedure(t_lst **lst_procedure);
 //////////////////////////////////////////
 /// operate
 // operate_both_stack.c

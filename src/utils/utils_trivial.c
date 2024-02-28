@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 16:33:20 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/09 17:59:33 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/26 20:20:16 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,6 @@ int	handle_abnormal_input(void)
 {
 	ft_putendl_fd("Error", STDERR_FILENO);
 	return (255);
-}
-
-// sa -> sa
-// ra -> rra
-// rra -> ra
-// pa -> pb
-// pb -> pa
-// sb -> sb
-// rb -> rrb
-// rrb -> rb
-// ss -> ss
-// rr -> rrr
-// rrr -> rr
-void	optimize_procedure(t_lst **lst_procedure)
-{
-	(void)lst_procedure;
 }
 
 void	print_procedure(const t_lst *i_p)

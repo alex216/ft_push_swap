@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 13:20:43 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/13 10:01:42 by yliu             ###   ########.fr       */
+/*   Updated: 2024/02/26 20:20:50 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	main(int argc, char **argv)
 	copy_argv_to_lst(argc, argv, &game_lists.stack_a);
 	calculate_procedure(&game_lists);
 	print_procedure(game_lists.lst_procedure);
-	optimize_procedure(&game_lists.lst_procedure);
 	free_all_lists(&game_lists);
 	return (0);
 }
