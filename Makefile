@@ -6,7 +6,7 @@
 #    By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 12:04:47 by yliu              #+#    #+#              #
-#    Updated: 2024/03/20 22:06:11 by yliu             ###   ########.fr        #
+#    Updated: 2024/03/24 20:06:59 by yliu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,7 +97,9 @@ BONUS_HEADERS	= $(HEADERS) ./bonus_inc/push_swap_bonus.h
 
 all:			$(NAME) $(BONUS_NAME)
 
-bonus:			$(BONUS_NAME)
+mandatory:		$(NAME)
+
+bonus:			$(NAME) $(BONUS_NAME)
 
 $(BONUS_NAME):	$(LIB)
 				@make bonus_step_0
