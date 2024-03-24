@@ -6,7 +6,7 @@
 #    By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 12:04:47 by yliu              #+#    #+#              #
-#    Updated: 2024/02/15 22:06:23 by yliu             ###   ########.fr        #
+#    Updated: 2024/03/20 22:06:11 by yliu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,8 +31,8 @@ BLUE			=	\033[0;94m
 MAGENTA			=	\033[0;95m
 CYAN			=	\033[0;96m
 WHITE			=	\033[0;97m
-LINE			= 	\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
-LINE_BONUS		= 	\u2500
+LINE			= 	\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501
+LINE_BONUS		= 	\u2501
 
 BASIC_SRCS 		= \
 				  ./src/main/calculate_procedure.c \
@@ -122,7 +122,7 @@ man_step_1:		$(OBJS) $(LIB)
 $(OBJS_DIR)/%.o:$(SRCS_DIR)/%.c $(HEADERS)
 				@mkdir -p $(@D)
 				@$(CC) $(CFLAGS) $(foreach dir_list,$(MAN_INC_DIR),-I$(dir_list)) -c $< -o $@
-				@$(ECHO) -n "$(RED)\u2500$(DEF_COLOR)"
+				@$(ECHO) -n "$(RED)\u2501$(DEF_COLOR)"
 
 bonus_step_0:
 				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(BONUS_NAME)]\t./$(BONUS_NAME) \t$(WHITE)checking...$(DEF_COLOR)"
