@@ -6,7 +6,7 @@
 #    By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 12:04:47 by yliu              #+#    #+#              #
-#    Updated: 2024/03/24 20:06:59 by yliu             ###   ########.fr        #
+#    Updated: 2024/03/26 13:06:06 by yliu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -101,7 +101,7 @@ mandatory:		$(NAME)
 
 bonus:			$(NAME) $(BONUS_NAME)
 
-$(BONUS_NAME):	$(LIB)
+$(BONUS_NAME):	$(LIB) $(BONUS_SRCS)
 				@make bonus_step_0
 
 $(NAME):		$(LIB) $(SRCS)
@@ -110,7 +110,7 @@ $(NAME):		$(LIB) $(SRCS)
 $(LIB):
 				@make -C ./libft
 
-man_step_0:			
+man_step_0:
 				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(NAME)]\t./$(NAME) \t$(WHITE)checking...$(DEF_COLOR)"
 				@$(ECHO) -n "\e$(GRAY)$(LINE)\r$(DEF_COLOR)"
 				@make man_step_1
@@ -149,7 +149,7 @@ clean:
 				@$(RM) $(BONUS_OBJS_DIR)
 				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(BONUS_NAME)]\tobject files \t$(GREEN)deleted \u2714$(DEF_COLOR)"
 
-fclean:			
+fclean:
 				@make clean
 				@$(RM) $(NAME)
 				@$(ECHO) "$(DEF_COLOR)$(BLUE)[$(NAME)]\t./$(NAME) \t$(GREEN)deleted \u2714$(DEF_COLOR)"

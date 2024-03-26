@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 23:23:49 by yliu              #+#    #+#             */
-/*   Updated: 2024/02/13 18:02:37 by yliu             ###   ########.fr       */
+/*   Updated: 2024/03/26 13:06:03 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	main(int argc, char **argv)
 	game_lists.lst_procedure = NULL;
 	copy_argv_to_lst(argc, argv, &game_lists.stack_a);
 	_read_loop(&game_lists);
-	if (is_ascending_order(game_lists.stack_a))
+	if (ft_dl_lstsize(game_lists.stack_b) == 0 && is_ascending_order(game_lists.stack_a))
 		ft_putendl_fd("OK", STDOUT_FILENO);
 	else
 		ft_putendl_fd("KO", STDOUT_FILENO);
